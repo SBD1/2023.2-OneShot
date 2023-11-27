@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../../images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.14">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.11">
     
     
       
@@ -322,7 +322,6 @@
     
   
   
-  
     
     
       
@@ -382,7 +381,6 @@
   
   
     
-  
   
   
     <li class="md-nav__item md-nav__item--active">
@@ -482,9 +480,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#diagrama" class="md-nav__link">
+  <a href="#diagrama-entidade-relacionamento" class="md-nav__link">
     <span class="md-ellipsis">
-      Diagrama
+      Diagrama Entidade Relacionamento
     </span>
   </a>
   
@@ -527,7 +525,6 @@
   
   
   
-  
     <li class="md-nav__item">
       <a href="../modelo-logico/" class="md-nav__link">
         
@@ -552,7 +549,6 @@
     
       
       
-  
   
   
   
@@ -619,7 +615,6 @@
   
   
   
-  
     <li class="md-nav__item">
       <a href="../../sql/ddl/" class="md-nav__link">
         
@@ -637,7 +632,6 @@
             
               
                 
-  
   
   
   
@@ -661,7 +655,6 @@
   
   
   
-  
     <li class="md-nav__item">
       <a href="../../sql/dql/" class="md-nav__link">
         
@@ -679,7 +672,6 @@
             
               
                 
-  
   
   
   
@@ -707,7 +699,6 @@
     
       
       
-  
   
   
   
@@ -756,7 +747,6 @@
   
   
   
-  
     <li class="md-nav__item">
       <a href="../../apresentacoes/modulo-1/" class="md-nav__link">
         
@@ -774,7 +764,6 @@
             
               
                 
-  
   
   
   
@@ -879,9 +868,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#diagrama" class="md-nav__link">
+  <a href="#diagrama-entidade-relacionamento" class="md-nav__link">
     <span class="md-ellipsis">
-      Diagrama
+      Diagrama Entidade Relacionamento
     </span>
   </a>
   
@@ -939,14 +928,127 @@
 <p>O modelo conceitual concentra-se no mais alto nível de abstração e não leva em conta o banco de dados em si, mas a forma como as estruturas serão criadas para armazenar os dados.</p>
 <h3 id="entidades-e-atributos"><a>Entidades e Atributos</a></h3>
 <ul>
-<li><strong>Entidade 1</strong><ul>
-<li>Atributo 1</li>
-<li>Atributo 2</li>
+<li><a><strong>Personagem</strong></a><ul>
+<li>id</li>
+<li>Nome</li>
+<li>Tipo</li>
 </ul>
 </li>
-<li><strong>Entidade 2</strong><ul>
-<li>Atributo 1</li>
-<li>Atributo 2</li>
+<li><a><strong>Personagem NPC</strong></a><ul>
+<li>Descrição</li>
+<li>IsWorldMachine</li>
+</ul>
+</li>
+<li><a><strong>Personagem PC</strong></a><ul>
+<li>Objetivo</li>
+<li>ConhceceDeus</li>
+</ul>
+</li>
+<li><a><strong>Deus</strong></a><ul>
+<li>id Deus</li>
+<li>Nome</li>
+</ul>
+</li>
+<li><a><strong>Comandos</strong></a><ul>
+<li>id função    </li>
+<li>função</li>
+<li>mensagem de erro</li>
+</ul>
+</li>
+<li><a><strong>Inventario</strong></a><ul>
+<li>N max de item</li>
+<li>nome do item</li>
+</ul>
+</li>
+<li><a><strong>Itens</strong></a><ul>
+<li>id Item</li>
+<li>Nome</li>
+<li>Descrição</li>
+<li>Tipo</li>
+</ul>
+</li>
+<li><a><strong>Itens Equipamento</strong></a><ul>
+<li>Função</li>
+<li>usado em craft</li>
+</ul>
+</li>
+<li><a><strong>Itens Item</strong></a><ul>
+<li>Combina com</li>
+<li>Gera</li>
+</ul>
+</li>
+<li><a><strong>Dialogo</strong></a><ul>
+<li>Id Dialogo</li>
+<li>Texto</li>
+<li>Alternativas</li>
+<li>Nome dos participantes</li>
+</ul>
+</li>
+<li><a><strong>Objeto</strong></a><ul>
+<li>Id Objeto</li>
+<li>Nome</li>
+<li>Descrição</li>
+<li>Tipo</li>
+</ul>
+</li>
+<li><a><strong>Objeto Interativo</strong></a><ul>
+<li>Item requisito</li>
+<li>Tranca</li>
+</ul>
+</li>
+<li><a><strong>Evento</strong></a><ul>
+<li>id evento</li>
+<li>já disparado</li>
+<li>Descrição</li>
+<li>Resultado</li>
+<li>Tipo Gatilho</li>
+</ul>
+</li>
+<li><a><strong>Evento Conversar</strong></a><ul>
+<li>Participantes</li>
+<li>Local</li>
+<li>unica</li>
+</ul>
+</li>
+<li><a><strong>Evento Entrar Sala</strong></a><ul>
+<li>localização</li>
+<li>Pre requisito</li>
+</ul>
+</li>
+<li><a><strong>Evento Interagir</strong></a><ul>
+<li>precisa de item</li>
+<li>Consome item</li>
+</ul>
+</li>
+<li><a><strong>Localização</strong></a><ul>
+<li>id localização</li>
+</ul>
+</li>
+<li><a><strong>Fase</strong></a><ul>
+<li>id Fase</li>
+<li>Descrição</li>
+</ul>
+</li>
+<li><a><strong>Região</strong></a><ul>
+<li>id Região</li>
+<li>descrição</li>
+<li>nome</li>
+</ul>
+</li>
+<li><a><strong>Estrutura</strong></a><ul>
+<li>id estrutura</li>
+<li>nome</li>
+<li>sala inicial</li>
+</ul>
+</li>
+<li><a><strong>Sala</strong></a><ul>
+<li>id sala</li>
+<li>descrição</li>
+<li>is visited</li>
+</ul>
+</li>
+<li><a><strong>Regiões Visitadas</strong></a><ul>
+<li>nome das regiões</li>
 </ul>
 </li>
 </ul>
@@ -956,11 +1058,14 @@
 </ul>
 <h2 id="modelo-entidade-relacionamento"><a>Modelo Entidade Relacionamento</a></h2>
 <p>O modelo Entidade-Relacionamento (ER) é um modelo conceitual utilizado na Engenharia de Software para descrever objetos envolvidos no domínio de um sistema de bancos de dados a ser construído, incluindo seus atributos e relacionamentos. </p>
-<h3 id="diagrama"><a>Diagrama</a></h3>
-<p>O diagrama Entidade-Relacionamento (ER) é uma representação gráfica do modelo ER. Ele é composto por entidades, relacionamentos e atributos. As entidades são representadas por retângulos, os atributos são representados por como linhas do retangulo e os relacionamentos são representados por losangos.
-<Center></p>
-<p><img alt="Alt text" src="../../../images/modelagem/DER-1.0.png" />
+<h3 id="diagrama-entidade-relacionamento"><a>Diagrama Entidade Relacionamento</a></h3>
+<p>O diagrama Entidade-Relacionamento (ER) é uma representação gráfica do modelo ER. Ele é composto por entidades, relacionamentos e atributos. As entidades são representadas por retângulos, os atributos são representados por como linhas do retangulo e os relacionamentos são representados por losangos.Na figura a seguir está representado o diagrama do projeto</p>
+<p><br></p>
+<p><center></p>
+<p><img alt="Diagrama Entidade Relacionamento" src="../../../images/modelagem/DER-1.0.png" />
+<strong>Figura 1</strong> : Diagrama Entidade Relacionamento
 </center></p>
+<p><br></p>
 <p>Clique <a href="../../../images/modelagem/DER-1.0.png">aqui</a> para ver a imagem em tela cheia.<br>
 Ou clique <a href="../../../arquivos/DER-1.0.drawio">aqui</a> para baixar o arquivo do draw.io.</p>
 <h2 id="historico-de-versao"><a>Histórico de Versão</a></h2>
@@ -1033,7 +1138,7 @@ CHEN, Peter. Entity-relationship modeling. 1st ed. New York: ACM Press, 1976. 17
     <script id="__config" type="application/json">{"base": "../../..", "features": ["header.autohide", "navigation.tabs", "navigation.top", "navigation.indexes"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.cd18aaf1.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.6c14ae12.min.js"></script>
       
     
   </body>
