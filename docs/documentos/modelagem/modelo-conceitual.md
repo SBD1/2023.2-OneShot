@@ -38,7 +38,7 @@ O diagrama Entidade-Relacionamento (ER) é uma representação gráfica do model
 </center>
 
 Clique [aqui](../../images/modelagem/DER-1.0.png) para ver a imagem em tela cheia.<br>
-Ou clique [aqui](../../arquivos/DER-2.0.drawio) para baixar o arquivo do draw.io.
+Ou clique [aqui](../../arquivos/DER-1.0.drawio) para baixar o arquivo do draw.io.
 
 ## <a>Histórico de Versão</a>
 |   Data   | Versão |      Descrição       |                   Autor                    |
