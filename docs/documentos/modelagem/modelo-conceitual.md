@@ -14,13 +14,87 @@ A descrição conceitual é uma etapa importante da modelagem de dados que envol
 O modelo conceitual concentra-se no mais alto nível de abstração e não leva em conta o banco de dados em si, mas a forma como as estruturas serão criadas para armazenar os dados.
 
 ### <a>Entidades e Atributos</a>
-- **Entidade 1**
-    - Atributo 1
-    - Atributo 2
-- **Entidade 2**
-    - Atributo 1
-    - Atributo 2
-
+- **Personagem**
+    - id
+    - Nome
+    - Tipo
+- **Personagem NPC**
+    - Descrição
+    - IsWorldMachine
+- **Personagem PC**
+    - Memorias
+    - ConhceceDeus
+- **Deus**
+    - id Deus
+    - Nome
+- **Comandos**
+    - id função    
+    - função
+    - mensagem de erro
+- **Inventario**
+    - N max de item
+    - nome do item
+- **Itens**
+    - id Item
+    - Descrição
+    - Tipo
+- **Itens Equipamento**
+    - Função
+    - usado em craft
+- **Itens Item**
+    - Combina com
+    - Gera
+- **Dialogo**
+    - Id Dialogo
+    - Texto
+    - Alternativas
+    - Nome dos participantes
+- **Objeto**
+    - Id Objeto
+    - Descrição
+    - Tipo
+- **Objeto Interativo**
+    - Item requisito
+    - Tranca
+- **Evento**
+    - id evento
+    - já disparado
+    - Descrição
+    - Resultados
+    - Tipo Gatilho
+- **Evento Conversa**
+    - npcs
+    - localização npc
+- **Evento Local**
+    - salas
+    - localização pc
+- **Interação**
+    - Objetos
+    - localização objetos
+- **Localização**
+    - id localização
+- **Fase**
+    - id Fase
+    - Descrição
+- **Região**
+    - id Região
+    - descrição
+    - nome
+- **Estrutura**
+    - id estrutura
+    - nome
+    - sala inicial
+- **Sala**
+    - id sala
+    - descrição
+    - is visited
+- **Conexão**
+    - sala origem
+    - sala conectada 1
+    - sala conectada 2
+    - sala conectada 3
+- **Regiões Visitadas**
+    - nome das regiões
 
 ### <a>Relacionamentos</a>
 - Relacionamento entre Entidade 1 e Entidade 2
