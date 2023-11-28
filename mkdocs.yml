@@ -43,12 +43,12 @@ nav:
     - Modelagem: documentos/modelagem/index.md
     - Modelo Conceitual: documentos/modelagem/modelo-conceitual.md
     - Modelo Lógico: documentos/modelagem/modelo-logico.md
-  - SQL:
-    - Modelagem: documentos/sql/index.md
-    - Data Definition Language (DDL): documentos/sql/ddl.md
-    - Data Manipulation Language (DML): documentos/sql/dml.md
-    - Data Query Language (DQL): documentos/sql/dql.md
-    - Álgebra Relacional: documentos/sql/algebra.md
+  - Modelo Físico:
+    - Modelo Físico: documentos/modelo-fisico/index.md
+    - Data Definition Language (DDL): documentos/modelo-fisico/ddl.md
+    - Data Manipulation Language (DML): documentos/modelo-fisico/dml.md
+    - Data Query Language (DQL): documentos/modelo-fisico/dql.md
+    - Álgebra Relacional: documentos/modelo-fisico/algebra.md
   - Apresentações:
     - 1ª Apresentação: documentos/apresentacoes/modulo-1.md
     - 2ª Apresentação: documentos/apresentacoes/modulo-2.md
