@@ -10,50 +10,52 @@ conn = psycopg2.connect(database="study", user="postgres", password="2605", host
 # Criar um cursor para executar consultas SQL
 cur = conn.cursor()
 
+with open('database/ddl.sql', 'r') as f:
+    sql = f.read()
+cur.execute(sql)
+conn.commit()
+
+with open('database/trigger.sql', 'r') as f:
+    sql = f.read()
+cur.execute(sql)
+conn.commit()
+
+with open('database/dml.sql', 'r') as f:
+    sql = f.read()
+cur.execute(sql)
+conn.commit()
+
 # Função para iniciar o jogo
-def iniciar_jogo():
-    # Obter o estado inicial do jogo do banco de dados
-    cur.execute("SELECT * FROM estado_do_jogo")
-    estado_do_jogo = cur.fetchone()
-
-    # Exibir o estado inicial do jogo para o usuário
-    print(estado_do_jogo)
-
-# Função para lidar com a entrada do usuário
-def lidar_com_entrada_do_usuario(entrada):
-    # Atualizar o estado do jogo com base na entrada do usuário
-    cur.execute("UPDATE estado_do_jogo SET ... WHERE ...", (entrada,))
-
-    # Obter o novo estado do jogo do banco de dados
-    cur.execute("SELECT * FROM estado_do_jogo")
-    estado_do_jogo = cur.fetchone()
-
-    # Exibir o novo estado do jogo para o usuário
-    print(estado_do_jogo)
-
-# Loop principal do jogo
-
 set_console_size()
 clear()
-headline('One Shot')
-print(pos(10, 5))
-typewriter('This is a test')
-
-
-print(pos(5, 10))
-input('> ')
-
-print(getpass.getuser())
+headline('One Shot', '-')
+typewriter('This is a test '+getpass.getuser()+'\n')
+typewriter('Pressione qualquer tecla para continuar...')
+input()
 clear()
 
-# while True:
+while True:
+    
+    cur.execute("SELECT descricao FROM regiao WHERE id = (SELECT regiao_id FROM localizacao WHERE id = (SELECT localizacao_id FROM pc WHERE id = 0));")
+    descricao = cur.fetchone()
+    typewriter(descricao[0]+'\n')
+
+    print(pos(1, 18))
+    comando = input('> ')
+    comando = comando.lower()
+    # Se o usuário digitar 'sair', interrompa o loop
+    if comando == 'desisto' or comando == 'sair':
+        break
+
+    cur.execute("INSERT INTO comandos (funcao) VALUES (%s)", (comando,))
+    conn.commit()
 
 
+    # cur.execute("SELECT dialogo FROM dialogos WHERE comando = %s", (comando,))
+    # dialogo = cur.fetchone()
 
+    # # Se um diálogo foi encontrado, imprima-o
+    # if dialogo is not None:
+    #     print(dialogo[0])
 
-
-#     # Obter a entrada do usuário
-#     entrada = input(">  ")
-
-#     # Lidar com a entrada do usuário
-#     lidar_com_entrada_do_usuario(entrada)
+    clear()

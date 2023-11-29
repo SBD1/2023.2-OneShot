@@ -29,8 +29,8 @@ def pos(x, y):
 
 # Prints a headline
 def headline(text, char='='):
-    print(text)
-    print(len(text) * char)
+    typewriter(text+'\n')
+    typewriter(len(text) * char+'\n')
 
 
 def typewriter(text, speed=1):

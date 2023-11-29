@@ -117,24 +117,64 @@ O modelo conceitual concentra-se no mais alto nível de abstração e não leva 
     <li>Um localização pode ser alvo da viagem rapida do Personagem PC se a mesma apontar para uma Região visitada  (0,1)</li>
     <li>Uma região visitada pode ser o destino da viagem rapida que altera a localização do Personagem PC (0,1)</li>
 <a><strong>Personagem PC Tem Inventario</a></strong>
-<li>Um Personagem PC Possui um Inventario (1,1)</li>
-<li>um Invetario é possuido por um Personagem PC (1,1)</li>
-<a><strong>Personagem Pc conversa com Personagem NPC e gera Evento Conversar</strong></a>
-    <li>Um Personagem PC conversa com um personagem NPC e gera um Evento Conversar (1,1)</li>
-    <li>Um Personagem NPC conversa com um personagem PC e gera um Evento Conversar (1,1)</li>
-    <li>Um Evento Conversar é gerado sempre que um Personagem PC conversa com um Personagem NPC (1,1)</li>
+    <li>Um Personagem PC Possui um Inventario (1,1)</li>
+    <li>um Invetario é possuido por um Personagem PC (1,1)</li>
+<a><strong>Inventario guarda Item</a></strong>
+    <li>Um inventario Guarda 0 ou mais itens (0,N)</li>
+    <li>Um item pode estar guardado no inventario (0,1)</li>
+<a><strong>Item Pode Ter Localização</a></strong>
+    <li>Um item pode pode ter uma ou nenhuma localização(0,1)</li>
+    <li>Uma localização pode ter 0 ou varios Items (0,N)</li>
+<a><strong>Item Equipamento pode ser pré requisito de região</a></strong>
+    <li>Um Item Equipamento pode ser necessario para entrar em uma região (0,1)</li>
+    <li>Uma região pode ter um item pré requisito para ser visitada (0,1)</li>
+<a><strong>Itens Material combinados usando ou não um equipamento geram Itens Material</a></strong>
+    <li>Dois item Material combinam podendo ser necessario um equipamento para gerar um ou dois Item Material (2,2)</li>
+    <li>Um ou Dois Item Material são gerados ao combinar 2 Item Material usando ou não um equipamento (1,2)</li>
+    <li>Pode ser necessario um equipamento para combinar 2 Item Material (0,1)</li>
+<a><strong>Objeto Tem Localização</a></strong>
+    <li>Todo objeto tem uma localização (1,1)</li>
+    <li>Uma localização pode ter 0 ou mais Objetos (0,N)</li>
+<a><strong>Fase possui Região</a></strong>
+    <li>Toda fase possui pelo menos uma região (1,N)</li>
+    <li>Toda região está em uma fase (1,1)</li>
+<a><strong>Região possui Estrutura</a></strong>
+    <li>Uma região possui 0 ou mais estruturas (0,N)</li>
+    <li>Toda estrutura está em Região (1,1)</li>
+<a><strong>Estrutura possui Sala</a></strong>
+    <li>Toda estrutura possui uma sala ou mais (1,N)</li>
+    <li>Toda sala está em uma estrutura (1,1)</li>
+<a><strong>Sala está conectada a sala e pode estar travada por objeto</a></strong>
+    <li>Uma sala pode ter de 0 a 3 conexões e as conexões podem estar travadas por objetos (1,1)</li>
+    <li>Uma conexão conecta ate 3 outras salas que podem estar travadas por objetos (0,3)</li>
+    <li>Objetos podem travar conexões entre as salas (0,1)</li>
+<a><strong>Localização aponta para Região e/ou Sala</a></strong>
+    <li>Uma localização aponta para 1 região e pode apontar para uma sala (1,1)</li>
+    <li>Uma região é apontada pela localização (1,1)</li>
+    <li>Uma sala pode estar apontada na localização alem da região (0,1)</li>
+<a><strong>Evento Altera Objeto</a></strong>
+    <li>Um evento pode alterar um Objeto (1,1)</li>
+    <li>Um ou mais Objetos podem ser alterados por um Evento (0,N)</li>
+<a><strong>Evento Gera Item</a></strong>
+    <li>Um evento pode gerar um Item (1,1)</li>
+    <li>Até um Item pode ser gerado por um evento (0,1)</li>
+<a><strong>Evento Gera Dialogo</a></strong>
+    <li>Um evento pode gerar um Dialogo (1,1)</li>
+    <li>Até um Dialogo pode ser gerado por um evento (0,1)</li>
+<a><strong>Personagem PC entrar 1ª vez em Sala gera Evento Entrar Sala</a></strong>
+    <li>Um Personagem PC entrar ao entar pela 1ª vez em uma sala pode disparar um Evento Entrar Sala (1,1)</li>
+    <li>Uma sala ao ser visitada pela primeira vez pelo Personagem PC pode disparar um Evento Entrar Sala (1,1)</li>
+    <li>Um Evento Entrar Sala pode ser gerado quando um Personagem PC entra em uma Sala pela 1ª vez (0,1)</li>
+<a><strong>Personagem Pc conversa com Personagem NPC e gera Evento Conversar</a></strong>
+        <li>Um Personagem PC conversa com um personagem NPC e gera um Evento Conversar (1,1)</li>
+        <li>Um Personagem NPC conversa com um personagem PC e gera um Evento Conversar (1,1)</li>
+        <li>Um Evento Conversar é gerado sempre que um Personagem PC conversa com um Personagem NPC (1,1)</li>
 <a><strong>Personagem PC Interage com Objeto Interativo usando ou não Item Material e pode gerar um Evento Interagir</a></strong>
-<li>Um Personagem PC Interagem com um objeto usando ou não um Item Material e pode gerar um Evento Interagir (1,1)</li>
-<li>Um Objeto Interativo pode ser interagido por um Personagem PC utilizando ou não um Item Material e pode gerar um Evento Interagir (0,1)</li>
-<li>Um Item Material Pode ser utilizado na interação entre um Objeto Interativo e um Objeto Interativo e pode gerar um Evento Interagir (0,1)</li>
-<li>Um Evento Interagir é gerado sempre que um Personagem Pc Interage com um Objeto Interativo usando ou não um Item Material (1,1)</li>
+    <li>Um Personagem PC Interagem com um objeto usando ou não um Item Material e pode gerar um Evento Interagir (1,1)</li>
+    <li>Um Objeto Interativo pode ser interagido por um Personagem PC utilizando ou não um Item Material e pode gerar um Evento Interagir (0,1)</li>
+    <li>Um Item Material Pode ser utilizado na interação entre um Objeto Interativo e um Objeto Interativo e pode gerar um Evento Interagir (0,1)</li>
+    <li>Um Evento Interagir é gerado sempre que um Personagem Pc Interage com um Objeto Interativo usando ou não um Item Material (1,1)</li>
 </details>
-
-
-
-
-
-
 
 ## <a>Modelo Entidade Relacionamento</a>
 O modelo Entidade-Relacionamento (ER) é um modelo conceitual utilizado na Engenharia de Software para descrever objetos envolvidos no domínio de um sistema de bancos de dados a ser construído, incluindo seus atributos e relacionamentos. 
