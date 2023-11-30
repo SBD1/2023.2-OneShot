@@ -55,6 +55,43 @@ INSERT INTO localizacao (id, regiao_id)
 VALUES (8, 8);
 
 
+INSERT INTO estrutura (id, descricao, nome, regiao_id)
+VALUES (0,'Niko vê estrutura teste', 'estrutura teste', 0);
+
+INSERT INTO sala (id, descricao, nome, estrutura_id)
+VALUES (0,'Niko vê sala teste', 'Sala teste', 0);
+
+UPDATE estrutura SET sala_inicial = 0 WHERE id = 0;
+
+INSERT INTO estrutura (id, descricao, nome, regiao_id)
+VALUES (1,'Niko vê estrutura teste2', 'Estrutura teste2', 1);
+
+INSERT INTO sala (id, descricao, nome, estrutura_id)
+VALUES (1,'Niko vê sala teste', 'Sala teste', 1);
+
+UPDATE estrutura SET sala_inicial = 1 WHERE id = 1;
+
+INSERT INTO localizacao (id, regiao_id, sala_id)
+VALUES (9, 0, 0);
+
+INSERT INTO localizacao (id, regiao_id, sala_id)
+VALUES (10, 1, 1);
+
+INSERT INTO objeto (id, descricao, localizacao_id)
+VALUES (0, 'Niko vê objeto teste', 0);
+
+INSERT INTO item (id, descricao, localizacao_id)
+VALUES (0, 'Niko vê item teste', 0);
+
+INSERT INTO objeto (id, descricao, localizacao_id)
+VALUES (1, 'Niko vê objeto teste2', 9);
+
+INSERT INTO item (id, descricao, localizacao_id)
+VALUES (1, 'Niko vê item teste2', 9);
+
+
+
+
 
 INSERT INTO pc(id, nome, localizacao_id)
 VALUES (0, 'Niko', 0);
