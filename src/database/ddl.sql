@@ -53,7 +53,6 @@ ALTER TABLE estrutura ADD COLUMN sala_inicial INT REFERENCES sala(id);
 
 CREATE TABLE localizacao (
     id INT PRIMARY KEY,
-    descricao VARCHAR(255),
     regiao_id INT NOT NULL REFERENCES regiao(id),
     sala_id INT REFERENCES sala(id) DEFAULT NULL
 );
@@ -67,13 +66,13 @@ CREATE TABLE localizacao (
 CREATE TABLE objeto(
     id INT PRIMARY KEY,
     descricao VARCHAR(255),
-    localizacao_id INT NOT NULL REFERENCES localizacao(id)
+    localizacao_id INT REFERENCES localizacao(id)
 );
 
 CREATE TABLE item(
     id INT PRIMARY KEY,
     descricao VARCHAR(255),
-    localizacao_id INT NOT NULL REFERENCES localizacao(id)
+    localizacao_id INT REFERENCES localizacao(id)
 );
 
 CREATE TABLE pc(
@@ -84,5 +83,6 @@ CREATE TABLE pc(
 
 CREATE TABLE comandos(
     comando_id SERIAL PRIMARY KEY,
-    funcao VARCHAR(255) 
+    funcao VARCHAR(255),
+    pcid INT NOT NULL REFERENCES pc(id) 
 );

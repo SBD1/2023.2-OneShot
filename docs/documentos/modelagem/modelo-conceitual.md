@@ -187,7 +187,7 @@ O diagrama Entidade-Relacionamento (ER) é uma representação gráfica do model
 
 <center>
 
-![Diagrama Entidade Relacionamento](../../images/modelagem/DER-1.0.png)
+![Diagrama Entidade Relacionamento](../../images/modelagem/DER-1.0.png) <br>
 **Figura 1** : Diagrama Entidade Relacionamento
 </center>
 

@@ -12,9 +12,8 @@ A modelagem de dados também permite a comunicação entre os desenvolvedores, o
 <br>
 <center>
 
-![Passos da modelagem](../../images/modelagem/image.png)
+![Passos da modelagem](../../images/modelagem/image.png)<br>
 **Figura 1** : Representação dos passos da modelagem
-
 </center>
 
 

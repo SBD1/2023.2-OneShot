@@ -1,5 +1,6 @@
 from time import sleep
 import os
+from colorama import Fore, Style
 
 # Stores console's window size at launch
 AC_SCREEN_WIDTH = 80
@@ -38,3 +39,33 @@ def typewriter(text, speed=1):
     for char in text:
         print(char, end='', flush=True)
         sleep(delay)
+
+def descricao_local(cur):
+    descricao, estruturas, objetos, itens = cur.fetchone()
+
+    if descricao is not None:
+        typewriter(descricao+'\n\n\n')
+
+    if (estruturas and any(e is not None and e != '' for e in estruturas)) or (objetos and any(o is not None and o != '' for o in objetos)) or (itens and any(i is not None and i != '' for i in itens)):
+        typewriter('Niko vê:\n')
+    else:
+        typewriter('Niko não vê nada de interessante.\n')
+
+
+    if estruturas is not None:
+        for e in estruturas:
+            if e is not None:
+                typewriter(e+'\n')
+
+    if objetos is not None:
+        for o in objetos:
+            if o is not None:
+                typewriter(o+'\n')
+
+    if itens is not None:
+        for i in itens:
+            if i is not None:
+                typewriter(i+'\n')
+
+def erro(message):
+    typewriter(Fore.RED + message + Style.RESET_ALL)

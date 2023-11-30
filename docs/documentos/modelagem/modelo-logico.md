@@ -33,17 +33,70 @@ A normalização é baseada em dependências funcionais, que são relações ent
 As formas normais mais comuns são a primeira forma normal (1NF), a segunda forma normal (2NF) e a terceira forma normal (3NF). Há também as formas normais mais avançadas como a quarta forma normal (4NF) e a forma normal de Boyce-Codd (FNBC). Cada forma normal tem um conjunto de regras que devem ser seguidas para garantir que a tabela esteja normalizada. 
 
 ### <a>Dicionario de Dados</a>
+O dicionário de dados é uma ferramenta importante na modelagem de banco de dados relacionais. Ele contém informações detalhadas sobre as tabelas, colunas, tipos de dados, restrições e outras informações relevantes para o banco de dados. 
+
+O dicionário de dados é usado para documentar o modelo de dados e garantir que todos os desenvolvedores e usuários do banco de dados tenham uma compreensão clara dos dados armazenados e como eles são organizados. Ele também pode ser usado para ajudar a garantir a integridade dos dados e a consistência do modelo de dados.
+
+<details>
+<summary><strong>Dicionario de Dados</strong></summary>
+<center>
+
+<table>
+    <tr>
+        <th style="text-align:center">Tabela</th>
+        <td style="text-align:center" colspan="4">Characters</td>
+    </tr>
+    <tr>
+        <th style="text-align:center">Descrição</th>
+        <td style="text-align:center" colspan="4">texto</td>
+    </tr>
+    <tr>
+        <th style="text-align:center">Observações</th>
+        <td style="text-align:center" colspan="4">texto</td>
+    </tr>
+    <tr>
+        <th style="text-align:center" colspan="5">Campos</th>
+    </tr>
+    <tr>
+        <th style="text-align:center">Nome</th>
+        <th style="text-align:center">Descrição</th>
+        <th style="text-align:center">Tipo de Dado</th>
+        <th style="text-align:center">Tamanho</th>
+        <th style="text-align:center">Restrições de Dominio</th>
+    </tr>
+</table>
+
+
+
+</center>
+</details>
 
 
 ### <a>Diagrama do Esquema Relacional</a>
+O esquema relacional é a representação do modelo de dados relacional em forma de diagrama, que mostra as tabelas, seus atributos e as relações entre elas. 
+
+O esquema relacional é uma ferramenta importante na modelagem de banco de dados, pois ajuda a visualizar a estrutura do banco de dados e a identificar as relações entre as tabelas.
+<br>
+<center>
+
+![Diagrama Entidade Relacionamento](../../images/modelagem/Esquema-Relacional-1.0.png)<br>
+**Figura 1** : Diagrama Entidade Relacionamento
+</center>
+<br>
+Clique [aqui](../../images/modelagem/Esquema-Relacional-1.0.png) para ver a imagem em tela cheia.<br>
+Ou clique [aqui](../../arquivos/Esquema-Relacional-1.0.drawio) para baixar o arquivo do draw.io.
+
 
 
 ## <a>Histórico de Versão</a>
+
+<center>
+
 |   Data   | Versão |      Descrição       |                   Autor                    |
 | :------: | :----: | :------------------: | :----------------------------------------: |
 | 25/11/23 |  1.0   | Criação do documento | [João Lucas](https://github.com/HacKairos) |
 
-## <a>Bilbiografia</a>
-**1**
+</center>
 
+## <a>Bilbiografia</a>
     AVI SILBERSCHATZ, HENRY F. KORTH, S. SUDARSHAN. Database System Concepts. [s.l: s.n.].
