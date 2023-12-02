@@ -17,44 +17,22 @@
 }
 
 
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
+
+th {
+  background-color: #808080;
+  color: #ffffff; /* Define a cor das letras como branco */
 }
 
 td {
-  border: 1px solid #dddddd;
+  background-color: #FFFAFA;
+  color: #000000; /* Define a cor das letras como preto */
 }
 
-th {
-  border: 1px solid #dddddd;
-}
-
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
 
 
 [data-md-color-scheme="slate"] {
   --md-primary-fg-color: #96325b;
   --md-accent-fg-color: #fbb167;
   --md-default-bg-color: #220537;
-}
 
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-td {
-  border: 1px solid #dddddd;
-  text-align: center;
-}
-
-th {
-  border: 1px solid #dddddd;
-  text-align: center;
 }

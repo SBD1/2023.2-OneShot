@@ -18,9 +18,13 @@ A modelagem de dados também permite a comunicação entre os desenvolvedores, o
 
 
 ## <a>Histórico de Versão</a>
+<center>
+
 |   Data   | Versão |      Descrição       |                   Autor                    |
 | :------: | :----: | :------------------: | :----------------------------------------: |
 | 25/11/23 |  1.0   | Criação do documento | [João Lucas](https://github.com/HacKairos) |
+
+</center>
 
 ## <a>Bilbiografia</a>
     AVI SILBERSCHATZ, HENRY F. KORTH, S. SUDARSHAN. Database System Concepts. [s.l: s.n.].

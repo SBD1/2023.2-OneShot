@@ -42,28 +42,30 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <center>
 
 <table>
-    <tr>
-        <th style="text-align:center">Tabela</th>
-        <td style="text-align:center" colspan="4">Characters</td>
-    </tr>
-    <tr>
-        <th style="text-align:center">Descrição</th>
-        <td style="text-align:center" colspan="4">texto</td>
-    </tr>
-    <tr>
-        <th style="text-align:center">Observações</th>
-        <td style="text-align:center" colspan="4">texto</td>
-    </tr>
-    <tr>
-        <th style="text-align:center" colspan="5">Campos</th>
-    </tr>
-    <tr>
-        <th style="text-align:center">Nome</th>
-        <th style="text-align:center">Descrição</th>
-        <th style="text-align:center">Tipo de Dado</th>
-        <th style="text-align:center">Tamanho</th>
-        <th style="text-align:center">Restrições de Dominio</th>
-    </tr>
+
+<tr >
+    <th style="text-align:center; border: 1px solid #a3a3a3;">Tabela</th>
+    <td style="text-align:center; border: 1px solid #a3a3a3;" colspan="4">Characters</td>
+</tr>
+<tr>
+    <th style="text-align:center; border: 1px solid #a3a3a3;">Descrição</th>
+    <td style="text-align:center; border: 1px solid #a3a3a3;" colspan="4">texto</td>
+</tr>
+<tr>
+    <th style="text-align:center; border: 1px solid #a3a3a3;">Observações</th>
+    <td style="text-align:center; border: 1px solid #a3a3a3;" colspan="4">texto</td>
+</tr>
+<tr>
+    <th style="text-align:center; border: 1px solid #a3a3a3;" colspan="5">Campos</th>
+</tr>
+<tr>
+    <th style="text-align:center; border: 1px solid #a3a3a3;">Nome</th>
+    <th style="text-align:center; border: 1px solid #a3a3a3;">Descrição</th>
+    <th style="text-align:center; border: 1px solid #a3a3a3;">Tipo de Dado</th>
+    <th style="text-align:center; border: 1px solid #a3a3a3;">Tamanho</th>
+    <th style="text-align:center; border: 1px solid #a3a3a3;">Restrições de Dominio</th>
+</tr>
+
 </table>
 
 

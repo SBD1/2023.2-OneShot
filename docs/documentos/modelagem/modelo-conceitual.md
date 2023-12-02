@@ -197,9 +197,13 @@ Clique [aqui](../../images/modelagem/DER-1.0.png) para ver a imagem em tela chei
 Ou clique [aqui](../../arquivos/DER-1.0.drawio) para baixar o arquivo do draw.io.
 
 ## <a>Histórico de Versão</a>
+<center>
+
 |   Data   | Versão |      Descrição       |                   Autor                    |
 | :------: | :----: | :------------------: | :----------------------------------------: |
 | 25/11/23 |  1.0   | Criação do documento | [João Lucas](https://github.com/HacKairos) |
+
+</center>
 
 ## <a>Bilbiografia</a>
     AVI SILBERSCHATZ, HENRY F. KORTH, S. SUDARSHAN. Database System Concepts. [s.l: s.n.].
