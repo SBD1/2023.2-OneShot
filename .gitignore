@@ -1,5 +1,8 @@
-venv
-
-site
-
-.vscode
+# ambiente virtual
+**/venv
+# site gerado pelo mkdocs
+**/site
+# configurações do vscode
+**/.vscode
+# cache do python
+**/__pycache__
