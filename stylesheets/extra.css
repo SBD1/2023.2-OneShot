@@ -1,13 +1,5 @@
-:root>* {
-  --md-primary-fg-color: #484995;
-  --md-accent-fg-color: #fbb167;
-  --md-default-bg-color: #FFFAFA;
-}
-
-.md-grid {
-  max-width: 85%;
-}
-
+/* Estilos gerais */
+.md-grid,
 .md-main__inner {
   max-width: 85%;
 }
@@ -16,11 +8,17 @@
   width: auto;
 }
 
+/* Estilos para todos os temas */
+:root>* {
+  --md-primary-fg-color: #484995;
+  --md-accent-fg-color: #484995;
+  --md-default-bg-color: #FFFAFA;
+}
 
-
+/* Estilos para as células da tabela */
 th {
-  background-color: #808080;
-  color: #ffffff; /* Define a cor das letras como branco */
+  background-color: #484995;
+  color: #FFFAFA; /* Define a cor das letras como branco */
   font-weight: bold; /* Deixa as letras em negrito */
 }
 
@@ -31,9 +29,22 @@ td {
 }
 
 
+
+/* Estilos para o tema "slate" */
 [data-md-color-scheme="slate"] {
   --md-primary-fg-color: #96325b;
-  --md-accent-fg-color: #fbb167;
+  --md-accent-fg-color: #96325b;
   --md-default-bg-color: #220537;
+}
 
+[data-md-color-scheme="slate"] th {
+  background-color: #96325b;
+  color: #FFFAFA; /* Define a cor das letras como branco */
+  font-weight: bold; /* Deixa as letras em negrito */
+}
+
+[data-md-color-scheme="slate"] td {
+  background-color: #FFFAFA;
+  color: #000000; /* Define a cor das letras como preto */
+  font-weight: bold; /* Deixa as letras em negrito */
 }
