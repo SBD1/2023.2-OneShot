@@ -55,17 +55,40 @@ def descricao_local(cur):
     if estruturas is not None:
         for e in estruturas:
             if e is not None:
+                typewriter('\n\nEstruturas:\n')
                 typewriter(e+'\n')
 
     if objetos is not None:
         for o in objetos:
             if o is not None:
+                typewriter('\n\nObjetos:\n')
                 typewriter(o+'\n')
 
     if itens is not None:
         for i in itens:
-            if i is not None:
+            if i is not None: 
+                typewriter('\n\nItens:\n')
                 typewriter(i+'\n')
+
+def inventory(cur):
+    results = cur.fetchall()
+    if results:
+        typewriter('Niko tem:\n')
+        for result in results:
+            itensMName, itensMDescription, itensEName, itensEDescription = result
+            if itensMName is not None:
+                typewriter(f'{itensMName}: {itensMDescription}\n')
+            if itensEName is not None:
+                typewriter(f'{itensEName}: {itensEDescription}\n')
+    else:
+        typewriter('Niko não tem nada.\n')
+
 
 def erro(message):
     typewriter(Fore.RED + message + Style.RESET_ALL)
+
+
+def notice_handler(conn, notice):
+    typewriter(notice)
+    typewriter('\n\nPressione enter para continuar...')
+    input()

@@ -4,12 +4,21 @@ import getpass
 
 from game.utils import *
 
+prevcomando = ''
+comando = ''
+
+
 # Conectar ao banco de dados PostgreSQL
 conn = psycopg2.connect(database="study", user="postgres",
                         password="2605", host="localhost", port="5432")
 
 # Criar um cursor para executar consultas SQL
 cur = conn.cursor()
+
+with open('database/drop.sql', 'r') as f:
+    sql = f.read()
+cur.execute(sql)
+conn.commit()
 
 with open('database/ddl.sql', 'r') as f:
     sql = f.read()
@@ -31,25 +40,31 @@ with open('database/dml.sql', 'r') as f:
 cur.execute(sql)
 conn.commit()
 
-# Função para iniciar o jogo
+
 set_console_size()
 clear()
 # headline('One Shot', '-')
 # typewriter('This is a test '+getpass.getuser()+'\n')
-# typewriter('Pressione qualquer tecla para continuar...')
+# print(pos(1, 18))
+# typewriter('Pressione enter para continuar...')
 # input()
 # clear()
 
 while True:
 
-    with open('database/dql.sql', 'r') as f:
-        sql = f.read()
-    cur.execute(sql)
-
-    descricao_local(cur)
-
+    if comando == 'abrir inventario':
+        with open('database/dql/inventario.sql', 'r') as f:
+            sql = f.read()
+        cur.execute(sql)
+        inventory(cur)
+    else:
+        with open('database/dql/local.sql', 'r') as f:
+            sql = f.read()
+        cur.execute(sql)
+        descricao_local(cur)
 
     print(pos(1, 18))
+    prevcomando = comando
     comando = input('> ')
     comando = comando.lower()
     # Se o usuário digitar 'sair', interrompa o loop
@@ -58,7 +73,8 @@ while True:
 
     try:
         clear()
-        cur.execute("INSERT INTO comandos (funcao,pcid) VALUES (%s,0)", (comando,))
+        cur.execute(
+            "INSERT INTO Commands(CommandFunction,Pc) VALUES (%s,1)", (comando,))
         conn.commit()
     except Exception as e:
         conn.rollback()
@@ -67,8 +83,14 @@ while True:
         erro(message)
         typewriter("\nPressione enter para continuar...")
         input()
+        if prevcomando == 'abrir inventario':
+            comando = prevcomando
 
-    
-
+    for notice in conn.notices:
+        if 'Niko' in notice:
+            notice = notice.replace('NOTICE:', '')
+            notice = notice.replace('  Niko', 'Niko')
+            notice_handler(conn, notice)
+    conn.notices.clear()
 
     clear()

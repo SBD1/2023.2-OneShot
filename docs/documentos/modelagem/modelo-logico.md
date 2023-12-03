@@ -43,7 +43,152 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Phase</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Events</td>
+    </tr>
+    <tr>
+        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
+        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Descrição</th>
+        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tipo de Dado</th>
+        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tamanho</th>
+        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Restrições de Dominio</th>
+    </tr>
+    <tr>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">EventId</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Identificador de Evento</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Serial</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">PK</td>
+    </tr>
+    <tr>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Type</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Identidica o tipo do evento</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Varchar</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">10</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Not Null</td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">ChatEvents</td>
+    </tr>
+    <tr>
+        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
+        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Descrição</th>
+        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tipo de Dado</th>
+        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tamanho</th>
+        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Restrições de Dominio</th>
+    </tr>
+        <tr>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">EventId</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira para Events e <br>Identificador de Evento</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">FK / PK</td>
+    </tr>
+    <tr>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">IsUnique</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Define se o evento acontece <br>apenas uma vez</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Boolean</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Not Null</td>
+    </tr>
+    <tr>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">AlreadyFired</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Marcador para registrar <br>se o evento ja aconteceu</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Boolean</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Default False</td>
+    </tr>
+    <tr>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Comand</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Representa um linha de <br>comando em SQL que o sgbd vai realizar <br>quando o evento for chamado</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Varchar</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">250</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Not Null</td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">InteractEvents</td>
+    </tr>
+    <tr>
+        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
+        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Descrição</th>
+        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tipo de Dado</th>
+        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tamanho</th>
+        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Restrições de Dominio</th>
+    </tr>
+    </tr>
+        <tr>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">EventId</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira para Events e <br>Identificador de Evento</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">FK / PK</td>
+    </tr>
+    <tr>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">AlreadyFired</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Marcador para registrar <br>se o evento ja aconteceu</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Boolean</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Default False</td>
+    </tr>
+    <tr>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">ConsumesItem</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Define se o evento Consume <br>O item utilizado na interação</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Boolean</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Not Null</td>
+    </tr>
+    <tr>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Comand</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Representa um linha de <br>comando em SQL que o sgbd vai realizar <br>quando o evento for chamado</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Varchar</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">250</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Not Null</td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">RoomEvents</td>
+    </tr>
+    <tr>
+        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
+        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Descrição</th>
+        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tipo de Dado</th>
+        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tamanho</th>
+        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Restrições de Dominio</th>
+    </tr>
+    </tr>
+        <tr>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">EventId</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira para Events e <br>Identificador de Evento</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">FK / PK</td>
+    </tr>
+    <tr>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">AlreadyFired</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Marcador para registrar <br>se o evento ja aconteceu</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Boolean</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Default False</td>
+    </tr>
+    <tr>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Comand</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Representa um linha de <br>comando em SQL que o sgbd vai realizar <br>quando o evento for chamado</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Varchar</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">250</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Not Null</td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Phases</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -60,14 +205,14 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">PK</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Name</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">PhaseName</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome da fase</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Varchar</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">20</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Unique / Not Null</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Description</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">PhaseDescription</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Descrição da fase</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Varchar</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">250</td>
@@ -77,7 +222,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Region</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Regions</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -94,14 +239,14 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">PK</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Name</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">RegionName</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome da região</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Varchar</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">20</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Unique / Not Null</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Description</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">RegionDescription</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Descrição da região</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Varchar</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">250</td>
@@ -132,7 +277,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">RegionGeo</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">RegionsGeo</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -180,34 +325,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">VisitedRegions</td>
-    </tr>
-    <tr>
-        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
-        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Descrição</th>
-        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tipo de Dado</th>
-        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tamanho</th>
-        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Restrições de Dominio</th>
-    </tr>
-    <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">CharacterId</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Id do PC que visitou<br> determinadas regiôes</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">PK / FK</td>
-    </tr>
-    <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">RegionId</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Id da Região que determinado <br>PC Visitou</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">PK / FK</td>
-    </tr>
-</table>
-<table>
-    <tr>
-        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Structure</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Structures</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -224,7 +342,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">PK</td>
     </tr>
         <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Name</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">StrucutureName</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome da estrutura</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Varchar</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">20</td>
@@ -248,7 +366,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Room</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Rooms</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -265,14 +383,14 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">PK</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Name</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">RoomName</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome da sala</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Varchar</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">20</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Unique / Not Null</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Description</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">RoomDescription</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Descrição da sala</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Varchar</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">250</td>
@@ -309,7 +427,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Conection</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Conections</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -326,7 +444,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">PK</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Name</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">ConectionName</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome da conexão</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Varchar</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">20</td>
@@ -350,7 +468,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Location</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Locations</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -384,152 +502,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Events</td>
-    </tr>
-    <tr>
-        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
-        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Descrição</th>
-        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tipo de Dado</th>
-        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tamanho</th>
-        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Restrições de Dominio</th>
-    </tr>
-    <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">EventId</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Identificador de Evento</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Serial</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">PK</td>
-    </tr>
-    <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Type</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Identidica o tipo do evento</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Varchar</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">10</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Not Null</td>
-    </tr>
-</table>
-<table>
-    <tr>
-        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">ChatEvent</td>
-    </tr>
-    <tr>
-        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
-        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Descrição</th>
-        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tipo de Dado</th>
-        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tamanho</th>
-        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Restrições de Dominio</th>
-    </tr>
-        <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">EventId</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira para Events e <br>Identificador de Evento</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">FK / PK</td>
-    </tr>
-    <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Unique</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Define se o evento acontece <br>apenas uma vez</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Boolean</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Not Null</td>
-    </tr>
-    <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">AlreadyFired</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Marcador para registrar <br>se o evento ja aconteceu</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Boolean</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Default False</td>
-    </tr>
-    <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Comand</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Representa um linha de <br>comando em SQL que o sgbd vai realizar <br>quando o evento for chamado</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Varchar</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">250</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Not Null</td>
-    </tr>
-</table>
-<table>
-    <tr>
-        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">InteractEvent</td>
-    </tr>
-    <tr>
-        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
-        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Descrição</th>
-        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tipo de Dado</th>
-        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tamanho</th>
-        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Restrições de Dominio</th>
-    </tr>
-    </tr>
-        <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">EventId</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira para Events e <br>Identificador de Evento</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">FK / PK</td>
-    </tr>
-    <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">AlreadyFired</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Marcador para registrar <br>se o evento ja aconteceu</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Boolean</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Default False</td>
-    </tr>
-    <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">ConsumesItem</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Define se o evento Consume <br>O item utilizado na interação</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Boolean</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Not Null</td>
-    </tr>
-    <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Comand</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Representa um linha de <br>comando em SQL que o sgbd vai realizar <br>quando o evento for chamado</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Varchar</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">250</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Not Null</td>
-    </tr>
-</table>
-<table>
-    <tr>
-        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">RoomEvent</td>
-    </tr>
-    <tr>
-        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
-        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Descrição</th>
-        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tipo de Dado</th>
-        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tamanho</th>
-        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Restrições de Dominio</th>
-    </tr>
-    </tr>
-        <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">EventId</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira para Events e <br>Identificador de Evento</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">FK / PK</td>
-    </tr>
-    <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">AlreadyFired</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Marcador para registrar <br>se o evento ja aconteceu</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Boolean</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Default False</td>
-    </tr>
-    <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Comand</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Representa um linha de <br>comando em SQL que o sgbd vai realizar <br>quando o evento for chamado</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Varchar</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">250</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Not Null</td>
-    </tr>
-</table>
-<table>
-    <tr>
-        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Object</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Objects</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -546,14 +519,14 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">PK</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Name</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">ObjectName</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome do Objeto</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Varchar</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">20</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Not Null</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Description</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">ObjectDescription</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Descrição do Objeto</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Varchar</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">20</td>
@@ -574,7 +547,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Not Null</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Location</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">ObjectLocation</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira para<br>Location caso o <br>objeto esteja no mapa</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
@@ -615,7 +588,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">PK</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Type</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">CharacterType</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Aponta para o tipo de personagem</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">varchar</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">10</td>
@@ -625,7 +598,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">NPC</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">NPCs</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -642,42 +615,42 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">PK / FK</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Name</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">NpcName</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome do NPC</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Varchar</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">20</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Unique / Not Null</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Description</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">NpcDescription</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Descrição do personagem no mapa</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Varchar</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">50</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Not Null</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">isWordMachine</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">IsWordMachine</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Define se o NPC é a "ENTIDADE"</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Boolean</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Default False</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">isGod</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">IsGod</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Define se o NPC é "DEUS"</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Boolean</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Default False</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Location</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">NpcLocation</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira que informa a <br>localização de um NPC<br>pode ser NULL</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">FK</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Event</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">EventId</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira para <br>o evento gerado <br>ao interagir com o npc</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
@@ -687,7 +660,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">PC</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">PCs</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -704,7 +677,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">PK / FK</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Name</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">PcName</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome do PC</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Varchar</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">4</td>
@@ -718,7 +691,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Default False</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Location</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">PcLocation</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira que informa a <br>localização do PC</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
@@ -728,7 +701,34 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Item</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">VisitedRegions</td>
+    </tr>
+    <tr>
+        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
+        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Descrição</th>
+        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tipo de Dado</th>
+        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tamanho</th>
+        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Restrições de Dominio</th>
+    </tr>
+    <tr>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">CharacterId</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Id do PC que visitou<br> determinadas regiôes</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">PK / FK</td>
+    </tr>
+    <tr>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">RegionId</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Id da Região que determinado <br>PC Visitou</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">PK / FK</td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Itens</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -745,7 +745,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">PK</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Type</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">ItemType</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Identifica o tipo do item</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Varchar</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">10</td>
@@ -755,7 +755,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">ItemMaterial</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">ItensMaterial</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -772,21 +772,21 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">PK / FK</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Name</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">ItemName</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome do item</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Varchar</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">20</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Not Null</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Description</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">ItemDescription</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Descrição do item fisicamente</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Varchar</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">50</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Unique / Not Null</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Location</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">ItemLocation</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Caso o Item esteja no mapa ele <br>possui uma localização</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
@@ -796,7 +796,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">ItemEquipment</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">ItensEquipment</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -814,21 +814,21 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">PK / FK</td>
     </tr>
         <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Name</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">ItemName</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome do item</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Varchar</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">20</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Not Null</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Description</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">ItemDescription</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Descrição do item fisicamente</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Varchar</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">50</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Unique / Not Null</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Location</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">ItemLocation</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Caso o Item esteja no mapa ele <br>possui uma localização</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
@@ -838,7 +838,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Combine</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Combinations</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -913,7 +913,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Dialogue</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Dialogues</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -960,8 +960,8 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 </table>
 <table>
     <tr>
-        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">DialogueChoices</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Commands</td>
+        <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">DialoguesChoices</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -1040,7 +1040,7 @@ O esquema relacional é uma ferramenta importante na modelagem de banco de dados
 <center>
 
 ![Diagrama Entidade Relacionamento](../../images/modelagem/Esquema-Relacional-1.0.png)<br>
-**Figura 1** : Diagrama Entidade Relacionamento
+**Figura 1** : Diagrama do Esquema Relacional
 </center>
 <br>
 Clique [aqui](../../images/modelagem/Esquema-Relacional-1.0.png) para ver a imagem em tela cheia.<br>
