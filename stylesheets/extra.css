@@ -21,13 +21,14 @@
 th {
   background-color: #808080;
   color: #ffffff; /* Define a cor das letras como branco */
+  font-weight: bold; /* Deixa as letras em negrito */
 }
 
 td {
   background-color: #FFFAFA;
   color: #000000; /* Define a cor das letras como preto */
+  font-weight: bold; /* Deixa as letras em negrito */
 }
-
 
 
 [data-md-color-scheme="slate"] {
