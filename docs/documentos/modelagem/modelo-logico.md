@@ -560,6 +560,13 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Not Null</td>
     </tr>
     <tr>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Locks</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Marcador se objeto esta <br>trancando uma sala</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Boolean</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Default False</td>
+    </tr>
+    <tr>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">DescriptionOnInteract</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Descrição do Objeto ao <br>tentar realizar uma interação</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Varchar</td>
