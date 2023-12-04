@@ -4,7 +4,7 @@
 </center>
 
 ## <a>Introdução</a>
-O modelo lógico é uma representação abstrata de um banco de dados que descreve a estrutura dos dados e as relações entre eles. Ele é independente do banco de dados físico que detalha como os dados serão implementados. 
+O **<a>Modelo lógico</a>** é uma representação abstrata de um banco de dados que descreve a estrutura dos dados e as relações entre eles. Ele é independente do banco de dados físico que detalha como os dados serão implementados. 
 
 O modelo lógico serve como um modelo para os dados usados e leva os elementos de modelagem de dados conceituais um passo adiante, adicionando mais informações a eles. 
 
@@ -43,7 +43,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Events</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Event</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -60,7 +60,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">PK</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Type</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">EventType</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Identidica o tipo do evento</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Varchar</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">10</td>
@@ -70,7 +70,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">ChatEvents</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">ChatEvent</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -81,7 +81,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
     </tr>
         <tr>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">EventId</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira para Events e <br>Identificador de Evento</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira para Event e <br>Identificador de Evento</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">FK / PK</td>
@@ -91,7 +91,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Define se o evento acontece <br>apenas uma vez</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Boolean</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Not Null</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Default False</td>
     </tr>
     <tr>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">AlreadyFired</td>
@@ -111,7 +111,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">InteractEvents</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">InteractEvent</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -123,7 +123,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
     </tr>
         <tr>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">EventId</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira para Events e <br>Identificador de Evento</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira para Event e <br>Identificador de Evento</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">FK / PK</td>
@@ -140,7 +140,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Define se o evento Consume <br>O item utilizado na interação</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Boolean</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Not Null</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Default True</td>
     </tr>
     <tr>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Comand</td>
@@ -153,7 +153,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">RoomEvents</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">RoomEvent</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -165,7 +165,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
     </tr>
         <tr>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">EventId</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira para Events e <br>Identificador de Evento</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira para Event e <br>Identificador de Evento</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">FK / PK</td>
@@ -188,7 +188,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Phases</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Phase</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -222,7 +222,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Regions</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Region</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -253,7 +253,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Not Null</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Phase</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">PhaseId</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira para <br>fase que a região Pertence</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
@@ -277,7 +277,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">RegionsGeo</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">RegionGeo</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -325,7 +325,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Structures</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Structure</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -349,7 +349,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Unique / Not Null</td>
     </tr>
         <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Region</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">RegionId</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira que informa a <br>região que a estrutura pertence</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
@@ -366,7 +366,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Rooms</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Room</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -404,7 +404,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Default FALSE</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Structure</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">StructureId</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira que informa a <br>Estrutura que a sala pertence</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
@@ -427,7 +427,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Conections</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Conection</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -451,14 +451,14 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Not Null</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Room1</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Room1Id</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Id do quarto que esta conectado</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">FK</td>
     </tr>
         <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Room2</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Room2Id</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Id do outro quarto que esta conectado</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
@@ -468,7 +468,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Locations</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Location</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -485,14 +485,14 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">PK</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Region</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">RegionId</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira que informa <br>a região da localização</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">FK / Not Null</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Room</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">RoomId</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira que informa <br>a sala da localização caso tenha</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
@@ -502,7 +502,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Objects</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Object</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -547,7 +547,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Not Null</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">ObjectLocation</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">ObjectLocationId</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira para<br>Location caso o <br>objeto esteja no mapa</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
@@ -561,7 +561,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">FK</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Event</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">EventId</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira para<br>O evento gerado apos a ativação</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
@@ -571,7 +571,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Characters</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Character</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -598,7 +598,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">NPCs</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">NPC</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -609,7 +609,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
     </tr>
     <tr>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">CharacterId</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira para Characters e <br>Identificador unico de personagem</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira para Character e <br>Identificador unico de personagem</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">PK / FK</td>
@@ -643,7 +643,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Default False</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">NpcLocation</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">NpcLocationId</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira que informa a <br>localização de um NPC<br>pode ser NULL</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
@@ -660,7 +660,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">PCs</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">PC</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -671,7 +671,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
     </tr>
     <tr>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">CharacterId</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira para Characters e <br>Identificador unico de personagem</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira para Character e <br>Identificador unico de personagem</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">PK / FK</td>
@@ -681,7 +681,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome do PC</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Varchar</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">4</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Default 'NIKO' /<br>Unique / Not NUll</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Default 'NIKO'</td>
     </tr>
     <tr>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">KnowsGod</td>
@@ -691,7 +691,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Default False</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">PcLocation</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">PcLocationId</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira que informa a <br>localização do PC</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
@@ -701,7 +701,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">VisitedRegions</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">VisitedRegion</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -728,7 +728,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Itens</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Item</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -755,7 +755,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">ItensMaterial</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">ItemMaterial</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -776,7 +776,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome do item</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Varchar</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">20</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Not Null</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Unique / Not Null</td>
     </tr>
     <tr>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">ItemDescription</td>
@@ -786,7 +786,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Unique / Not Null</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">ItemLocation</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">ItemLocationId</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Caso o Item esteja no mapa ele <br>possui uma localização</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
@@ -796,7 +796,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">ItensEquipment</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">ItemEquipment</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -818,7 +818,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome do item</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Varchar</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">20</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Not Null</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Unique / Not Null</td>
     </tr>
     <tr>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">ItemDescription</td>
@@ -828,7 +828,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Unique / Not Null</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">ItemLocation</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">ItemLocationId</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Caso o Item esteja no mapa ele <br>possui uma localização</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
@@ -838,7 +838,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Combinations</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Combination</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -855,28 +855,28 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">PK</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Material1</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Material1Id</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira para o <BR>Material usado no craft</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">FK / Not Null</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Material2</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Material2Id</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira para o outro<BR>Material usado no craft</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">FK / Not Null</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Result1</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Result1Id</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira para o <BR>Resultado primario do craft</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">FK / Not Null</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Result2</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Result2Id</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira para o <BR>possivel resultado secundario do craft</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
@@ -913,7 +913,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Dialogues</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Dialogue</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -937,7 +937,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Not Null</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Character</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">CharacterId</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira para Character<br>Para representar o nome<br> de quem esta falando</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">int</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
@@ -951,7 +951,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">FK</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">HaveChoices</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">HaveChoice</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Marcador caso dialogo ramifique</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Boolean</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
@@ -961,7 +961,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">DialoguesChoices</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">DialogueChoice</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -978,7 +978,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">PK, FK</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Choices</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">ChoiceId</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Identificador unico e escolhas de determinado dialogo</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Serial</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
@@ -995,7 +995,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
 <table>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Tabela</th>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Commands</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;" colspan="4">Command</td>
     </tr>
     <tr>
         <th style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Nome</th>
@@ -1019,7 +1019,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Not Null</td>
     </tr>
     <tr>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Pc</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">PcID</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira para o Pc que <Br>esta sendo controlado pelos comandos</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
@@ -1040,7 +1040,7 @@ O esquema relacional é uma ferramenta importante na modelagem de banco de dados
 <center>
 
 ![Diagrama Entidade Relacionamento](../../images/modelagem/Esquema-Relacional-1.0.png)<br>
-**Figura 1** : Diagrama do Esquema Relacional
+**<a>Figura 1</a>** : Diagrama do Esquema Relacional
 </center>
 <br>
 Clique [aqui](../../images/modelagem/Esquema-Relacional-1.0.png) para ver a imagem em tela cheia.<br>

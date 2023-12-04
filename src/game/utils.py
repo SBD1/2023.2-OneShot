@@ -33,20 +33,20 @@ def headline(text, char='='):
     typewriter(text+'\n')
     typewriter(len(text) * char+'\n')
 
-
+## 0.045
 def typewriter(text, speed=1):
-    delay = 0.045 * speed
+    delay = 0.005 * speed
     for char in text:
         print(char, end='', flush=True)
         sleep(delay)
 
 def descricao_local(cur):
-    descricao, estruturas, objetos, itens = cur.fetchone()
+    descricao, estruturas, objetos, Item = cur.fetchone()
 
     if descricao is not None:
-        typewriter(descricao+'\n\n\n')
+        typewriter('Niko está em '+descricao+'\n\n\n')
 
-    if (estruturas and any(e is not None and e != '' for e in estruturas)) or (objetos and any(o is not None and o != '' for o in objetos)) or (itens and any(i is not None and i != '' for i in itens)):
+    if (estruturas and any(e is not None and e != '' for e in estruturas)) or (objetos and any(o is not None and o != '' for o in objetos)) or (Item and any(i is not None and i != '' for i in Item)):
         typewriter('Niko vê:\n')
     else:
         typewriter('Niko não vê nada de interessante.\n')
@@ -64,10 +64,10 @@ def descricao_local(cur):
                 typewriter('\n\nObjetos:\n')
                 typewriter(o+'\n')
 
-    if itens is not None:
-        for i in itens:
+    if Item is not None:
+        for i in Item:
             if i is not None: 
-                typewriter('\n\nItens:\n')
+                typewriter('\n\nItem:\n')
                 typewriter(i+'\n')
 
 def inventory(cur):
@@ -75,11 +75,11 @@ def inventory(cur):
     if results:
         typewriter('Niko tem:\n')
         for result in results:
-            itensMName, itensMDescription, itensEName, itensEDescription = result
-            if itensMName is not None:
-                typewriter(f'{itensMName}: {itensMDescription}\n')
-            if itensEName is not None:
-                typewriter(f'{itensEName}: {itensEDescription}\n')
+            ItemMName, ItemMDescription, ItemEName, ItemEDescription = result
+            if ItemMName is not None:
+                typewriter(f'{ItemMName}: {ItemMDescription}\n')
+            if ItemEName is not None:
+                typewriter(f'{ItemEName}: {ItemEDescription}\n')
     else:
         typewriter('Niko não tem nada.\n')
 

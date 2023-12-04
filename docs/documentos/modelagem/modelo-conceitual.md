@@ -4,7 +4,7 @@
 </center>
 
 ## <a>Introdução</a>
-O modelo conceitual é uma representação abstrata dos objetos e suas relações em um domínio de negócios. Ele é composto por entidades, atributos e relacionamentos. 
+O **<a>Modelo Conceitual</a>** é uma representação abstrata dos objetos e suas relações em um domínio de negócios. Ele é composto por entidades, atributos e relacionamentos. 
 
 As entidades representam objetos no domínio de negócios, como clientes, produtos, pedidos, etc. Os atributos são as características que descrevem as entidades. Os relacionamentos representam as associações entre as entidades.
 
@@ -188,7 +188,7 @@ O diagrama Entidade-Relacionamento (ER) é uma representação gráfica do model
 <center>
 
 ![Diagrama Entidade Relacionamento](../../images/modelagem/DER-1.0.png) <br>
-**Figura 1** : Diagrama Entidade Relacionamento
+**<a>Figura 1</a>** : Diagrama Entidade Relacionamento
 </center>
 
 <br>

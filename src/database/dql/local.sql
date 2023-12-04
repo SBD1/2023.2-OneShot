@@ -1,19 +1,19 @@
 SELECT 
     CASE 
-        WHEN l.Room IS NOT NULL THEN s.StructureDescription
-        ELSE r.RegionDescription
+        WHEN l.RoomId IS NOT NULL THEN s.StructureName
+        ELSE r.RegionName
     END,
     CASE
-        WHEN l.Room IS NULL THEN ARRAY_AGG(DISTINCT e.StructureDescription)
+        WHEN l.RoomId IS NULL THEN ARRAY_AGG(DISTINCT e.StructureName)
         ELSE NULL
     END,
-    ARRAY_AGG(DISTINCT o.ObjectDescription) AS objetos,
-    ARRAY_AGG(DISTINCT i.ItemDescription) AS itens
-FROM Locations l
-LEFT JOIN Regions r ON l.Region = r.RegionId
-LEFT JOIN Structures s ON l.Room = s.StructureId
-LEFT JOIN Structures e ON r.RegionId = e.Region
-LEFT JOIN Objects o ON l.LocationId = o.ObjectLocation
-LEFT JOIN ItensMaterial i ON l.LocationId = i.ItemLocation
-WHERE l.LocationId = (SELECT PcLocation FROM PCs WHERE CharacterId = 1)
-GROUP BY l.Room, s.StructureDescription, r.RegionDescription
+    ARRAY_AGG(DISTINCT o.ObjectName) AS objetos,
+    ARRAY_AGG(DISTINCT i.ItemName) AS Item
+FROM Location l
+LEFT JOIN Region r ON l.RegionId = r.RegionId
+LEFT JOIN Structure s ON l.RoomId = s.StructureId
+LEFT JOIN Structure e ON r.RegionId = e.RegionId
+LEFT JOIN Object o ON l.LocationId = o.ObjectLocationId
+LEFT JOIN ItemMaterial i ON l.LocationId = i.ItemLocationId
+WHERE l.LocationId = (SELECT PcLocationId FROM PC WHERE CharacterId = 1)
+GROUP BY l.RoomId, s.StructureName, r.RegionName

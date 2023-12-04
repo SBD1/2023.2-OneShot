@@ -7,7 +7,7 @@ DECLARE
     direcaoT TEXT;
     nova_regiao_id INT;
 BEGIN
-    SELECT PcLocation INTO localizacao_atual_id FROM PCs WHERE CharacterId = 1;
+    SELECT PcLocationId INTO localizacao_atual_id FROM PC WHERE CharacterId = 1;
     direcaoT := SUBSTRING(funcao FROM 9);
     IF funcao LIKE 'ir para norte' THEN 
         direcao := 'north';
@@ -22,9 +22,9 @@ BEGIN
     END IF;
 
     IF direcao IS NOT NULL THEN
-        EXECUTE format('SELECT %I FROM RegionsGeo WHERE RegionId = (SELECT Region FROM Locations WHERE LocationId = %L)', direcao, localizacao_atual_id) INTO nova_regiao_id;
-        IF EXISTS (SELECT 1 FROM Locations WHERE Region = nova_regiao_id) THEN
-            UPDATE PCs SET PcLocation = (SELECT LocationId FROM Locations WHERE Region = nova_regiao_id LIMIT 1) WHERE CharacterId = 1;
+        EXECUTE format('SELECT %I FROM RegionGeo WHERE RegionId = (SELECT RegionId FROM Location WHERE LocationId = %L)', direcao, localizacao_atual_id) INTO nova_regiao_id;
+        IF EXISTS (SELECT 1 FROM Location WHERE RegionId = nova_regiao_id) THEN
+            UPDATE PC SET PcLocationId = (SELECT LocationId FROM Location WHERE RegionId = nova_regiao_id LIMIT 1) WHERE CharacterId = 1;
         ELSE
             RAISE EXCEPTION 'Não é possível ir para %', direcaoT;
         END IF;
@@ -44,10 +44,10 @@ DECLARE
 BEGIN
     IF funcao LIKE 'entrar em%' THEN
         nome_estrutura := substring(funcao from 11);
-        SELECT PcLocation INTO localizacao_pc FROM PCs WHERE CharacterId = 1;
-        SELECT Region INTO regiao_estrutura FROM Structures WHERE StructureName = nome_estrutura;
+        SELECT PcLocationId INTO localizacao_pc FROM PC WHERE CharacterId = 1;
+        SELECT RegionId INTO regiao_estrutura FROM Structure WHERE StructureName = nome_estrutura;
         IF localizacao_pc = regiao_estrutura THEN
-            UPDATE PCs SET PcLocation = (SELECT LocationId FROM Locations WHERE Room = (SELECT InitialRoom FROM Structures WHERE StructureName = nome_estrutura)) WHERE CharacterId = 1;
+            UPDATE PC SET PcLocationId = (SELECT LocationId FROM Location WHERE RoomId = (SELECT InitialRoom FROM Structure WHERE StructureName = nome_estrutura)) WHERE CharacterId = 1;
         END IF;
     END IF;
 END;
@@ -60,8 +60,8 @@ DECLARE
     regiao_idn INT;
 BEGIN
     IF funcao LIKE 'sair' THEN
-        SELECT Region INTO regiao_idn FROM Locations WHERE LocationId = (SELECT PcLocation FROM PCs WHERE CharacterId = 1);
-        UPDATE PCs SET PcLocation = (SELECT LocationId FROM Locations WHERE Region = regiao_idn AND Room IS NULL) WHERE CharacterId = 1;
+        SELECT RegionId INTO regiao_idn FROM Location WHERE LocationId = (SELECT PcLocationId FROM PC WHERE CharacterId = 1);
+        UPDATE PC SET PcLocationId = (SELECT LocationId FROM Location WHERE RegionId = regiao_idn AND RoomId IS NULL) WHERE CharacterId = 1;
     END IF;
 END;
 $comandoSair$;
@@ -78,10 +78,10 @@ DECLARE
 BEGIN
     IF funcao LIKE 'pegar%' THEN
         nome_item := substring(funcao from 7);
-        SELECT PcLocation INTO localizacao_pc FROM PCs WHERE CharacterId = 1;
-        SELECT ItemLocation, ItemId INTO localizacao_item, item_id FROM ItensMaterial WHERE ItemName = nome_item;
+        SELECT PcLocationId INTO localizacao_pc FROM PC WHERE CharacterId = 1;
+        SELECT ItemLocationId, ItemId INTO localizacao_item, item_id FROM ItemMaterial WHERE ItemName = nome_item;
         IF localizacao_pc = localizacao_item THEN
-            UPDATE ItensMaterial SET ItemLocation = NULL WHERE ItemName = nome_item;
+            UPDATE ItemMaterial SET ItemLocationId = NULL WHERE ItemName = nome_item;
             INSERT INTO Inventory (ItemId, CharacterId) VALUES (item_id, 1);
             RAISE NOTICE 'Niko pegou %', nome_item;
         ELSE

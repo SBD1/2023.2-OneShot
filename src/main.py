@@ -74,7 +74,7 @@ while True:
     try:
         clear()
         cur.execute(
-            "INSERT INTO Commands(CommandFunction,Pc) VALUES (%s,1)", (comando,))
+            "INSERT INTO Command(CommandFunction,PcId) VALUES (%s,1)", (comando,))
         conn.commit()
     except Exception as e:
         conn.rollback()
