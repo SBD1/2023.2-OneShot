@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../dql/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="../../apresentacoes/modulo-1/">
+        <link rel="next" href="../dml/">
       
       
       <link rel="icon" href="../../../images/favicon.ico">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Álgebra Relacional - OneShot</title>
+        <title>Data Definition Language (DDL) - OneShot</title>
       
     
     
@@ -76,6 +76,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#data-definition-language-ddl" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -105,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Álgebra Relacional
+              Data Definition Language (DDL)
             
           </span>
         </div>
@@ -238,7 +243,7 @@
   
     
   
-  Modelo Físico
+  Projeto Físico
 
         </a>
       </li>
@@ -459,7 +464,7 @@
               
   
   <span class="md-ellipsis">
-    Modelo Físico
+    Projeto Físico
   </span>
   
 
@@ -475,7 +480,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            Modelo Físico
+            Projeto Físico
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -485,9 +490,29 @@
                 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../ddl/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Data Definition Language (DDL)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -496,6 +521,71 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introducao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introdução
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tabelas-criadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tabelas Criadas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tabelas-alteradas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tabelas Alteradas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#historico-de-versao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Histórico de Versão
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bilbiografia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bilbiografia
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -545,16 +635,9 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../algebra/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -563,7 +646,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -685,6 +767,61 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introducao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introdução
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tabelas-criadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tabelas Criadas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tabelas-alteradas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tabelas Alteradas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#historico-de-versao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Histórico de Versão
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bilbiografia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bilbiografia
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -702,9 +839,242 @@
   
 
 
-  <h1>Álgebra Relacional</h1>
-
-
+<p><center></p>
+<h1 id="data-definition-language-ddl"><a>Data Definition Language (DDL)</a></h1>
+<p></center></p>
+<h2 id="introducao"><a>Introdução</a></h2>
+<p>DDL é a sigla para <strong><a>Data Definition Language</a></strong>. É uma linguagem de definição de dados que permite aos usuários especificar um esquema de banco de dados através de um conjunto de definições. O projeto físico do banco de dados consiste no mapeamento do projeto lógico para um DBMS real . </p>
+<p>O DDL é usado para criar, modificar e excluir objetos relacionados ao banco de dados, como tabelas, índices, visões, etc. O DDL é uma parte importante do projeto físico do banco de dados, pois permite definir a estrutura do banco de dados, incluindo a definição de tabelas, colunas, restrições, índices, etc.</p>
+<h2 id="tabelas-criadas"><a>Tabelas Criadas</a></h2>
+<p><strong><a>Tabela de Eventos</a></strong></p>
+<pre><code class="language-sql">CREATE TABLE IF NOT EXISTS Event(
+    EventId SERIAL PRIMARY KEY,
+    EventType VARCHAR(10) NOT NULL
+);
+</code></pre>
+<p><strong><a>Tabela de Eventos de Chat</a></strong></p>
+<pre><code class="language-sql">CREATE TABLE IF NOT EXISTS ChatEvent(
+    EventId INT PRIMARY KEY REFERENCES Event(EventId),
+    IsUnique BOOLEAN DEFAULT FALSE,
+    AlreadyFired BOOLEAN DEFAULT FALSE,
+    Command VARCHAR(250) NOT NULL
+);
+</code></pre>
+<p><strong><a>Tabela de Eventos de Interação</a></strong></p>
+<pre><code class="language-sql">CREATE TABLE IF NOT EXISTS InteractEvent(
+    EventId INT PRIMARY KEY REFERENCES Event(EventId),
+    AlreadyFired BOOLEAN DEFAULT FALSE,
+    ConsumesItem BOOLEAN DEFAULT TRUE,
+    Command VARCHAR(250) NOT NULL
+);
+</code></pre>
+<p><strong><a>Tabela de Eventos de Sala</a></strong></p>
+<pre><code class="language-sql">CREATE TABLE IF NOT EXISTS RoomEvent(
+    EventId INT PRIMARY KEY REFERENCES Event(EventId),
+    AlreadyFired BOOLEAN DEFAULT FALSE,
+    Command VARCHAR(250) NOT NULL
+);
+</code></pre>
+<p><strong><a>Tabela de Fases</a></strong></p>
+<pre><code class="language-sql">CREATE TABLE IF NOT EXISTS Phase(
+    PhaseId SERIAL PRIMARY KEY,
+    PhaseName VARCHAR(20) NOT NULL,
+    PhaseDescription VARCHAR(100) NOT NULL
+);
+</code></pre>
+<p><strong><a>Tabela de Regiões</a></strong></p>
+<pre><code class="language-sql">CREATE TABLE IF NOT EXISTS Region(
+    RegionId SERIAL PRIMARY KEY,
+    RegionName VARCHAR(20) UNIQUE NOT NULL,
+    RegionDescription VARCHAR(250) NOT NULL,
+    PhaseId INT NOT NULL REFERENCES Phase(PhaseId),
+    isVisited BOOLEAN DEFAULT FALSE
+);
+</code></pre>
+<p><strong><a>Tabela de Geografias</a></strong></p>
+<pre><code class="language-sql">CREATE TABLE IF NOT EXISTS RegionGeo(
+    RegionId SERIAL PRIMARY KEY REFERENCES Region(RegionId),
+    North INT REFERENCES Region(RegionId),
+    South INT REFERENCES Region(RegionId),
+    East INT REFERENCES Region(RegionId),
+    West INT REFERENCES Region(RegionId)
+);
+</code></pre>
+<p><strong><a>Tabela de Estruturas</a></strong></p>
+<pre><code class="language-sql">CREATE TABLE IF NOT EXISTS Structure(
+    StructureId SERIAL PRIMARY KEY,
+    StructureName VARCHAR(20) UNIQUE NOT NULL,
+    StructureDescription VARCHAR(50) NOT NULL,
+    RegionId INT NOT NULL REFERENCES Region(RegionId)
+);
+</code></pre>
+<p><strong><a>Tabela de Salas</a></strong></p>
+<pre><code class="language-sql">CREATE TABLE IF NOT EXISTS Room(
+    RoomId SERIAL PRIMARY KEY,
+    RoomName VARCHAR(20) UNIQUE NOT NULL,
+    RoomDescription VARCHAR(250) NOT NULL,
+    IsVisited BOOLEAN DEFAULT FALSE,
+    StructureId INT NOT NULL REFERENCES Structure(StructureId),
+    EventId INT REFERENCES Event(EventId)
+);
+</code></pre>
+<p><strong><a>Tabela de Conexões</a></strong></p>
+<pre><code class="language-sql">CREATE TABLE IF NOT EXISTS Connection(
+    ConnectionId SERIAL PRIMARY KEY,
+    ConnectionName VARCHAR(20) NOT NULL,
+    Room1Id INT NOT NULL REFERENCES Room(RoomId),
+    Room2Id INT NOT NULL REFERENCES Room(RoomId)
+);
+</code></pre>
+<p><strong><a>Tabela de Localizações</a></strong></p>
+<pre><code class="language-sql">CREATE TABLE IF NOT EXISTS Location(
+    LocationId SERIAL PRIMARY KEY,
+    RegionId INT NOT NULL REFERENCES Region(RegionId),
+    RoomId INT REFERENCES Room(RoomId)
+);
+</code></pre>
+<p><strong><a>Tabela de Objetos</a></strong></p>
+<pre><code class="language-sql">CREATE TABLE IF NOT EXISTS Object(
+    ObjectId SERIAL PRIMARY KEY,
+    ObjectName VARCHAR(20) NOT NULL,
+    ObjectDescription VARCHAR(20) NOT NULL,
+    Locks BOOLEAN DEFAULT FALSE,
+    DescriptionOnInteract VARCHAR(20) NOT NULL,
+    ObjectLocationId INT REFERENCES Location(LocationId),
+    EventId INT REFERENCES Event(EventId) 
+);
+</code></pre>
+<p><strong><a>Tabela de Personagens</a></strong></p>
+<pre><code class="language-sql">CREATE TABLE IF NOT EXISTS Character(
+    CharacterId SERIAL PRIMARY KEY,
+    CharacterType VARCHAR(10) NOT NULL
+);
+</code></pre>
+<p><strong><a>Tabela de NPC</a></strong></p>
+<pre><code class="language-sql">CREATE TABLE IF NOT EXISTS NPC(
+    CharacterId INT PRIMARY KEY REFERENCES Character(CharacterId),
+    NpcName VARCHAR(20) UNIQUE NOT NULL,
+    NpcDescription VARCHAR(50) NOT NULL,
+    IsWordMachine BOOLEAN DEFAULT FALSE,
+    IsGod BOOLEAN DEFAULT FALSE,
+    NpcLocationId INT REFERENCES Location(LocationId),
+    EventId INT NOT NULL REFERENCES Event(EventId)
+);
+</code></pre>
+<p><strong><a>Tabela de PC</a></strong></p>
+<pre><code class="language-sql">CREATE TABLE IF NOT EXISTS PC(
+    CharacterId INT PRIMARY KEY REFERENCES Character(CharacterId),
+    PcName VARCHAR(4) DEFAULT 'NIKO' UNIQUE NOT NULL,
+    KnowsGod BOOLEAN DEFAULT FALSE,
+    PcLocationId INT REFERENCES Location(LocationId)
+);
+</code></pre>
+<p><strong><a>Tabela de Regiões Visitadas</a></strong></p>
+<pre><code class="language-sql">CREATE TABLE IF NOT EXISTS VisitedRegion(
+    CharacterId INT REFERENCES PC(CharacterId),
+    RegionId INT REFERENCES Region(RegionId),
+    PRIMARY KEY (CharacterId, RegionId)
+);
+</code></pre>
+<p><strong><a>Tabela de Item</a></strong></p>
+<pre><code class="language-sql">CREATE TABLE IF NOT EXISTS Item(
+    ItemId SERIAL PRIMARY KEY,
+    ItemType VARCHAR(10) NOT NULL
+);
+</code></pre>
+<p><strong><a>Tabela de Item Materiais</a></strong></p>
+<pre><code class="language-sql">CREATE TABLE IF NOT EXISTS ItemMaterial(
+    ItemId INT PRIMARY KEY REFERENCES Item(ItemId),
+    ItemName VARCHAR(20) UNIQUE NOT NULL,
+    ItemDescription VARCHAR(50) UNIQUE NOT NULL,
+    ItemLocationId INT REFERENCES Location(LocationId)
+);
+</code></pre>
+<p><strong><a>Tabela de Item Equipamentos</a></strong></p>
+<pre><code class="language-sql">CREATE TABLE IF NOT EXISTS ItemEquipment(
+    ItemId INT PRIMARY KEY REFERENCES Item(ItemId),
+    ItemName VARCHAR(20) UNIQUE NOT NULL,
+    ItemDescription VARCHAR(50) UNIQUE NOT NULL,
+    ItemLocationId INT REFERENCES Location(LocationId)
+);
+</code></pre>
+<p><strong><a>Tabela de Combinações</a></strong></p>
+<pre><code class="language-sql">CREATE TABLE IF NOT EXISTS Combination(
+    CraftId SERIAL PRIMARY KEY,
+    Material1Id INT NOT NULL REFERENCES ItemMaterial(ItemId),
+    Material2Id INT NOT NULL REFERENCES ItemMaterial(ItemId),
+    Result1Id INT NOT NULL REFERENCES Item(ItemId),
+    Result2Id INT REFERENCES Item(ItemId)
+);
+</code></pre>
+<p><strong><a>Tabela de Inventário</a></strong></p>
+<pre><code class="language-sql">CREATE TABLE IF NOT EXISTS Inventory(
+    CharacterId INT REFERENCES Character(CharacterId),
+    ItemId INT REFERENCES Item(ItemId),
+    PRIMARY KEY (CharacterId, ItemId)
+);
+</code></pre>
+<p><strong><a>Tabela de Diálogos</a></strong></p>
+<pre><code class="language-sql">CREATE TABLE IF NOT EXISTS Dialogue(
+    DialogueId SERIAL PRIMARY KEY,
+    DialogueText VARCHAR(250) NOT NULL,
+    CharacterId INT NOT NULL REFERENCES Character(CharacterId),
+    NextDialogue INT REFERENCES Dialogue(DialogueId),
+    HaveChoice BOOLEAN NOT NULL
+);
+</code></pre>
+<p><strong><a>Tabela de Escolhas de Diálogos</a></strong></p>
+<pre><code class="language-sql">CREATE TABLE IF NOT EXISTS DialogueChoice(
+    DialogueId INT REFERENCES Dialogue(DialogueId),
+    ChoiceId SERIAL,
+    NextDialogue INT REFERENCES Dialogue(DialogueId),
+    PRIMARY KEY (DialogueId, ChoiceId)
+);
+</code></pre>
+<p><strong><a>Tabela de Comandos</a></strong></p>
+<pre><code class="language-sql">CREATE TABLE IF NOT EXISTS Command(
+    FunctionId SERIAL PRIMARY KEY,
+    CommandFunction VARCHAR(50) NOT NULL,
+    PcId INT REFERENCES PC(CharacterId)
+);
+</code></pre>
+<h2 id="tabelas-alteradas"><a>Tabelas Alteradas</a></h2>
+<p><strong><a>Tabela de Regiões</a></strong></p>
+<pre><code class="language-sql">ALTER TABLE Region ADD Requirement INT REFERENCES ItemEquipment(ItemId);
+</code></pre>
+<p><strong><a>Tabela de Estruturas</a></strong></p>
+<pre><code class="language-sql">ALTER TABLE Structure ADD InitialRoom INT REFERENCES Room(RoomId);
+</code></pre>
+<p><strong><a>Tabela de Salas</a></strong></p>
+<pre><code class="language-sql">ALTER TABLE Room ADD BlockedBy INT REFERENCES ItemEquipment(ItemId);
+</code></pre>
+<p><strong><a>Tabela de Objetos</a></strong></p>
+<pre><code class="language-sql">ALTER TABLE Object ADD ActivationItem INT REFERENCES Item(ItemId);
+</code></pre>
+<h2 id="historico-de-versao"><a>Histórico de Versão</a></h2>
+<p><center></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Data</th>
+<th style="text-align: center;">Versão</th>
+<th style="text-align: center;">Descrição</th>
+<th style="text-align: center;">Autor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">25/11/23</td>
+<td style="text-align: center;">1.0</td>
+<td style="text-align: center;">Criação do documento</td>
+<td style="text-align: center;"><a href="https://github.com/HacKairos">João Lucas</a></td>
+</tr>
+</tbody>
+</table>
+<p></center></p>
+<h2 id="bilbiografia"><a>Bilbiografia</a></h2>
+<pre><code>AVI SILBERSCHATZ, HENRY F. KORTH, S. SUDARSHAN. Database System Concepts. [s.l: s.n.].
+</code></pre>
 
 
 
