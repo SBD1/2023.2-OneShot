@@ -106,8 +106,8 @@ VALUES (0, ' ');
 INSERT INTO NPC (CharacterId, NpcName, NpcDescription, EventId)
 VALUES (0, 'npc teste', 'npc teste', 1);
 
-INSERT INTO Inventory (CharacterId, ItemId)
-VALUES (1, 1);
+-- INSERT INTO Inventory (CharacterId, ItemId)
+-- VALUES (1, 1);
 
-INSERT INTO Inventory (CharacterId, ItemId)
-VALUES (1, 2);
+-- INSERT INTO Inventory (CharacterId, ItemId)
+-- VALUES (1, 2);

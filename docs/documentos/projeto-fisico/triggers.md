@@ -9,7 +9,7 @@ Um **<a>Trigger</a>** é um procedimento armazenado no banco de dados que é cha
 ## <a>Triggers Desenvolvidos</a>
 
 
-**<a>Define a geografica correta entre regiões</a>**
+**<a>Define a geografia correta entre regiões</a>**
 ```SQL
 CREATE OR REPLACE FUNCTION geografia_regiao() RETURNS TRIGGER AS $geografia_regiao$
 BEGIN
