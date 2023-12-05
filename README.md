@@ -26,13 +26,13 @@ Esse projeto é uma aplicação direta dos conceitos teóricos adquiridos na dis
 ## Entregas
 
 - Módulo 1
-  - [Modelo Entidade-Relacionamento]()
-  - [Diagrama Entidade-Relacionamento]()
-  - [Modelo Relacional]()
-  - [Dicionário de Dados]()
-  - [Normalização]()
+  - [Modelo Conceitual](https://sbd1.github.io/2023.2-OneShot/documentos/modelagem/modelo-conceitual/)
+  - [Modelo Lógico](https://sbd1.github.io/2023.2-OneShot/documentos/modelagem/modelo-logico/)
 - Módulo 2
-  - [DDL]()
-  - [DML]()
-  - [DQL]()
-  - [Álgebra Relacional]()
+  - [DDL](https://sbd1.github.io/2023.2-OneShot/documentos/projeto-fisico/ddl/)
+  - [DML](https://sbd1.github.io/2023.2-OneShot/documentos/projeto-fisico/dml/)
+  - [DQL](https://sbd1.github.io/2023.2-OneShot/documentos/projeto-fisico/dql/)
+  - [Álgebra Relacional](https://sbd1.github.io/2023.2-OneShot/documentos/projeto-fisico/algebra/)
+- Módulo 3
+    - [Triggers](https://sbd1.github.io/2023.2-OneShot/documentos/projeto-fisico/triggers/)
+    - [Stored Procedures](https://sbd1.github.io/2023.2-OneShot/documentos/projeto-fisico/stored-procedures/)
