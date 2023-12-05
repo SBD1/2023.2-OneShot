@@ -3,6 +3,9 @@
 # <a>2º Módulo</a>
 </center>
 
+## <a>Introdução</a>
+A segunda entrega da disciplina envolve os artefatos **<a>Data Definition Language</a>**, **<a>Data Manipulation Language</a>**, **<a>Data Query Language</a>** e **<a>Álgebra Relacional</a>** desenvolvidos até o momento. Estes componentes formam a base do nosso projeto em andamento. Espera-se que este trabalho demonstre o progresso significativo e como esses elementos estão sendo utilizados para atender às necessidades do projeto.
+
 ## <a>Gravação</a>
 
 <center>

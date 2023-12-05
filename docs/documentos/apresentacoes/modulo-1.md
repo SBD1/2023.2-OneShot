@@ -3,6 +3,9 @@
 # <a>1º Módulo</a>
 </center>
 
+## <a>Introdução</a>
+A primeira entrega da disciplina envolve a **<a>modelagem</a>**, o **<a>modelo conceitual</a>** e o **<a>modelo lógico</a>** desenvolvidos até o momento. Estes componentes, que formam a espinha dorsal do projeto, são fundamentais para a estruturação e organização eficiente dos dados. Espera-se que este trabalho demonstre o início promissor do projeto e como esses elementos estão sendo utilizados para atender às necessidades do projeto.
+
 ## <a>Gravação</a>
 
 <center>

@@ -4,7 +4,7 @@
 </center>
 
 ## <a>Introdução</a>
-A terceira entrega da disciplina consiste em uma seleção dos triggers e stored procedures desenvolvidos até o momento, além de algumas funções do jogo em andamento. Espera-se que este trabalho atenda às necessidades do projeto.
+A terceira entrega da disciplina envolve os artefatos dos módulos de **<a>Trigger</a>** e **<a>Stored Procedure</a>** desenvolvidos até o momento. Estes componentes, fundamentais para a manipulação e gestão eficiente dos dados. Espera-se que este trabalho demonstre o progresso contínuo e como esses elementos estão sendo utilizados para atender às necessidades do projeto.
 
 
 ## <a>Gravação</a>
