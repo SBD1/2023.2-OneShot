@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../dql/">
+        <link rel="prev" href="../triggers/">
       
       
-        <link rel="next" href="../triggers/">
+        <link rel="next" href="../../apresentacoes/modulo-1/">
       
       
       <link rel="icon" href="../../../images/favicon.ico">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Álgebra Relacional - OneShot</title>
+        <title>Stored Procedures - OneShot</title>
       
     
     
@@ -77,7 +77,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#algebra-relacional-ddl" class="md-skip">
+        <a href="#stored-procedures" class="md-skip">
           Pular para conteúdo
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Álgebra Relacional
+              Stored Procedures
             
           </span>
         </div>
@@ -554,6 +554,46 @@
                 
   
   
+  
+    <li class="md-nav__item">
+      <a href="../algebra/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Álgebra Relacional
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../triggers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Triggers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -569,7 +609,7 @@
           
   
   <span class="md-ellipsis">
-    Álgebra Relacional
+    Stored Procedures
   </span>
   
 
@@ -580,7 +620,7 @@
         
   
   <span class="md-ellipsis">
-    Álgebra Relacional
+    Stored Procedures
   </span>
   
 
@@ -611,6 +651,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#proceadures-desenvolvidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proceadures Desenvolvidos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#historico-de-versao" class="md-nav__link">
     <span class="md-ellipsis">
       Histórico de Versão
@@ -632,46 +681,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../triggers/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Triggers
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../stored-procedures/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Stored Procedures
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -812,6 +821,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#proceadures-desenvolvidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proceadures Desenvolvidos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#historico-de-versao" class="md-nav__link">
     <span class="md-ellipsis">
       Histórico de Versão
@@ -848,11 +866,168 @@
 
 
 <p><center></p>
-<h1 id="algebra-relacional-ddl"><a>Álgebra Relacional (DDL)</a></h1>
+<h1 id="stored-procedures"><a>Stored Procedures</a></h1>
 <p></center></p>
 <h2 id="introducao"><a>Introdução</a></h2>
-<p>A <strong><a>Álgebra Relacional</a></strong> é uma linguagem de consulta formal, porém procedimental, ou seja, o usuário dá as instruções ao sistema para que o mesmo realize uma sequência de operações na base de dados para calcular o resultado desejado. Ela define operadores para atuar nas tabelas e é utilizada para realizar manipulações de dados no modelo relacional. A Álgebra Relacional é um conjunto de operações que utilizam como recurso de entrada uma ou mais relações, produzindo então, uma nova relação. </p>
-<p>A Álgebra Relacional é uma parte importante do projeto físico do banco de dados, pois permite definir a estrutura do banco de dados, incluindo a definição de tabelas, colunas, restrições, índices, etc. Alguns dos operadores da Álgebra Relacional incluem união, interseção, diferença, produto, seleção, projeção e junção. Cada operador tem uma função específica e uma representação na construção de consultas. </p>
+<p>Um <strong><a>Stored Procedure</a></strong> é um conjunto de comandos SQL que é armazenado no banco de dados e pode ser chamado a qualquer momento pelo SGBD ou por um sistema que faz interface com o mesmo. Os Stored Procedures podem ser usados para automatizar tarefas complexas, reduzir o tráfego na rede, melhorar a performance do banco de dados, criar tarefas agendadas, diminuir riscos, criar rotinas de processamento, etc. Eles são particularmente úteis quando temos várias aplicações escritas em diferentes linguagens ou que rodam em plataformas diferentes, mas executam a mesma função.</p>
+<h2 id="proceadures-desenvolvidos"><a>Proceadures Desenvolvidos</a></h2>
+<p><strong><a>Função de Locomoção</a></strong></p>
+<pre><code class="language-SQL">CREATE OR REPLACE PROCEDURE comandoIr(funcao VARCHAR)
+LANGUAGE plpgsql
+AS $comandoIr$
+DECLARE
+    localizacao_atual_id INT;
+    direcao TEXT;
+    direcaoT TEXT;
+    nova_regiao_id INT;
+BEGIN
+    SELECT PcLocationId INTO localizacao_atual_id FROM PC WHERE CharacterId = 1;
+    direcaoT := SUBSTRING(funcao FROM 9);
+    IF funcao LIKE 'ir para norte' THEN 
+        direcao := 'north';
+    ELSIF funcao LIKE 'ir para sul' THEN 
+        direcao := 'south';
+    ELSIF funcao LIKE 'ir para leste' THEN 
+        direcao := 'east';
+    ELSIF funcao LIKE 'ir para oeste' THEN 
+        direcao := 'west';
+    ELSE 
+        direcao := NULL;
+    END IF;
+
+    IF direcao IS NOT NULL THEN
+        EXECUTE format('SELECT %I FROM RegionGeo WHERE RegionId = (SELECT RegionId FROM Location WHERE LocationId = %L)', direcao, localizacao_atual_id) INTO nova_regiao_id;
+        IF EXISTS (SELECT 1 FROM Location WHERE RegionId = nova_regiao_id) THEN
+            UPDATE PC SET PcLocationId = (SELECT LocationId FROM Location WHERE RegionId = nova_regiao_id LIMIT 1) WHERE CharacterId = 1;
+        ELSE
+            RAISE EXCEPTION 'Não é possível ir para %', direcaoT;
+        END IF;
+    ELSE
+        RAISE EXCEPTION 'Não é possível ir para %', direcaoT;
+    END IF;
+END;
+$comandoIr$;
+</code></pre>
+<p><strong><a>Função de Entrada em estruturas</a></strong></p>
+<pre><code class="language-SQL">CREATE OR REPLACE PROCEDURE comandoEntrar(funcao VARCHAR)
+LANGUAGE plpgsql
+AS $comandoEntrar$
+DECLARE
+    nome_estrutura VARCHAR(255);
+    localizacao_pc INT;
+    regiao_estrutura INT;
+BEGIN
+    IF funcao LIKE 'entrar em%' THEN
+        nome_estrutura := substring(funcao from 11);
+        SELECT PcLocationId INTO localizacao_pc FROM PC WHERE CharacterId = 1;
+        SELECT RegionId INTO regiao_estrutura FROM Structure WHERE LOWER(StructureName) = nome_estrutura;
+        IF localizacao_pc = regiao_estrutura THEN
+            UPDATE PC SET PcLocationId = (SELECT LocationId FROM Location WHERE RoomId = (SELECT InitialRoom FROM Structure WHERE LOWER(StructureName) = nome_estrutura)) WHERE CharacterId = 1;
+        ELSE
+            RAISE EXCEPTION 'Niko não encontra %', nome_estrutura;
+        END IF;
+    END IF;
+END;
+$comandoEntrar$;
+</code></pre>
+<p><strong><a>Função de Saida de estruturas</a></strong></p>
+<pre><code class="language-SQL">CREATE OR REPLACE PROCEDURE comandoSair(funcao VARCHAR)
+LANGUAGE plpgsql
+AS $comandoSair$
+DECLARE
+    regiao_idn INT;
+BEGIN
+    IF funcao LIKE 'sair' THEN
+        SELECT RegionId INTO regiao_idn FROM Location WHERE LocationId = (SELECT PcLocationId FROM PC WHERE CharacterId = 1);
+        UPDATE PC SET PcLocationId = (SELECT LocationId FROM Location WHERE RegionId = regiao_idn AND RoomId IS NULL) WHERE CharacterId = 1;
+    END IF;
+END;
+$comandoSair$;
+</code></pre>
+<p><strong><a>Função de Coleta</a></strong></p>
+<pre><code class="language-SQL">CREATE OR REPLACE PROCEDURE comandoPegar(funcao VARCHAR)
+LANGUAGE plpgsql
+AS $comandoPegar$
+DECLARE
+    nome_item VARCHAR(255);
+    localizacao_pc INT;
+    localizacao_itemM INT;
+    itemM_id INT;
+    localizacao_itemE INT;
+    itemE_id INT;
+BEGIN
+    IF funcao LIKE 'pegar%' THEN
+        nome_item := substring(funcao from 7);
+        SELECT PcLocationId INTO localizacao_pc FROM PC WHERE CharacterId = 1;
+
+        SELECT ItemLocationId, ItemId INTO localizacao_itemM, itemM_id FROM ItemMaterial WHERE LOWER(ItemName) = nome_item;
+        IF localizacao_pc = localizacao_itemM THEN
+            UPDATE ItemMaterial SET ItemLocationId = NULL WHERE LOWER(ItemName) = nome_item;
+            INSERT INTO Inventory (ItemId, CharacterId) VALUES (itemM_id, 1);
+            RAISE NOTICE 'Niko pegou %', INITCAP(nome_item);
+        END IF;
+
+        SELECT ItemLocationId, ItemId INTO localizacao_itemE, itemE_id FROM ItemEquipment WHERE LOWER(ItemName) = nome_item;
+        IF localizacao_pc = localizacao_itemE THEN
+            UPDATE ItemEquipment SET ItemLocationId = NULL WHERE LOWER(ItemName) = nome_item;
+            INSERT INTO Inventory (ItemId, CharacterId) VALUES (itemE_id, 1);
+            RAISE NOTICE 'Niko pegou %', INITCAP(nome_item);
+        END IF;
+
+        IF localizacao_itemM IS NULL AND localizacao_itemE IS NULL THEN
+            RAISE EXCEPTION 'Niko não vê %', INITCAP(nome_item);
+        END IF;
+    END IF;
+END;
+$comandoPegar$;
+</code></pre>
+<p><strong><a>Função de Craft</a></strong></p>
+<pre><code class="language-SQL">CREATE OR REPLACE PROCEDURE combinar(funcao VARCHAR)
+LANGUAGE plpgsql
+AS $combinar$
+DECLARE
+    nome_item1 VARCHAR(255);
+    nome_item2 VARCHAR(255);
+    nome_item_resultado1 VARCHAR(255);
+    nome_item_resultado2 VARCHAR(255);
+    item1_id INT;
+    item2_id INT;
+    resultado_id1 INT;
+    resultado_id2 INT;
+BEGIN
+    IF funcao LIKE 'combinar%' THEN
+        nome_item1 := substring(funcao from 10 for position(' com ' in substring(funcao from 10)) - 1);
+        nome_item2 := substring(funcao from 10 + position(' com ' in substring(funcao from 10)) + 4);
+
+        SELECT Inventory.ItemId INTO item1_id FROM Inventory JOIN ItemMaterial ON Inventory.ItemId = ItemMaterial.ItemId WHERE CharacterId = 1 AND LOWER(ItemMaterial.ItemName) = LOWER(nome_item1);
+        SELECT Inventory.ItemId INTO item2_id FROM Inventory JOIN ItemMaterial ON Inventory.ItemId = ItemMaterial.ItemId WHERE CharacterId = 1 AND LOWER(ItemMaterial.ItemName) = LOWER(nome_item2);
+
+        IF item1_id IS NULL OR item2_id IS NULL THEN
+            RAISE EXCEPTION 'Niko não tem % ou % no inventário', INITCAP(nome_item1), INITCAP(nome_item2);
+        END IF;
+
+        SELECT Result1Id, Result2Id INTO resultado_id1, resultado_id2 FROM Combination WHERE (Material1Id = item1_id AND Material2Id = item2_id) OR (Material1Id = item2_id AND Material2Id = item1_id);
+
+        IF resultado_id1 IS NULL THEN
+            RAISE EXCEPTION 'Niko não pode combinar % e %', INITCAP(nome_item1), INITCAP(nome_item2);
+        END IF;
+
+        SELECT ItemName INTO nome_item_resultado1 FROM ItemMaterial WHERE ItemId = resultado_id1;
+        DELETE FROM Inventory WHERE CharacterId = 1 AND ItemId IN (item1_id, item2_id);
+        INSERT INTO Inventory (ItemId, CharacterId) VALUES (resultado_id1, 1);
+
+        IF resultado_id2 IS NOT NULL THEN
+            SELECT ItemName INTO nome_item_resultado2 FROM ItemMaterial WHERE ItemId = resultado_id2;
+            INSERT INTO Inventory (ItemId, CharacterId) VALUES (resultado_id2, 1);
+            RAISE NOTICE 'Niko combinou % e % para criar %, % não foi consumido no processo', INITCAP(nome_item1), INITCAP(nome_item2), INITCAP(nome_item_resultado1), INITCAP(nome_item_resultado2);
+        ELSE 
+            RAISE NOTICE 'Niko combinou % e % para criar %', INITCAP(nome_item1), INITCAP(nome_item2), INITCAP(nome_item_resultado1);
+        END IF;
+    END IF;
+END;
+$combinar$;
+
+</code></pre>
 <h2 id="historico-de-versao"><a>Histórico de Versão</a></h2>
 <p><center></p>
 <table>
