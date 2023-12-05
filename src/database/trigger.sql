@@ -180,9 +180,13 @@ BEGIN
         CALL comandoSair(NEW.CommandFunction);
     ELSIF NEW.CommandFunction LIKE 'pegar%' THEN
         CALL comandoPegar(NEW.CommandFunction);
+    ELSIF NEW.CommandFunction LIKE 'combinar%' THEN
+        CALL combinar(NEW.CommandFunction);
     ELSIF NEW.CommandFunction LIKE 'abrir inventario' THEN
         RETURN NEW;
     ELSIF NEW.CommandFunction LIKE 'fechar inventario' THEN
+        RETURN NEW;
+    ELSIF NEW.CommandFunction LIKE '' THEN
         RETURN NEW;
     ELSE
         RAISE EXCEPTION 'Comando inválido';

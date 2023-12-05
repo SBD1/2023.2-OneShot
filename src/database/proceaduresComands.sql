@@ -45,9 +45,11 @@ BEGIN
     IF funcao LIKE 'entrar em%' THEN
         nome_estrutura := substring(funcao from 11);
         SELECT PcLocationId INTO localizacao_pc FROM PC WHERE CharacterId = 1;
-        SELECT RegionId INTO regiao_estrutura FROM Structure WHERE StructureName = nome_estrutura;
+        SELECT RegionId INTO regiao_estrutura FROM Structure WHERE LOWER(StructureName) = nome_estrutura;
         IF localizacao_pc = regiao_estrutura THEN
-            UPDATE PC SET PcLocationId = (SELECT LocationId FROM Location WHERE RoomId = (SELECT InitialRoom FROM Structure WHERE StructureName = nome_estrutura)) WHERE CharacterId = 1;
+            UPDATE PC SET PcLocationId = (SELECT LocationId FROM Location WHERE RoomId = (SELECT InitialRoom FROM Structure WHERE LOWER(StructureName) = nome_estrutura)) WHERE CharacterId = 1;
+        ELSE
+            RAISE EXCEPTION 'Niko não encontra %', nome_estrutura;
         END IF;
     END IF;
 END;
@@ -73,20 +75,104 @@ AS $comandoPegar$
 DECLARE
     nome_item VARCHAR(255);
     localizacao_pc INT;
-    localizacao_item INT;
-    item_id INT;
+    localizacao_itemM INT;
+    itemM_id INT;
+    localizacao_itemE INT;
+    itemE_id INT;
 BEGIN
     IF funcao LIKE 'pegar%' THEN
         nome_item := substring(funcao from 7);
         SELECT PcLocationId INTO localizacao_pc FROM PC WHERE CharacterId = 1;
-        SELECT ItemLocationId, ItemId INTO localizacao_item, item_id FROM ItemMaterial WHERE ItemName = nome_item;
-        IF localizacao_pc = localizacao_item THEN
-            UPDATE ItemMaterial SET ItemLocationId = NULL WHERE ItemName = nome_item;
-            INSERT INTO Inventory (ItemId, CharacterId) VALUES (item_id, 1);
-            RAISE NOTICE 'Niko pegou %', nome_item;
-        ELSE
-            RAISE NOTICE 'Niko não vê %', nome_item;
+        
+        -- Try to get ItemMaterial
+        SELECT ItemLocationId, ItemId INTO localizacao_itemM, itemM_id FROM ItemMaterial WHERE LOWER(ItemName) = nome_item;
+        IF localizacao_pc = localizacao_itemM THEN
+            UPDATE ItemMaterial SET ItemLocationId = NULL WHERE LOWER(ItemName) = nome_item;
+            INSERT INTO Inventory (ItemId, CharacterId) VALUES (itemM_id, 1);
+            RAISE NOTICE 'Niko pegou %', INITCAP(nome_item);
+        END IF;
+
+        -- Try to get ItemEquipment
+        SELECT ItemLocationId, ItemId INTO localizacao_itemE, itemE_id FROM ItemEquipment WHERE LOWER(ItemName) = nome_item;
+        IF localizacao_pc = localizacao_itemE THEN
+            UPDATE ItemEquipment SET ItemLocationId = NULL WHERE LOWER(ItemName) = nome_item;
+            INSERT INTO Inventory (ItemId, CharacterId) VALUES (itemE_id, 1);
+            RAISE NOTICE 'Niko pegou %', INITCAP(nome_item);
+        END IF;
+
+        -- If neither ItemMaterial nor ItemEquipment was found
+        IF localizacao_itemM IS NULL AND localizacao_itemE IS NULL THEN
+            RAISE EXCEPTION 'Niko não vê %', INITCAP(nome_item);
         END IF;
     END IF;
 END;
 $comandoPegar$;
+
+
+-- INSERT INTO combination (Material1Id, Material2Id, Result1Id)
+-- VALUES (1, 2, 3);
+
+
+-- -- Tabela de Combinações
+-- CREATE TABLE IF NOT EXISTS Combination(
+--     CraftId SERIAL PRIMARY KEY,
+--     Material1Id INT NOT NULL REFERENCES ItemMaterial(ItemId),
+--     Material2Id INT NOT NULL REFERENCES ItemMaterial(ItemId),
+--     Result1Id INT NOT NULL REFERENCES Item(ItemId),
+--     Result2Id INT REFERENCES Item(ItemId)
+-- );
+
+-- CREATE TABLE IF NOT EXISTS ItemMaterial(
+--     ItemId INT PRIMARY KEY REFERENCES Item(ItemId),
+--     ItemName VARCHAR(20) UNIQUE NOT NULL,
+--     ItemDescription VARCHAR(50) UNIQUE NOT NULL,
+--     ItemLocationId INT REFERENCES Location(LocationId)
+-- );
+
+
+
+CREATE OR REPLACE PROCEDURE combinar(funcao VARCHAR)
+LANGUAGE plpgsql
+AS $combinar$
+DECLARE
+    nome_item1 VARCHAR(255);
+    nome_item2 VARCHAR(255);
+    nome_item_resultado1 VARCHAR(255);
+    nome_item_resultado2 VARCHAR(255);
+    item1_id INT;
+    item2_id INT;
+    resultado_id1 INT;
+    resultado_id2 INT;
+BEGIN
+    IF funcao LIKE 'combinar%' THEN
+        nome_item1 := substring(funcao from 10 for position(' com ' in substring(funcao from 10)) - 1);
+        nome_item2 := substring(funcao from 10 + position(' com ' in substring(funcao from 10)) + 4);
+
+        SELECT Inventory.ItemId INTO item1_id FROM Inventory JOIN ItemMaterial ON Inventory.ItemId = ItemMaterial.ItemId WHERE CharacterId = 1 AND LOWER(ItemMaterial.ItemName) = LOWER(nome_item1);
+        SELECT Inventory.ItemId INTO item2_id FROM Inventory JOIN ItemMaterial ON Inventory.ItemId = ItemMaterial.ItemId WHERE CharacterId = 1 AND LOWER(ItemMaterial.ItemName) = LOWER(nome_item2);
+        
+        IF item1_id IS NULL OR item2_id IS NULL THEN
+            RAISE EXCEPTION 'Niko não tem % ou % no inventário', INITCAP(nome_item1), INITCAP(nome_item2);
+        END IF;
+
+        SELECT Result1Id, Result2Id INTO resultado_id1, resultado_id2 FROM Combination WHERE (Material1Id = item1_id AND Material2Id = item2_id) OR (Material1Id = item2_id AND Material2Id = item1_id);
+
+        IF resultado_id1 IS NULL THEN
+            RAISE EXCEPTION 'Niko não pode combinar % e %', INITCAP(nome_item1), INITCAP(nome_item2);
+        END IF;
+
+        SELECT ItemName INTO nome_item_resultado1 FROM ItemMaterial WHERE ItemId = resultado_id1;
+        DELETE FROM Inventory WHERE CharacterId = 1 AND ItemId IN (item1_id, item2_id);
+        INSERT INTO Inventory (ItemId, CharacterId) VALUES (resultado_id1, 1);
+        -- RAISE NOTICE 'Niko combinou % e % para criar %!', INITCAP(nome_item1), INITCAP(nome_item2), INITCAP(nome_item_resultado1);
+
+        IF resultado_id2 IS NOT NULL THEN
+            SELECT ItemName INTO nome_item_resultado2 FROM ItemMaterial WHERE ItemId = resultado_id2;
+            INSERT INTO Inventory (ItemId, CharacterId) VALUES (resultado_id2, 1);
+            RAISE NOTICE 'Niko combinou % e % para criar %, % não foi consumido no processo', INITCAP(nome_item1), INITCAP(nome_item2), INITCAP(nome_item_resultado1), INITCAP(nome_item_resultado2);
+        ELSE 
+            RAISE NOTICE 'Niko combinou % e % para criar %', INITCAP(nome_item1), INITCAP(nome_item2), INITCAP(nome_item_resultado1);
+        END IF;
+    END IF;
+END;
+$combinar$;

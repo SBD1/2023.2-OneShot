@@ -1,96 +1,57 @@
 import psycopg2
-import sys
+from contextlib import closing
 import getpass
-
 from game.utils import *
 
-prevcomando = ''
-comando = ''
+with closing(psycopg2.connect(database="study", user="postgres", password="2605", host="localhost", port="5432")) as conn:
+    with conn.cursor() as cur:
+        sql_files = ['database/drop.sql', 'database/ddl.sql',
+                     'database/proceaduresComands.sql', 'database/trigger.sql', 'database/dml.sql']
+        for sql_file in sql_files:
+            execute_sql_file(cur, sql_file)
+            conn.commit()
 
-
-# Conectar ao banco de dados PostgreSQL
-conn = psycopg2.connect(database="study", user="postgres",
-                        password="2605", host="localhost", port="5432")
-
-# Criar um cursor para executar consultas SQL
-cur = conn.cursor()
-
-with open('database/drop.sql', 'r') as f:
-    sql = f.read()
-cur.execute(sql)
-conn.commit()
-
-with open('database/ddl.sql', 'r') as f:
-    sql = f.read()
-cur.execute(sql)
-conn.commit()
-
-with open('database/proceaduresComands.sql', 'r') as f:
-    sql = f.read()
-cur.execute(sql)
-conn.commit()
-
-with open('database/trigger.sql', 'r') as f:
-    sql = f.read()
-cur.execute(sql)
-conn.commit()
-
-with open('database/dml.sql', 'r') as f:
-    sql = f.read()
-cur.execute(sql)
-conn.commit()
-
-
-set_console_size()
-clear()
-# headline('One Shot', '-')
-# typewriter('This is a test '+getpass.getuser()+'\n')
-# print(pos(1, 18))
-# typewriter('Pressione enter para continuar...')
-# input()
-# clear()
-
-while True:
-
-    if comando == 'abrir inventario':
-        with open('database/dql/inventario.sql', 'r') as f:
-            sql = f.read()
-        cur.execute(sql)
-        inventory(cur)
-    else:
-        with open('database/dql/local.sql', 'r') as f:
-            sql = f.read()
-        cur.execute(sql)
-        descricao_local(cur)
-
-    print(pos(1, 18))
-    prevcomando = comando
-    comando = input('> ')
-    comando = comando.lower()
-    # Se o usuário digitar 'sair', interrompa o loop
-    if comando == 'end' or comando == 'exit' or comando == 'quit':
-        break
-
-    try:
         clear()
-        cur.execute(
-            "INSERT INTO Command(CommandFunction,PcId) VALUES (%s,1)", (comando,))
-        conn.commit()
-    except Exception as e:
-        conn.rollback()
-        message = str(e)
-        message = message.split('CONTEXT')[0]  # Remove a parte do contexto
-        erro(message)
-        typewriter("\nPressione enter para continuar...")
-        input()
-        if prevcomando == 'abrir inventario':
-            comando = prevcomando
 
-    for notice in conn.notices:
-        if 'Niko' in notice:
-            notice = notice.replace('NOTICE:', '')
-            notice = notice.replace('  Niko', 'Niko')
-            notice_handler(conn, notice)
-    conn.notices.clear()
+        command_functions = {
+            'abrir inventario': ('database/dql/inventario.sql', inventory),
+            '': ('database/dql/local.sql', descricao_local)
+        }
 
-    clear()
+        prevcomando = ''
+        comando = ''
+
+        while True:
+            sql_file, function = command_functions.get(
+                comando, ('database/dql/local.sql', descricao_local))
+            execute_sql_file(cur, sql_file)
+            function(cur)
+
+            prevcomando = comando
+            print(pos(1, 25))
+            comando = input('> ').lower()
+
+            if comando in ['end', 'exit', 'quit']:
+                break
+
+            try:
+                clear()
+                cur.execute(
+                    "INSERT INTO Command(CommandFunction,PcId) VALUES (%s,1)", (comando,))
+                conn.commit()
+            except Exception as e:
+                conn.rollback()
+                message = str(e).split('CONTEXT')[0]
+                Exception_handler(message)
+                typewriter("\nPressione enter para continuar...")
+                input()
+                if prevcomando == 'abrir inventario':
+                    comando = prevcomando
+
+            for notice in conn.notices:
+                if 'Niko' in notice:
+                    notice = notice.replace('NOTICE:', '').replace('  ', '')
+                    notice_handler(conn, notice)
+            conn.notices.clear()
+
+            clear()

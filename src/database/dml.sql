@@ -2,7 +2,7 @@ INSERT INTO Phase (PhaseName, PhaseDescription)
 VALUES ('Fase teste', 'Fase teste');
 
 INSERT INTO Region (RegionName, RegionDescription, PhaseId)
-VALUES ('Regiao teste CENTRAL','Niko está na região CENTRAL',1);
+VALUES ('Regiao teste CENTRAu','Niko está na região CENTRAL',1);
 
 INSERT INTO RegionGeo (North, South, East, West)
 VALUES (NULL, NULL, NULL, NULL);
@@ -34,10 +34,10 @@ VALUES (NULL, NULL, 1, NULL);
 
 
 INSERT INTO Structure (StructureName,StructureDescription, RegionId)
-VALUES ('estrutura teste', 'estrutura teste', 1);
+VALUES ('Estrutura teste', 'Estrutura teste', 1);
 
 INSERT INTO Structure (StructureName,StructureDescription, RegionId)
-VALUES ('estrutura teste2', 'estrutura teste2', 2);
+VALUES ('Estrutura teste2', 'Estrutura teste2', 2);
 
 INSERT INTO Room(RoomName, RoomDescription, StructureId)
 VALUES ('sala teste', 'sala teste', 1);
@@ -72,18 +72,25 @@ VALUES (2, 2);
 
 
 INSERT INTO Object (ObjectName, ObjectDescription, DescriptionOnInteract, ObjectLocationId)
-VALUES ('objeto teste', 'objeto teste', 'objeto teste', 1);
-
-
-INSERT INTO ItemMaterial (ItemId, ItemName, ItemDescription, ItemLocationId)
-VALUES (0, 'item teste', 'item teste', 1);
-
+VALUES ('asdsad teste', 'objeto teste', 'objeto teste', 1);
 
 INSERT INTO Object (ObjectName, ObjectDescription, DescriptionOnInteract, ObjectLocationId)
-VALUES ('objeto teste2', 'objeto teste2', 'objeto teste2', 6);
+VALUES ('objeto teste2', 'objeto teste2', 'objeto teste2', 1);
 
 INSERT INTO ItemMaterial (ItemId, ItemName, ItemDescription, ItemLocationId)
-VALUES (0, 'item teste2', 'item teste2', 6);
+VALUES (0, 'A', 'Descrição do item A', 1);
+
+INSERT INTO ItemMaterial (ItemId, ItemName, ItemDescription, ItemLocationId)
+VALUES (0, 'B', 'Descrição do item B', 1);
+
+INSERT INTO ItemMaterial (ItemId, ItemName, ItemDescription, ItemLocationId)
+VALUES (0, 'C', 'Descrição do item C', NULL);
+
+INSERT INTO ItemEquipment (ItemId, ItemName, ItemDescription, ItemLocationId)
+VALUES (0, 'Equipamento', 'Equipamento', 1);
+
+INSERT INTO combination (Material1Id, Material2Id, Result1Id, Result2Id)
+VALUES (1, 2, 3, NULL);
 
 
 INSERT INTO PC(CharacterId, PcLocationId)
@@ -98,3 +105,9 @@ VALUES (0, ' ');
 
 INSERT INTO NPC (CharacterId, NpcName, NpcDescription, EventId)
 VALUES (0, 'npc teste', 'npc teste', 1);
+
+INSERT INTO Inventory (CharacterId, ItemId)
+VALUES (1, 1);
+
+INSERT INTO Inventory (CharacterId, ItemId)
+VALUES (1, 2);

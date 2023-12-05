@@ -1,94 +1,105 @@
+import re
 from time import sleep
 import os
 from colorama import Fore, Style
 
-# Stores console's window size at launch
-AC_SCREEN_WIDTH = 80
-AC_SCREEN_HEIGHT = 35
+COLOR_NIKO = Fore.BLUE
+COLOR_STRUCTURE = Fore.MAGENTA
+COLOR_OBJECT = Fore.CYAN
+COLOR_ITEM_MATERIAL = Fore.YELLOW
+COLOR_ITEM_EQUIPMENT = Fore.GREEN
+COLOR_ERROR = Fore.RED
 
-# Console functions >
-# Configures console's window size according to platform
-
-
-def set_console_size():
-    console_title = "One Shot"
-
-    os.system('echo -n -e "\033]0;{}\007"'.format(console_title))
-    os.system('echo "\033[8;{0};{1}t"'.format(AC_SCREEN_HEIGHT, AC_SCREEN_WIDTH))
-
+ITEM_TYPE_ITEMS = 'Itens'
+ITEM_TYPE_EQUIPMENTS = 'Equipamentos'
 
 
 def clear():
     os.system('clear')
-
-# Returns an ANSI Sequence to change cursor position
 
 
 def pos(x, y):
     return '\x1b[{};{}H'.format(int(y), int(x))
 
 
-# Prints a headline
 def headline(text, char='='):
     typewriter(text+'\n')
     typewriter(len(text) * char+'\n')
 
-## 0.045
+
 def typewriter(text, speed=1):
     delay = 0.005 * speed
+    text = re.sub(r'\bNiko\b', COLOR_NIKO + 'Niko' + Style.RESET_ALL, text)
     for char in text:
         print(char, end='', flush=True)
         sleep(delay)
 
+
+def print_items(items, color, label):
+    if items and any(item is not None for item in items):
+        typewriter(f"{color}{label}:{Style.RESET_ALL}\n")
+        for item in items:
+            if item is not None:
+                typewriter(color + item + '\n' + Style.RESET_ALL)
+        typewriter('\n')
+
+
+def any_non_empty(items):
+    return any(item_list is not None and any(item is not None and item != '' for item in item_list) for item_list in items)
+
+
 def descricao_local(cur):
-    descricao, estruturas, objetos, Item = cur.fetchone()
+    descricao, estruturas, objetos, item_material, item_equipamento = cur.fetchone()
 
     if descricao is not None:
-        typewriter('Niko está em '+descricao+'\n\n\n')
+        typewriter(f"Niko está em {descricao}\n\n\n")
 
-    if (estruturas and any(e is not None and e != '' for e in estruturas)) or (objetos and any(o is not None and o != '' for o in objetos)) or (Item and any(i is not None and i != '' for i in Item)):
-        typewriter('Niko vê:\n')
+    if any_non_empty([estruturas, objetos, item_material, item_equipamento]):
+        typewriter('Niko vê:\n\n')
     else:
         typewriter('Niko não vê nada de interessante.\n')
 
+    print_items(estruturas, Fore.MAGENTA, "Estruturas")
+    print_items(objetos, Fore.CYAN, "Objetos")
+    print_items(item_material, Fore.YELLOW, "Itens")
+    print_items(item_equipamento, Fore.GREEN, "Equipamentos")
 
-    if estruturas is not None:
-        for e in estruturas:
-            if e is not None:
-                typewriter('\n\nEstruturas:\n')
-                typewriter(e+'\n')
-
-    if objetos is not None:
-        for o in objetos:
-            if o is not None:
-                typewriter('\n\nObjetos:\n')
-                typewriter(o+'\n')
-
-    if Item is not None:
-        for i in Item:
-            if i is not None: 
-                typewriter('\n\nItem:\n')
-                typewriter(i+'\n')
 
 def inventory(cur):
     results = cur.fetchall()
     if results:
-        typewriter('Niko tem:\n')
+        typewriter('Niko tem:\n\n\n')
+        items = {ITEM_TYPE_ITEMS: [], ITEM_TYPE_EQUIPMENTS: []}
+        colors = {ITEM_TYPE_ITEMS: Fore.YELLOW, ITEM_TYPE_EQUIPMENTS: Fore.GREEN}
         for result in results:
             ItemMName, ItemMDescription, ItemEName, ItemEDescription = result
             if ItemMName is not None:
-                typewriter(f'{ItemMName}: {ItemMDescription}\n')
+                items[ITEM_TYPE_ITEMS].append(f'{ItemMName} - {ItemMDescription}')
             if ItemEName is not None:
-                typewriter(f'{ItemEName}: {ItemEDescription}\n')
+                items[ITEM_TYPE_EQUIPMENTS].append(f'{ItemEName} - {ItemEDescription}')
+
+        for item_type, item_list in items.items():
+            if item_list:
+                print_items(item_list, colors[item_type], item_type)
     else:
         typewriter('Niko não tem nada.\n')
 
 
-def erro(message):
-    typewriter(Fore.RED + message + Style.RESET_ALL)
+def Exception_handler(message):
+    typewriter(COLOR_ERROR + message + Style.RESET_ALL)
 
 
 def notice_handler(conn, notice):
-    typewriter(notice)
-    typewriter('\n\nPressione enter para continuar...')
-    input()
+    try:
+        typewriter(notice)
+        typewriter('\n\nPressione enter para continuar...')
+        input()
+    except Exception as e:
+        typewriter(COLOR_ERROR + "An error occurred: " +
+                   str(e) + Style.RESET_ALL)
+
+
+def execute_sql_file(cur, file_path):
+    with open(file_path, 'r') as f:
+        sql = f.read()
+    cur.execute(sql)
