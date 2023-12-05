@@ -3,6 +3,10 @@
 # <a>3º Módulo</a>
 </center>
 
+## <a>Introdução</a>
+A terceira entrega da disciplina consiste em uma seleção dos triggers e stored procedures desenvolvidos até o momento, além de algumas funções do jogo em andamento. Espera-se que este trabalho atenda às necessidades do projeto.
+
+
 ## <a>Gravação</a>
 
 <center>
