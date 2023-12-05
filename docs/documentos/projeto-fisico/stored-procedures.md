@@ -1,3 +1,15 @@
+<center>
+
+# <a>Stored Procedures</a>
+</center>
+
+## <a>Introdução</a>
+Um **<a>Stored Procedure</a>** é um conjunto de comandos SQL que é armazenado no banco de dados e pode ser chamado a qualquer momento pelo SGBD ou por um sistema que faz interface com o mesmo. Os Stored Procedures podem ser usados para automatizar tarefas complexas, reduzir o tráfego na rede, melhorar a performance do banco de dados, criar tarefas agendadas, diminuir riscos, criar rotinas de processamento, etc. Eles são particularmente úteis quando temos várias aplicações escritas em diferentes linguagens ou que rodam em plataformas diferentes, mas executam a mesma função.
+
+## <a>Proceadures Desenvolvidos</a>
+
+**<a>Função de Locomoção</a>**
+```SQL
 CREATE OR REPLACE PROCEDURE comandoIr(funcao VARCHAR)
 LANGUAGE plpgsql
 AS $comandoIr$
@@ -33,7 +45,10 @@ BEGIN
     END IF;
 END;
 $comandoIr$;
+```
 
+**<a>Função de Entrada em estruturas</a>**
+```SQL
 CREATE OR REPLACE PROCEDURE comandoEntrar(funcao VARCHAR)
 LANGUAGE plpgsql
 AS $comandoEntrar$
@@ -54,7 +69,10 @@ BEGIN
     END IF;
 END;
 $comandoEntrar$;
+```
 
+**<a>Função de Saida de estruturas</a>**
+```SQL
 CREATE OR REPLACE PROCEDURE comandoSair(funcao VARCHAR)
 LANGUAGE plpgsql
 AS $comandoSair$
@@ -67,8 +85,10 @@ BEGIN
     END IF;
 END;
 $comandoSair$;
+```
 
-
+**<a>Função de Coleta</a>**
+```SQL
 CREATE OR REPLACE PROCEDURE comandoPegar(funcao VARCHAR)
 LANGUAGE plpgsql
 AS $comandoPegar$
@@ -104,8 +124,10 @@ BEGIN
     END IF;
 END;
 $comandoPegar$;
+```
 
-
+**<a>Função de Craft</a>**
+```SQL
 CREATE OR REPLACE PROCEDURE combinar(funcao VARCHAR)
 LANGUAGE plpgsql
 AS $combinar$
@@ -150,3 +172,19 @@ BEGIN
     END IF;
 END;
 $combinar$;
+
+```
+
+
+
+## <a>Histórico de Versão</a>
+<center>
+
+|   Data   | Versão |      Descrição       |                   Autor                    |
+| :------: | :----: | :------------------: | :----------------------------------------: |
+| 25/11/23 |  1.0   | Criação do documento | [João Lucas](https://github.com/HacKairos) |
+
+</center>
+
+## <a>Bilbiografia</a>
+    AVI SILBERSCHATZ, HENRY F. KORTH, S. SUDARSHAN. Database System Concepts. [s.l: s.n.].

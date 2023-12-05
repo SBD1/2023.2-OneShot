@@ -49,6 +49,8 @@ nav:
     - Data Manipulation Language (DML): documentos/projeto-fisico/dml.md
     - Data Query Language (DQL): documentos/projeto-fisico/dql.md
     - Álgebra Relacional: documentos/projeto-fisico/algebra.md
+    - Triggers: documentos/projeto-fisico/triggers.md
+    - Stored Procedures: documentos/projeto-fisico/stored-procedures.md
   - Apresentações:
     - 1ª Apresentação: documentos/apresentacoes/modulo-1.md
     - 2ª Apresentação: documentos/apresentacoes/modulo-2.md
