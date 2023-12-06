@@ -208,11 +208,11 @@ BEGIN
 END;
 $comandoConversar$;
 
-CREATE OR REPLACE PROCEDURE dialoguecall()
+CREATE OR REPLACE PROCEDURE dialoguecall(event_id INT)
 LANGUAGE plpgsql
 AS $dialoguecall$
 BEGIN
-    RAISE NOTICE 'DIALOGUE EVENT';
+    RAISE NOTICE 'DIALOGUE EVENT %', event_id;
 END
 $dialoguecall$;
 

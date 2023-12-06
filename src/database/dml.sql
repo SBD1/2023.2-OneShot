@@ -56,7 +56,7 @@ INSERT INTO Structure (StructureName,StructureDescription, RegionId)
 VALUES ('Estrutura teste2', 'Estrutura teste2', 2);
 
 INSERT INTO RoomEvent (EventId, Command)
-VALUES (0, 'CALL dialoguecall();');
+VALUES (0, 'CALL dialoguecall(2);');
 
 INSERT INTO Room(RoomName, RoomDescription, StructureId, EventId)
 VALUES ('sala teste', 'sala teste', 1, 1);
@@ -126,3 +126,9 @@ VALUES (0, 'npc teste', 'npc teste',1, 1);
 
 -- INSERT INTO Inventory (CharacterId, ItemId)
 -- VALUES (1, 2);
+
+INSERT INTO DIALOGUE(DialogueText, CharacterId, NextDialogue, HaveChoice)
+VALUES ('Se fuder niko', 2, NULL, FALSE);
+
+INSERT INTO DIALOGUE(DialogueText, CharacterId, NextDialogue, HaveChoice)
+VALUES ('Olá, eu sou o Niko', 1, 1, FALSE);

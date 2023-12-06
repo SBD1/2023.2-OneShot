@@ -51,8 +51,9 @@ with closing(psycopg2.connect(database="study", user="postgres", password="2605"
 
             for notice in conn.notices:
                 if 'DIALOGUE EVENT' in notice:
+                    notice = notice.replace('NOTICE:  DIALOGUE EVENT ', '')
                     dialogue_handler(conn, notice)
-                if 'Niko' in notice:
+                elif 'Niko' in notice:
                     notice = notice.replace('NOTICE:', '').replace('  ', '')
                     notice_handler(conn, notice)
             conn.notices.clear()

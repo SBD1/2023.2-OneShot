@@ -111,14 +111,32 @@ def execute_sql_file(cur, file_path):
     cur.execute(sql)
 
 
-def dialogue_handler(conn, notice):
-    try:
-        typewriter(notice)
-        typewriter('\n\nPressione enter para continuar...')
-        input()
-        with conn.cursor() as cur:
-            cur.execute("SELECT DialogueEvent(%s)", (notice,))
-            conn.commit()
-    except Exception as e:
-        typewriter(COLOR_ERROR + "An error occurred: " +
-                   str(e) + Style.RESET_ALL)
+def dialogue_handler(conn, dialogue):
+    dialogue_number = int(dialogue)
+    cur = conn.cursor()
+
+    cur.execute(
+        "SELECT DialogueText, CharacterId FROM Dialogue WHERE DialogueId = %s", (dialogue_number,))
+    result = cur.fetchone()
+    dialogue_text = result[0]
+    character_id = result[1]
+    character_name = selectnamefromid(cur, character_id)
+    # rest of your code
+    clear()
+    typewriter(f'{character_name}:\n\n')
+    typewriter(dialogue_text)
+    typewriter('\n\nPressione enter para continuar...')
+    input()
+    cur.execute("SELECT NextDialogue FROM Dialogue WHERE DialogueId = %s", (dialogue_number,))
+    next_dialogue= cur.fetchone()[0]
+    
+    if next_dialogue is not None:
+        dialogue_handler(conn, next_dialogue)
+
+def selectnamefromid(cur, id):
+    cur.execute("SELECT CharacterType FROM Character WHERE CharacterId = %s", (id,))
+    if cur.fetchone()[0] == 'NPC':
+        cur.execute("SELECT NpcName FROM NPC WHERE CharacterId = %s", (id,))
+        return cur.fetchone()[0]
+    else:
+        return ('Niko')
