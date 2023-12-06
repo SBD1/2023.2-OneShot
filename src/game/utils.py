@@ -3,11 +3,13 @@ from time import sleep
 import os
 from colorama import Fore, Style
 
+
 COLOR_NIKO = Fore.BLUE
 COLOR_STRUCTURE = Fore.MAGENTA
 COLOR_OBJECT = Fore.CYAN
-COLOR_ITEM_MATERIAL = Fore.YELLOW
+COLOR_ITEM_MATERIAL =  Fore.YELLOW
 COLOR_ITEM_EQUIPMENT = Fore.GREEN
+COLOR_NPC = Fore.WHITE
 COLOR_ERROR = Fore.RED
 
 ITEM_TYPE_ITEMS = 'Itens'
@@ -49,20 +51,24 @@ def any_non_empty(items):
 
 
 def descricao_local(cur):
-    descricao, estruturas, objetos, item_material, item_equipamento = cur.fetchone()
+    nome, nomequarto, estruturas, objetos, item_material, item_equipamento, npc_descriptions = cur.fetchone()
 
-    if descricao is not None:
-        typewriter(f"Niko está em {descricao}\n\n\n")
+    if nomequarto is not None:
+        typewriter(f"Niko está em {nomequarto} dentro de {nome}\n\n")
+    else:
+        typewriter(f"Niko está em {nome}\n\n")
 
     if any_non_empty([estruturas, objetos, item_material, item_equipamento]):
         typewriter('Niko vê:\n\n')
     else:
         typewriter('Niko não vê nada de interessante.\n')
 
-    print_items(estruturas, Fore.MAGENTA, "Estruturas")
-    print_items(objetos, Fore.CYAN, "Objetos")
-    print_items(item_material, Fore.YELLOW, "Itens")
-    print_items(item_equipamento, Fore.GREEN, "Equipamentos")
+    print_items(estruturas, COLOR_STRUCTURE, "Estruturas")
+    print_items(objetos, COLOR_OBJECT, "Objetos")
+    print_items(item_material, COLOR_ITEM_MATERIAL, "Itens")
+    print_items(item_equipamento, COLOR_ITEM_EQUIPMENT, "Equipamentos")
+    print_items(npc_descriptions, Fore.WHITE, "Seres")
+
 
 
 def inventory(cur):
@@ -103,3 +109,16 @@ def execute_sql_file(cur, file_path):
     with open(file_path, 'r') as f:
         sql = f.read()
     cur.execute(sql)
+
+
+def dialogue_handler(conn, notice):
+    try:
+        typewriter(notice)
+        typewriter('\n\nPressione enter para continuar...')
+        input()
+        with conn.cursor() as cur:
+            cur.execute("SELECT DialogueEvent(%s)", (notice,))
+            conn.commit()
+    except Exception as e:
+        typewriter(COLOR_ERROR + "An error occurred: " +
+                   str(e) + Style.RESET_ALL)

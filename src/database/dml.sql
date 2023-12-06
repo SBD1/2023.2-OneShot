@@ -56,7 +56,7 @@ INSERT INTO Structure (StructureName,StructureDescription, RegionId)
 VALUES ('Estrutura teste2', 'Estrutura teste2', 2);
 
 INSERT INTO RoomEvent (EventId, Command)
-VALUES (0, 'UPDATE Structure SET StructureName = ''Maluco'' WHERE StructureId = 1;');
+VALUES (0, 'CALL dialoguecall();');
 
 INSERT INTO Room(RoomName, RoomDescription, StructureId, EventId)
 VALUES ('sala teste', 'sala teste', 1, 1);
@@ -109,7 +109,7 @@ INSERT INTO ItemMaterial (ItemId, ItemName, ItemDescription, ItemLocationId)
 VALUES (0, 'C', 'Descrição do item C', NULL);
 
 INSERT INTO ItemEquipment (ItemId, ItemName, ItemDescription, ItemLocationId)
-VALUES (0, 'Equipamento', 'Equipamento', 1);
+VALUES (0, 'luva', 'Equipamento', 1);
 
 INSERT INTO combination (Material1Id, Material2Id, Result1Id, Result2Id)
 VALUES (1, 2, 3, NULL);
@@ -118,15 +118,8 @@ VALUES (1, 2, 3, NULL);
 INSERT INTO PC(CharacterId, PcLocationId)
 VALUES (0, 1);
 
-INSERT INTO PC(CharacterId, PcLocationId)
-VALUES (0, 6);
-
-INSERT INTO ChatEvent (EventId, Command)
-VALUES (0, ' ');
-
-
-INSERT INTO NPC (CharacterId, NpcName, NpcDescription, EventId)
-VALUES (0, 'npc teste', 'npc teste', 1);
+INSERT INTO NPC (CharacterId, NpcName, NpcDescription, NpcLocationId, EventId)
+VALUES (0, 'npc teste', 'npc teste',1, 1);
 
 -- INSERT INTO Inventory (CharacterId, ItemId)
 -- VALUES (1, 1);

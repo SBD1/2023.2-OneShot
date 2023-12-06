@@ -189,7 +189,8 @@ CREATE TABLE IF NOT EXISTS Combination(
     Material1Id INT NOT NULL REFERENCES ItemMaterial(ItemId),
     Material2Id INT NOT NULL REFERENCES ItemMaterial(ItemId),
     Result1Id INT NOT NULL REFERENCES Item(ItemId),
-    Result2Id INT REFERENCES Item(ItemId)
+    Result2Id INT REFERENCES Item(ItemId),
+    equipmentId int REFERENCES ItemEquipment(ItemId)
 );
 ```
 **<a>Tabela de Inventário</a>**

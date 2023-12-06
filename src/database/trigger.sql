@@ -208,6 +208,8 @@ BEGIN
         CALL comandoPegar(NEW.CommandFunction);
     ELSIF NEW.CommandFunction LIKE 'combinar%' THEN
         CALL combinar(NEW.CommandFunction);
+    ELSIF NEW.CommandFunction LIKE 'conversar com%' THEN
+        CALL conversar(NEW.CommandFunction);
     ELSIF NEW.CommandFunction LIKE 'abrir inventario' THEN
         RETURN NEW;
     ELSIF NEW.CommandFunction LIKE 'fechar inventario' THEN

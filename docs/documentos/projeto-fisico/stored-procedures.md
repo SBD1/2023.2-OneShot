@@ -136,10 +136,12 @@ DECLARE
     nome_item2 VARCHAR(255);
     nome_item_resultado1 VARCHAR(255);
     nome_item_resultado2 VARCHAR(255);
+    nome_equipamento VARCHAR(255);
     item1_id INT;
     item2_id INT;
     resultado_id1 INT;
     resultado_id2 INT;
+    equipamento_id INT;
 BEGIN
     IF funcao LIKE 'combinar%' THEN
         nome_item1 := substring(funcao from 10 for position(' com ' in substring(funcao from 10)) - 1);
@@ -148,15 +150,24 @@ BEGIN
         SELECT Inventory.ItemId INTO item1_id FROM Inventory JOIN ItemMaterial ON Inventory.ItemId = ItemMaterial.ItemId WHERE CharacterId = 1 AND LOWER(ItemMaterial.ItemName) = LOWER(nome_item1);
         SELECT Inventory.ItemId INTO item2_id FROM Inventory JOIN ItemMaterial ON Inventory.ItemId = ItemMaterial.ItemId WHERE CharacterId = 1 AND LOWER(ItemMaterial.ItemName) = LOWER(nome_item2);
         
-        IF item1_id IS NULL OR item2_id IS NULL THEN
-            RAISE EXCEPTION 'Niko não tem % ou % no inventário', INITCAP(nome_item1), INITCAP(nome_item2);
+        IF item1_id IS NULL THEN
+            RAISE EXCEPTION 'Niko não tem % no inventário', INITCAP(nome_item1);
+        ELSIF item2_id IS NULL THEN
+            RAISE EXCEPTION 'Niko não tem % no inventário', INITCAP(nome_item2);
         END IF;
 
-        SELECT Result1Id, Result2Id INTO resultado_id1, resultado_id2 FROM Combination WHERE (Material1Id = item1_id AND Material2Id = item2_id) OR (Material1Id = item2_id AND Material2Id = item1_id);
+        SELECT Result1Id, Result2Id, equipmentId INTO resultado_id1, resultado_id2, equipamento_id FROM Combination WHERE (Material1Id = item1_id AND Material2Id = item2_id) OR (Material1Id = item2_id AND Material2Id = item1_id);
+        SELECT ItemName INTO nome_equipamento FROM ItemEquipment WHERE ItemId = equipamento_id;
 
         IF resultado_id1 IS NULL THEN
             RAISE EXCEPTION 'Niko não pode combinar % e %', INITCAP(nome_item1), INITCAP(nome_item2);
         END IF;
+
+        if equipamento_id is not null then
+            IF NOT EXISTS (SELECT 1 FROM Inventory WHERE CharacterId = 1 AND ItemId = equipamento_id) THEN
+                RAISE EXCEPTION 'Niko não conseguiu combinar % e %, pois não possui %', INITCAP(nome_item1), INITCAP(nome_item2), INITCAP(nome_equipamento);
+            END IF;
+        end if;
 
         SELECT ItemName INTO nome_item_resultado1 FROM ItemMaterial WHERE ItemId = resultado_id1;
         DELETE FROM Inventory WHERE CharacterId = 1 AND ItemId IN (item1_id, item2_id);
@@ -172,7 +183,6 @@ BEGIN
     END IF;
 END;
 $combinar$;
-
 ```
 
 

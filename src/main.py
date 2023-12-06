@@ -34,6 +34,7 @@ with closing(psycopg2.connect(database="study", user="postgres", password="2605"
             if comando in ['end', 'exit', 'quit']:
                 break
 
+
             try:
                 clear()
                 cur.execute(
@@ -49,9 +50,14 @@ with closing(psycopg2.connect(database="study", user="postgres", password="2605"
                     comando = prevcomando
 
             for notice in conn.notices:
+                if 'DIALOGUE EVENT' in notice:
+                    dialogue_handler(conn, notice)
                 if 'Niko' in notice:
                     notice = notice.replace('NOTICE:', '').replace('  ', '')
                     notice_handler(conn, notice)
             conn.notices.clear()
+
+            if prevcomando == 'abrir inventario' and comando.startswith('combinar'):
+                comando = 'abrir inventario'
 
             clear()
