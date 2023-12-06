@@ -1,48 +1,48 @@
-INSERT INTO Phase (PhaseName, PhaseDescription)
-VALUES ('Casa Estranha','Tuturial');
+-- INSERT INTO Phase (PhaseName, PhaseDescription)
+-- VALUES ('Casa Estranha','Tuturial');
 
-INSERT INTO Region (RegionName, RegionDescription, PhaseId)
-VALUES ('Casa Estranha','Tuturial', 1)
+-- INSERT INTO Region (RegionName, RegionDescription, PhaseId)
+-- VALUES ('Casa Estranha','Tuturial', 1)
 
-INSERT INTO RegionGeo (North, South, East, West)
-VALUES (NULL, NULL, NULL, NULL);
+-- INSERT INTO RegionGeo (North, South, East, West)
+-- VALUES (NULL, NULL, NULL, NULL);
 
-INSERT INTO Structure (StructureName,StructureDescription, RegionId)
-VALUES ('Casa Estranha', 'Casa', 1);
+-- INSERT INTO Structure (StructureName,StructureDescription, RegionId)
+-- VALUES ('Casa Estranha', 'Casa', 1);
 
-INSERT INTO Room(RoomName, RoomDescription, StructureId)
-VALUES ('Quarto', 'Quarto sombrio em que a unica iluminação vem da janela', 1);
+-- INSERT INTO Room(RoomName, RoomDescription, StructureId)
+-- VALUES ('Quarto', 'Quarto sombrio em que a unica iluminação vem da janela', 1);
 
 
 INSERT INTO Phase (PhaseName, PhaseDescription)
 VALUES ('Fase teste', 'Fase teste');
 
 INSERT INTO Region (RegionName, RegionDescription, PhaseId)
-VALUES ('Regiao teste CENTRAu','Niko está na região CENTRAL',2);
+VALUES ('Regiao teste CENTRAu','Niko está na região CENTRAL',1);
 
 INSERT INTO RegionGeo (North, South, East, West)
 VALUES (NULL, NULL, NULL, NULL);
 
 INSERT INTO Region (RegionName, RegionDescription, PhaseId)
-VALUES ('Regiao teste NORTE','Niko está na região NORTE',2);
+VALUES ('Regiao teste NORTE','Niko está na região NORTE',1);
 
 INSERT INTO RegionGeo (North, South, East, West)
 VALUES (NULL, 1, NULL, NULL);
 
 INSERT INTO Region (RegionName, RegionDescription, PhaseId)
-VALUES ('Regiao teste SUL','Niko está na região SUL',2);
+VALUES ('Regiao teste SUL','Niko está na região SUL',1);
 
 INSERT INTO RegionGeo (North, South, East, West)
 VALUES (1, NULL, NULL, NULL);
 
 INSERT INTO Region (RegionName, RegionDescription, PhaseId)
-VALUES ('Regiao teste LESTE','Niko está na região LESTE',2);
+VALUES ('Regiao teste LESTE','Niko está na região LESTE',1);
 
 INSERT INTO RegionGeo (North, South, East, West)
 VALUES (NULL, NULL, NULL, 1);
 
 INSERT INTO Region (RegionName, RegionDescription, PhaseId)
-VALUES ('Regiao teste OESTE','Niko está na região OESTE',2);
+VALUES ('Regiao teste OESTE','Niko está na região OESTE',1);
 
 INSERT INTO RegionGeo (North, South, East, West)
 VALUES (NULL, NULL, 1, NULL);
@@ -55,11 +55,17 @@ VALUES ('Estrutura teste', 'Estrutura teste', 1);
 INSERT INTO Structure (StructureName,StructureDescription, RegionId)
 VALUES ('Estrutura teste2', 'Estrutura teste2', 2);
 
-INSERT INTO Room(RoomName, RoomDescription, StructureId)
-VALUES ('sala teste', 'sala teste', 1);
+INSERT INTO RoomEvent (EventId, Command)
+VALUES (0, 'UPDATE Structure SET StructureName = ''Maluco'' WHERE StructureId = 1;');
+
+INSERT INTO Room(RoomName, RoomDescription, StructureId, EventId)
+VALUES ('sala teste', 'sala teste', 1, 1);
 
 INSERT INTO Room(RoomName, RoomDescription, StructureId)
 VALUES ('sala teste2', 'sala teste2', 2);
+
+
+
 
 
 

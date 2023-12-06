@@ -34,6 +34,8 @@ BEGIN
 END;
 $comandoIr$;
 
+---------------------------------------------------------------------------------------
+
 CREATE OR REPLACE PROCEDURE comandoEntrar(funcao VARCHAR)
 LANGUAGE plpgsql
 AS $comandoEntrar$
@@ -68,6 +70,7 @@ BEGIN
 END;
 $comandoSair$;
 
+---------------------------------------------------------------------------------------
 
 CREATE OR REPLACE PROCEDURE comandoPegar(funcao VARCHAR)
 LANGUAGE plpgsql
@@ -105,6 +108,7 @@ BEGIN
 END;
 $comandoPegar$;
 
+---------------------------------------------------------------------------------------
 
 CREATE OR REPLACE PROCEDURE combinar(funcao VARCHAR)
 LANGUAGE plpgsql
@@ -150,3 +154,24 @@ BEGIN
     END IF;
 END;
 $combinar$;
+
+---------------------------------------------------------------------------------------
+
+CREATE OR REPLACE PROCEDURE eventScheduler(event_id INT)
+LANGUAGE plpgsql
+AS $eventScheduler$
+DECLARE
+    evento_tipo VARCHAR(20);
+    efeito VARCHAR(255);
+BEGIN
+    SELECT EventType INTO evento_tipo FROM Event E WHERE E.EventId = event_id;
+    IF evento_tipo = 'Chat' THEN
+        SELECT Command INTO efeito FROM ChatEvent E WHERE E.EventId = event_id;
+    ELSIF evento_tipo = 'Interact' THEN
+        SELECT Command INTO efeito FROM InteractEvent E WHERE E.EventId = event_id;
+    ELSIF evento_tipo = 'Room' THEN
+        SELECT Command INTO efeito FROM RoomEvent E WHERE E.EventId = event_id;
+    END IF;
+    EXECUTE efeito;
+END;
+$eventScheduler$;

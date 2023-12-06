@@ -170,6 +170,32 @@ FOR EACH ROW EXECUTE PROCEDURE e_roommanager();
 
 ---------------------------------------------------------------------------------------
 
+CREATE OR REPLACE FUNCTION roomEventTrigger() RETURNS TRIGGER AS $roomEventTrigger$
+DECLARE
+    Idquarto INT;
+    Idevento INT;
+BEGIN
+    SELECT RoomId INTO Idquarto FROM location WHERE locationId = NEW.PcLocationId;
+    IF Idquarto IS NOT NULL THEN
+        -- RAISE NOTICE 'Niko entrou em %', (SELECT RoomName FROM Room WHERE RoomId = Idquarto);
+        SELECT EventId INTO Idevento FROM Room WHERE RoomId = Idquarto;
+        IF Idevento IS NOT NULL THEN
+            CALL eventScheduler(Idevento);
+        END IF;
+    END IF;
+
+
+    RETURN NEW;
+END;
+$roomEventTrigger$ LANGUAGE plpgsql;
+
+CREATE TRIGGER roomEventTrigger
+AFTER UPDATE ON PC
+FOR EACH ROW EXECUTE PROCEDURE roomEventTrigger();
+
+
+---------------------------------------------------------------------------------------
+
 CREATE OR REPLACE FUNCTION comandsManager() RETURNS TRIGGER AS $comandsManager$
 BEGIN
     IF NEW.CommandFunction LIKE 'ir para%' THEN

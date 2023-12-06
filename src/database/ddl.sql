@@ -99,7 +99,7 @@ CREATE TABLE IF NOT EXISTS Object(
 -- Tabela de Personagens
 CREATE TABLE IF NOT EXISTS Character(
     CharacterId SERIAL PRIMARY KEY,
-    CharacterType VARCHAR(10) NOT NULL
+    CharacterType VARCHAR(20) NOT NULL
 );
 
 -- Tabela de NPC
