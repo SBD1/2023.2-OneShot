@@ -4,10 +4,6 @@
   max-width: 85%;
 }
 
-.md-sidebar--primary {
-  width: auto;
-}
-
 /* Estilos para todos os temas */
 :root>* {
   --md-primary-fg-color: #484995;

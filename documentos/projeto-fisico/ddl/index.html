@@ -1070,7 +1070,8 @@
     Material1Id INT NOT NULL REFERENCES ItemMaterial(ItemId),
     Material2Id INT NOT NULL REFERENCES ItemMaterial(ItemId),
     Result1Id INT NOT NULL REFERENCES Item(ItemId),
-    Result2Id INT REFERENCES Item(ItemId)
+    Result2Id INT REFERENCES Item(ItemId),
+    equipmentId int REFERENCES ItemEquipment(ItemId)
 );
 </code></pre>
 <p><strong><a>Tabela de Inventário</a></strong></p>
