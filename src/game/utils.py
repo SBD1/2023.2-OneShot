@@ -91,6 +91,16 @@ def inventory(cur):
         typewriter('Niko não tem nada.\n')
 
 
+def viagem_rapida(cur):
+    results = cur.fetchall()
+    if results:
+        typewriter('Niko pode ir para:\n\n')
+        for result in results:
+            typewriter(f'{result[0]}\n')
+    else:
+        typewriter('Niko não pode ir para lugar nenhum.\n')
+
+
 def Exception_handler(message):
     typewriter(COLOR_ERROR + message + Style.RESET_ALL)
 

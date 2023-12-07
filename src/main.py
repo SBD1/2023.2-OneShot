@@ -15,6 +15,7 @@ with closing(psycopg2.connect(database="study", user="postgres", password="2605"
 
         command_functions = {
             'abrir inventario': ('database/dql/inventario.sql', inventory),
+            'viagem rapida': ('database/dql/viagem_rapida.sql', viagem_rapida),  # Adicione esta linha
             '': ('database/dql/local.sql', descricao_local)
         }
 

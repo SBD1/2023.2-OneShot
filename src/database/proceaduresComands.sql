@@ -283,3 +283,31 @@ BEGIN
     END IF;
 END;
 $Interagir$;
+
+---------------------------------------------------------------------------------------
+
+CREATE OR REPLACE PROCEDURE viajar(funcao VARCHAR)
+LANGUAGE plpgsql
+AS $viajar$
+DECLARE
+    nome_regiao VARCHAR(20);
+    localizacao_pc INT;
+    regiao_id INT;
+    regiao_local INT;
+BEGIN
+    nome_regiao := split_part(funcao, ' para ', 2);
+    SELECT PcLocationId INTO localizacao_pc FROM PC WHERE CharacterId = 1;
+    SELECT RegionId INTO regiao_id FROM Region WHERE LOWER(RegionName) = nome_regiao;
+    SELECT LocationId INTO regiao_local FROM Location WHERE RegionId = regiao_id AND RoomId IS NULL;
+    IF regiao_id IS NULL OR NOT EXISTS (SELECT 1 FROM VisitedRegion WHERE RegionId = regiao_id AND CharacterId = 1) THEN
+        RAISE EXCEPTION 'Niko não conhece %', INITCAP(nome_regiao);
+    END IF;
+    IF localizacao_pc = regiao_local THEN
+        RAISE EXCEPTION 'Niko já está em %', INITCAP(nome_regiao);
+    END IF;
+    UPDATE PC SET PcLocationId = (SELECT LocationId FROM Location WHERE RegionId = regiao_id AND RoomId IS NULL) WHERE CharacterId = 1;
+END;
+$viajar$;
+
+
+

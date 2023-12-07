@@ -193,6 +193,29 @@ CREATE TRIGGER roomEventTrigger
 AFTER UPDATE ON PC
 FOR EACH ROW EXECUTE PROCEDURE roomEventTrigger();
 
+---------------------------------------------------------------------------------------
+
+CREATE OR REPLACE FUNCTION visitedregion() RETURNS TRIGGER AS $visitedregion$
+DECLARE
+    idRegiao INT;
+    idroom INT;
+BEGIN
+    IF NEW.PcLocationId IS NOT NULL THEN
+        SELECT RegionId, RoomId INTO idRegiao, idroom FROM Location WHERE LocationId = NEW.PcLocationId;
+        IF idRegiao IS NOT NULL AND idroom IS NULL THEN
+            IF (SELECT isVisited FROM Region WHERE RegionId = idRegiao) = FALSE THEN
+                INSERT INTO VisitedRegion (CharacterId, RegionId) VALUES (NEW.CharacterId, idRegiao);
+                UPDATE Region SET isVisited = TRUE WHERE RegionId = idRegiao;
+            END IF;
+        END IF;
+    END IF;
+    RETURN NEW;
+END;
+$visitedregion$ LANGUAGE plpgsql;
+
+CREATE TRIGGER visitedregion
+AFTER UPDATE ON PC
+FOR EACH ROW EXECUTE PROCEDURE visitedregion();
 
 ---------------------------------------------------------------------------------------
 
@@ -212,9 +235,13 @@ BEGIN
         CALL conversar(NEW.CommandFunction);
     ELSIF NEW.CommandFunction LIKE 'interagir%' THEN
         CALL interagir(NEW.CommandFunction);
+    ELSIF NEW.CommandFunction LIKE 'viajar%' THEN
+        CALL viajar(NEW.CommandFunction);
     ELSIF NEW.CommandFunction LIKE 'abrir inventario' THEN
         RETURN NEW;
     ELSIF NEW.CommandFunction LIKE 'fechar inventario' THEN
+        RETURN NEW;
+    ELSIF NEW.CommandFunction LIKE 'viagem rapida' THEN
         RETURN NEW;
     ELSIF NEW.CommandFunction LIKE '' THEN
         RETURN NEW;
