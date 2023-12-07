@@ -199,17 +199,19 @@ FOR EACH ROW EXECUTE PROCEDURE roomEventTrigger();
 CREATE OR REPLACE FUNCTION comandsManager() RETURNS TRIGGER AS $comandsManager$
 BEGIN
     IF NEW.CommandFunction LIKE 'ir para%' THEN
-        CALL comandoIr(NEW.CommandFunction);
+        CALL Ir(NEW.CommandFunction);
     ELSIF NEW.CommandFunction LIKE 'entrar em%' THEN
-        CALL comandoEntrar(NEW.CommandFunction);
+        CALL Entrar(NEW.CommandFunction);
     ELSIF NEW.CommandFunction LIKE 'sair' THEN
-        CALL comandoSair(NEW.CommandFunction);
+        CALL Sair(NEW.CommandFunction);
     ELSIF NEW.CommandFunction LIKE 'pegar%' THEN
-        CALL comandoPegar(NEW.CommandFunction);
+        CALL Pegar(NEW.CommandFunction);
     ELSIF NEW.CommandFunction LIKE 'combinar%' THEN
         CALL combinar(NEW.CommandFunction);
     ELSIF NEW.CommandFunction LIKE 'conversar com%' THEN
         CALL conversar(NEW.CommandFunction);
+    ELSIF NEW.CommandFunction LIKE 'interagir%' THEN
+        CALL interagir(NEW.CommandFunction);
     ELSIF NEW.CommandFunction LIKE 'abrir inventario' THEN
         RETURN NEW;
     ELSIF NEW.CommandFunction LIKE 'fechar inventario' THEN

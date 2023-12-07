@@ -96,6 +96,7 @@ def Exception_handler(message):
 
 
 def notice_handler(conn, notice):
+    clear()
     try:
         typewriter(notice)
         typewriter('\n\nPressione enter para continuar...')

@@ -56,7 +56,7 @@ INSERT INTO Structure (StructureName,StructureDescription, RegionId)
 VALUES ('Estrutura teste2', 'Estrutura teste2', 2);
 
 INSERT INTO RoomEvent (EventId, Command)
-VALUES (0, 'CALL dialoguecall(2);');
+VALUES (0, 'UPDATE Structure SET StructureName = ''Maluco'' WHERE StructureId = 1;');
 
 INSERT INTO Room(RoomName, RoomDescription, StructureId, EventId)
 VALUES ('sala teste', 'sala teste', 1, 1);
@@ -93,17 +93,13 @@ VALUES (2, 2);
 
 
 
-INSERT INTO Object (ObjectName, ObjectDescription, DescriptionOnInteract, ObjectLocationId)
-VALUES ('asdsad teste', 'objeto teste', 'objeto teste', 1);
 
-INSERT INTO Object (ObjectName, ObjectDescription, DescriptionOnInteract, ObjectLocationId)
-VALUES ('objeto teste2', 'objeto teste2', 'objeto teste2', 1);
 
 INSERT INTO ItemMaterial (ItemId, ItemName, ItemDescription, ItemLocationId)
 VALUES (0, 'A', 'Descrição do item A', 1);
 
 INSERT INTO ItemMaterial (ItemId, ItemName, ItemDescription, ItemLocationId)
-VALUES (0, 'B', 'Descrição do item B', 1);
+VALUES (0, 'Item B', 'Descrição do item B', 1);
 
 INSERT INTO ItemMaterial (ItemId, ItemName, ItemDescription, ItemLocationId)
 VALUES (0, 'C', 'Descrição do item C', NULL);
@@ -114,6 +110,8 @@ VALUES (0, 'luva', 'Equipamento', 1);
 INSERT INTO combination (Material1Id, Material2Id, Result1Id, Result2Id)
 VALUES (1, 2, 3, NULL);
 
+INSERT INTO Object (ObjectName, ObjectDescription, DescriptionOnInteract, ObjectLocationId, EventId, ActivationItem)
+VALUES ('Objeto', 'objeto teste', 'Niko interage com Objeto e sente um frio na espinha', 1, 1, 1);
 
 INSERT INTO PC(CharacterId, PcLocationId)
 VALUES (0, 1);
@@ -132,3 +130,6 @@ VALUES ('Se fuder niko', 2, NULL, FALSE);
 
 INSERT INTO DIALOGUE(DialogueText, CharacterId, NextDialogue, HaveChoice)
 VALUES ('Olá, eu sou o Niko', 1, 1, FALSE);
+
+
+UPDATE Region SET Requirement = 4 WHERE RegionId = 2;

@@ -91,9 +91,9 @@ CREATE TABLE IF NOT EXISTS Object(
     ObjectName VARCHAR(20) NOT NULL,
     ObjectDescription VARCHAR(20) NOT NULL,
     Locks BOOLEAN DEFAULT FALSE,
-    DescriptionOnInteract VARCHAR(20) NOT NULL,
+    DescriptionOnInteract VARCHAR(250) NOT NULL,
     ObjectLocationId INT REFERENCES Location(LocationId),
-    EventId INT REFERENCES Event(EventId) 
+    EventId INT REFERENCES Event(EventId) NOT NULL 
 );
 
 -- Tabela de Personagens

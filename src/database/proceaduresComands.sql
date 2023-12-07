@@ -1,46 +1,53 @@
-CREATE OR REPLACE PROCEDURE comandoIr(funcao VARCHAR)
+CREATE OR REPLACE PROCEDURE Ir(funcao VARCHAR)
 LANGUAGE plpgsql
-AS $comandoIr$
+AS $Ir$
 DECLARE
     localizacao_atual_id INT;
     direcao TEXT;
     direcaoT TEXT;
     nova_regiao_id INT;
+    equipamento_id INT;
+    nome_equipamento VARCHAR(20);
 BEGIN
     SELECT PcLocationId INTO localizacao_atual_id FROM PC WHERE CharacterId = 1;
     direcaoT := SUBSTRING(funcao FROM 9);
-    IF funcao LIKE 'ir para norte' THEN 
-        direcao := 'north';
-    ELSIF funcao LIKE 'ir para sul' THEN 
-        direcao := 'south';
-    ELSIF funcao LIKE 'ir para leste' THEN 
-        direcao := 'east';
-    ELSIF funcao LIKE 'ir para oeste' THEN 
-        direcao := 'west';
-    ELSE 
-        direcao := NULL;
-    END IF;
-
+    direcao := CASE
+        WHEN funcao LIKE 'ir para norte' THEN 'north'
+        WHEN funcao LIKE 'ir para sul' THEN 'south'
+        WHEN funcao LIKE 'ir para leste' THEN 'east'
+        WHEN funcao LIKE 'ir para oeste' THEN 'west'
+        ELSE NULL
+    END;
     IF direcao IS NOT NULL THEN
         EXECUTE format('SELECT %I FROM RegionGeo WHERE RegionId = (SELECT RegionId FROM Location WHERE LocationId = %L)', direcao, localizacao_atual_id) INTO nova_regiao_id;
         IF EXISTS (SELECT 1 FROM Location WHERE RegionId = nova_regiao_id) THEN
-            UPDATE PC SET PcLocationId = (SELECT LocationId FROM Location WHERE RegionId = nova_regiao_id LIMIT 1) WHERE CharacterId = 1;
+            SELECT Requirement INTO equipamento_id FROM Region WHERE RegionId = nova_regiao_id;
+            SELECT ItemName into nome_equipamento FROM ItemEquipment WHERE ItemId = equipamento_id;
+            IF equipamento_id IS NOT NULL THEN
+                IF NOT EXISTS (SELECT 1 FROM Inventory WHERE CharacterId = 1 AND ItemId = equipamento_id) THEN
+                    RAISE EXCEPTION 'Niko não pode ir para %, pois não possui %', INITCAP(direcaoT), INITCAP(nome_equipamento);
+                ELSE
+                    UPDATE PC SET PcLocationId = (SELECT LocationId FROM Location WHERE RegionId = nova_regiao_id LIMIT 1) WHERE CharacterId = 1;  
+                END IF;
+            ELSE
+                UPDATE PC SET PcLocationId = (SELECT LocationId FROM Location WHERE RegionId = nova_regiao_id LIMIT 1) WHERE CharacterId = 1;
+            END IF;
         ELSE
-            RAISE EXCEPTION 'Não é possível ir para %', direcaoT;
+            RAISE EXCEPTION 'Não é possível ir para %', INITCAP(direcaoT);
         END IF;
     ELSE
-        RAISE EXCEPTION 'Não é possível ir para %', direcaoT;
+        RAISE EXCEPTION 'Não é possível ir para %', INITCAP(direcaoT);
     END IF;
 END;
-$comandoIr$;
+$Ir$;
 
 ---------------------------------------------------------------------------------------
 
-CREATE OR REPLACE PROCEDURE comandoEntrar(funcao VARCHAR)
+CREATE OR REPLACE PROCEDURE Entrar(funcao VARCHAR)
 LANGUAGE plpgsql
-AS $comandoEntrar$
+AS $Entrar$
 DECLARE
-    nome_estrutura VARCHAR(255);
+    nome_estrutura VARCHAR(20);
     localizacao_pc INT;
     regiao_estrutura INT;
 BEGIN
@@ -53,28 +60,28 @@ BEGIN
         RAISE EXCEPTION 'Niko não encontra %', nome_estrutura;
     END IF;
 END;
-$comandoEntrar$;
+$Entrar$;
 
 ---------------------------------------------------------------------------------------
 
-CREATE OR REPLACE PROCEDURE comandoSair(funcao VARCHAR)
+CREATE OR REPLACE PROCEDURE Sair(funcao VARCHAR)
 LANGUAGE plpgsql
-AS $comandoSair$
+AS $Sair$
 DECLARE
     regiao_idn INT;
 BEGIN
     SELECT RegionId INTO regiao_idn FROM Location WHERE LocationId = (SELECT PcLocationId FROM PC WHERE CharacterId = 1);
     UPDATE PC SET PcLocationId = (SELECT LocationId FROM Location WHERE RegionId = regiao_idn AND RoomId IS NULL) WHERE CharacterId = 1;
 END;
-$comandoSair$;
+$Sair$;
 
 ---------------------------------------------------------------------------------------
 
-CREATE OR REPLACE PROCEDURE comandoPegar(funcao VARCHAR)
+CREATE OR REPLACE PROCEDURE Pegar(funcao VARCHAR)
 LANGUAGE plpgsql
-AS $comandoPegar$
+AS $Pegar$
 DECLARE
-    nome_item VARCHAR(255);
+    nome_item VARCHAR(20);
     localizacao_pc INT;
     localizacao_itemM INT;
     itemM_id INT;
@@ -102,7 +109,7 @@ BEGIN
         RAISE EXCEPTION 'Niko não vê %', INITCAP(nome_item);
     END IF;
 END;
-$comandoPegar$;
+$Pegar$;
 
 ---------------------------------------------------------------------------------------
 
@@ -110,11 +117,11 @@ CREATE OR REPLACE PROCEDURE combinar(funcao VARCHAR)
 LANGUAGE plpgsql
 AS $combinar$
 DECLARE
-    nome_item1 VARCHAR(255);
-    nome_item2 VARCHAR(255);
-    nome_item_resultado1 VARCHAR(255);
-    nome_item_resultado2 VARCHAR(255);
-    nome_equipamento VARCHAR(255);
+    nome_item1 VARCHAR(20);
+    nome_item2 VARCHAR(20);
+    nome_item_resultado1 VARCHAR(20);
+    nome_item_resultado2 VARCHAR(20);
+    nome_equipamento VARCHAR(20);
     item1_id INT;
     item2_id INT;
     resultado_id1 INT;
@@ -185,9 +192,9 @@ $eventScheduler$;
 
 CREATE OR REPLACE PROCEDURE Conversar(funcao VARCHAR)
 LANGUAGE plpgsql
-AS $comandoConversar$
+AS $Conversar$
 DECLARE
-    nome_npc VARCHAR(255);
+    nome_npc VARCHAR(20);
     localizacao_npc INT;
     localizacao_pc INT;
     npc_id INT;
@@ -206,7 +213,9 @@ BEGIN
 
 
 END;
-$comandoConversar$;
+$Conversar$;
+
+---------------------------------------------------------------------------------------
 
 CREATE OR REPLACE PROCEDURE dialoguecall(event_id INT)
 LANGUAGE plpgsql
@@ -216,4 +225,61 @@ BEGIN
 END
 $dialoguecall$;
 
+---------------------------------------------------------------------------------------
 
+CREATE OR REPLACE PROCEDURE Interagir(funcao VARCHAR)
+LANGUAGE plpgsql
+AS $Interagir$
+DECLARE
+    objeto_nome VARCHAR(20);
+    item_nome VARCHAR(20);
+    objeto_id INT;
+    objeto_evento INT;
+    item_objeto VARCHAR(20);
+    Item_Id INT;
+    localizacao_objeto INT;
+    localizacao_pc INT;
+    evento_id INT;
+    Descricao VARCHAR(255);
+BEGIN
+    SELECT pc.PcLocationId INTO localizacao_pc FROM pc WHERE pc.CharacterId = 1;
+    funcao := split_part(funcao, ' com ', 2);
+    
+    IF position(' utilizando ' in funcao) = 0 THEN
+        objeto_nome := funcao;
+        item_nome := NULL;
+
+        SELECT O.ObjectId, O.objectlocationid, O.ActivationItem, O.DescriptionOnInteract, O.EventId INTO objeto_id, localizacao_objeto, item_objeto, Descricao, objeto_evento FROM object O WHERE LOWER(objectname) = objeto_nome;
+        IF objeto_id IS NULL OR localizacao_objeto != localizacao_pc THEN
+            RAISE EXCEPTION 'Niko não vê %', INITCAP(objeto_nome);
+        END IF;
+        IF item_objeto IS NULL THEN
+            CALL eventScheduler (objeto_evento);
+        ELSE
+            RAISE NOTICE '%', Descricao;
+        END IF; 
+
+    ELSE
+        objeto_nome := split_part(funcao, ' utilizando ', 1);
+        item_nome := split_part(funcao, ' utilizando ', 2);
+
+        SELECT O.ObjectId, O.objectlocationid, O.ActivationItem, O.DescriptionOnInteract, O.EventId INTO objeto_id, localizacao_objeto, item_objeto, Descricao, objeto_evento FROM object O WHERE LOWER(objectname) = objeto_nome;
+        SELECT I.itemid INTO Item_Id FROM ItemMaterial I WHERE LOWER(I.ItemName) = item_nome;
+        
+        IF objeto_id IS NULL OR localizacao_objeto != localizacao_pc THEN
+            RAISE EXCEPTION 'Niko não vê %', INITCAP(objeto_nome);
+        END IF;
+
+        IF NOT EXISTS (SELECT 1 FROM Inventory WHERE CharacterId = 1 AND ItemId = Item_Id) THEN
+            RAISE EXCEPTION 'Niko não não possui %', INITCAP(item_nome);
+        END IF;
+
+        IF item_objeto IS NULL OR CAST(item_objeto AS INTEGER) != Item_Id THEN
+            RAISE EXCEPTION 'Niko não consegue utilizar % em %',INITCAP(item_objeto), INITCAP(objeto_nome);
+        END IF;
+
+        CALL eventScheduler (objeto_evento);
+
+    END IF;
+END;
+$Interagir$;

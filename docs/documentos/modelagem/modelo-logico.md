@@ -543,7 +543,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">DescriptionOnInteract</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Descrição do Objeto ao <br>tentar realizar uma interação</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Varchar</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">20</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">250</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Not Null</td>
     </tr>
     <tr>
@@ -591,7 +591,7 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">CharacterType</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Aponta para o tipo de personagem</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">varchar</td>
-        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">10</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">20</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Not Null</td>
     </tr>
 </table>
@@ -878,6 +878,13 @@ O dicionário de dados é usado para documentar o modelo de dados e garantir que
     <tr>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Result2Id</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira para o <BR>possivel resultado secundario do craft</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">FK</td>
+    </tr>
+        <tr>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">equipmentId</td>
+        <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Chave estrangeira para o <BR>possivel equipamento necessario no craft</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">Int</td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;"></td>
         <td style="text-align:center;vertical-align: middle; border: 1px solid #a3a3a3;">FK</td>
