@@ -49,25 +49,58 @@ def print_items(items, color, label):
 def any_non_empty(items):
     return any(item_list is not None and any(item is not None and item != '' for item in item_list) for item_list in items)
 
-
 def descricao_local(cur):
-    nome, nomequarto, estruturas, objetos, item_material, item_equipamento, npc_descriptions = cur.fetchone()
+    result = cur.fetchone()
+    if result is not None:
+        nome, nomequarto, estruturas, objetos, item_material, item_equipamento, npc_descriptions = result
 
-    if nomequarto is not None:
-        typewriter(f"Niko está em {nomequarto} dentro de {nome}\n\n")
+        conexoes = []
+        if nomequarto is not None:
+            cur.execute("""
+                SELECT ConnectionName
+                FROM Connection
+                WHERE Room1Id = (SELECT RoomId FROM Location WHERE LocationId = (SELECT PcLocationId FROM PC WHERE CharacterId = 1))
+                OR Room2Id = (SELECT RoomId FROM Location WHERE LocationId = (SELECT PcLocationId FROM PC WHERE CharacterId = 1))
+            """)
+            conexoes = [result[0] for result in cur.fetchall()]
+
+        if nomequarto is not None:
+            typewriter(f"Niko está em {nomequarto} dentro de {nome}\n\n")
+        else:
+            typewriter(f"Niko está em {nome}\n\n")
+
+        if any_non_empty([estruturas, objetos, item_material, item_equipamento, conexoes]):
+            typewriter('Niko vê:\n\n')
+        else:
+            typewriter('Niko não vê nada de interessante.\n\n')
+
+        if nomequarto is not None:
+            print_items(conexoes, Fore.MAGENTA, "Conexões")
+        else:
+            print_items(estruturas, COLOR_STRUCTURE, "Estruturas")
+
+        print_items(objetos, COLOR_OBJECT, "Objetos")
+        print_items(item_material, COLOR_ITEM_MATERIAL, "Itens")
+        print_items(item_equipamento, COLOR_ITEM_EQUIPMENT, "Equipamentos")
+        print_items(npc_descriptions, Fore.WHITE, "Seres")
     else:
-        typewriter(f"Niko está em {nome}\n\n")
+        Exception_handler('Nenhum resultado encontrado.\n')
 
-    if any_non_empty([estruturas, objetos, item_material, item_equipamento]):
-        typewriter('Niko vê:\n\n')
-    else:
-        typewriter('Niko não vê nada de interessante.\n')
+def print_conexoes(cur):
+    # Faz uma consulta para obter as conexões do local atual
+    with open('database/dql/conections.sql', 'r') as file:
+        conections = file.read()
 
-    print_items(estruturas, COLOR_STRUCTURE, "Estruturas")
-    print_items(objetos, COLOR_OBJECT, "Objetos")
-    print_items(item_material, COLOR_ITEM_MATERIAL, "Itens")
-    print_items(item_equipamento, COLOR_ITEM_EQUIPMENT, "Equipamentos")
-    print_items(npc_descriptions, Fore.WHITE, "Seres")
+    cur.execute(conections)
+
+    # Obtém os resultados da consulta
+    results = cur.fetchall()
+
+    # Converte cada tupla em uma string
+    results = [result[0] for result in results]
+
+    # Imprime as conexões usando a função print_items
+    print_items(results, Fore.MAGENTA, "Conexões")
 
 
 

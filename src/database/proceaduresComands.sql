@@ -50,12 +50,25 @@ DECLARE
     nome_estrutura VARCHAR(20);
     localizacao_pc INT;
     regiao_estrutura INT;
+    salainicial_id INT;
+    id_objeto INT;  -- id_objeto deve ser INT, não BOOLEAN
+
 BEGIN
     nome_estrutura := substring(funcao from 11);
     SELECT PcLocationId INTO localizacao_pc FROM PC WHERE CharacterId = 1;
     SELECT RegionId INTO regiao_estrutura FROM Structure WHERE LOWER(StructureName) = nome_estrutura;
     IF localizacao_pc = regiao_estrutura THEN
-        UPDATE PC SET PcLocationId = (SELECT LocationId FROM Location WHERE RoomId = (SELECT InitialRoom FROM Structure WHERE LOWER(StructureName) = nome_estrutura)) WHERE CharacterId = 1;
+        SELECT InitialRoom INTO salainicial_id FROM Structure WHERE LOWER(StructureName) = nome_estrutura;
+        SELECT BlockedBy INTO id_objeto FROM Room WHERE RoomId = salainicial_id;
+        IF id_objeto IS NULL THEN
+            UPDATE PC SET PcLocationId = (SELECT LocationId FROM Location WHERE RoomId = salainicial_id) WHERE CharacterId = 1;
+        ELSE
+            IF (SELECT Locks FROM Object WHERE ObjectId = id_objeto) = FALSE THEN
+                UPDATE PC SET PcLocationId = (SELECT LocationId FROM Location WHERE RoomId = salainicial_id) WHERE CharacterId = 1;
+            ELSE
+                RAISE EXCEPTION '%', (SELECT ObjectDescription FROM Object WHERE ObjectId = id_objeto);
+            END IF;
+        END IF;
     ELSE
         RAISE EXCEPTION 'Niko não encontra %', nome_estrutura;
     END IF;
@@ -69,9 +82,15 @@ LANGUAGE plpgsql
 AS $Sair$
 DECLARE
     regiao_idn INT;
+    new_location INT;
 BEGIN
     SELECT RegionId INTO regiao_idn FROM Location WHERE LocationId = (SELECT PcLocationId FROM PC WHERE CharacterId = 1);
-    UPDATE PC SET PcLocationId = (SELECT LocationId FROM Location WHERE RegionId = regiao_idn AND RoomId IS NULL) WHERE CharacterId = 1;
+    SELECT LocationId INTO new_location FROM Location WHERE RegionId = regiao_idn AND RoomId IS NULL;
+    IF new_location IS NULL THEN
+        RAISE EXCEPTION 'Niko não consegue sair';
+    ELSE
+        UPDATE PC SET PcLocationId = new_location WHERE CharacterId = 1;
+    END IF;
 END;
 $Sair$;
 
@@ -235,12 +254,13 @@ DECLARE
     item_nome VARCHAR(20);
     objeto_id INT;
     objeto_evento INT;
-    item_objeto VARCHAR(20);
+    item_objeto INT;
     Item_Id INT;
     localizacao_objeto INT;
     localizacao_pc INT;
     evento_id INT;
     Descricao VARCHAR(255);
+    Descricao_on_interact VARCHAR(255);
 BEGIN
     SELECT pc.PcLocationId INTO localizacao_pc FROM pc WHERE pc.CharacterId = 1;
     funcao := split_part(funcao, ' com ', 2);
@@ -249,11 +269,12 @@ BEGIN
         objeto_nome := funcao;
         item_nome := NULL;
 
-        SELECT O.ObjectId, O.objectlocationid, O.ActivationItem, O.DescriptionOnInteract, O.EventId INTO objeto_id, localizacao_objeto, item_objeto, Descricao, objeto_evento FROM object O WHERE LOWER(objectname) = objeto_nome;
+        SELECT O.ObjectId, O.objectlocationid, O.ActivationItem, O.DescriptionOnInteract, O.ObjectDescription, O.EventId INTO objeto_id, localizacao_objeto, item_objeto, Descricao_on_interact, Descricao, objeto_evento FROM object O WHERE LOWER(objectname) = objeto_nome;
         IF objeto_id IS NULL OR localizacao_objeto != localizacao_pc THEN
             RAISE EXCEPTION 'Niko não vê %', INITCAP(objeto_nome);
         END IF;
         IF item_objeto IS NULL THEN
+            RAISE NOTICE '%', Descricao_on_interact;
             CALL eventScheduler (objeto_evento);
         ELSE
             RAISE NOTICE '%', Descricao;
@@ -263,7 +284,7 @@ BEGIN
         objeto_nome := split_part(funcao, ' utilizando ', 1);
         item_nome := split_part(funcao, ' utilizando ', 2);
 
-        SELECT O.ObjectId, O.objectlocationid, O.ActivationItem, O.DescriptionOnInteract, O.EventId INTO objeto_id, localizacao_objeto, item_objeto, Descricao, objeto_evento FROM object O WHERE LOWER(objectname) = objeto_nome;
+        SELECT O.ObjectId, O.objectlocationid, O.ActivationItem, O.DescriptionOnInteract, O.ObjectDescription, O.EventId INTO objeto_id, localizacao_objeto, item_objeto, Descricao_on_interact, Descricao, objeto_evento FROM object O WHERE LOWER(objectname) = objeto_nome;
         SELECT I.itemid INTO Item_Id FROM ItemMaterial I WHERE LOWER(I.ItemName) = item_nome;
         
         IF objeto_id IS NULL OR localizacao_objeto != localizacao_pc THEN
@@ -274,10 +295,11 @@ BEGIN
             RAISE EXCEPTION 'Niko não não possui %', INITCAP(item_nome);
         END IF;
 
-        IF item_objeto IS NULL OR CAST(item_objeto AS INTEGER) != Item_Id THEN
-            RAISE EXCEPTION 'Niko não consegue utilizar % em %',INITCAP(item_objeto), INITCAP(objeto_nome);
+        IF item_objeto IS NULL OR item_objeto != Item_Id THEN
+            RAISE EXCEPTION 'Niko não consegue utilizar % em %',INITCAP(item_nome), INITCAP(objeto_nome);
         END IF;
 
+        RAISE NOTICE '%', Descricao_on_interact;
         CALL eventScheduler (objeto_evento);
 
     END IF;
@@ -309,5 +331,45 @@ BEGIN
 END;
 $viajar$;
 
+---------------------------------------------------------------------------------------
 
+CREATE OR REPLACE PROCEDURE passar(funcao VARCHAR)
+LANGUAGE plpgsql
+AS $passar$
+DECLARE
+    nome_conexao VARCHAR(20);
+    localizacao_pc INT;
+    quarto_pc INT;
+    quarto_alvo INT;
+    locked BOOLEAN;
+    id_objeto INT;
 
+BEGIN
+    nome_conexao := split_part(funcao, ' pela ', 2);
+    SELECT PcLocationId into localizacao_pc FROM PC WHERE CharacterId = 1;
+    SELECT RoomId into quarto_pc FROM Location WHERE LocationId = localizacao_pc;
+    IF quarto_pc IS NULL THEN
+        RAISE EXCEPTION 'Niko não entendeu que %', INITCAP(nome_conexao);
+    ELSE
+        SELECT Room2Id into quarto_alvo FROM Connection WHERE LOWER(ConnectionName) = nome_conexao AND Room1Id = quarto_pc ;
+        IF quarto_alvo IS NULL THEN
+            SELECT Room1Id into quarto_alvo FROM Connection WHERE LOWER(ConnectionName) = nome_conexao AND Room2Id = quarto_pc ;
+        END IF;
+        IF quarto_alvo IS NULL THEN
+            RAISE EXCEPTION 'Niko não entendeu que %', INITCAP(nome_conexao);
+        ELSE
+            SELECT BlockedBy INTO id_objeto FROM Room WHERE RoomId = quarto_alvo;
+            IF id_objeto IS NULL THEN
+                UPDATE PC SET PcLocationId = (SELECT LocationId FROM Location WHERE RoomId = quarto_alvo) WHERE CharacterId = 1;
+            ELSE
+                SELECT Locks INTO locked FROM Object WHERE ObjectId = id_objeto;
+                IF locked = FALSE THEN
+                    UPDATE PC SET PcLocationId = (SELECT LocationId FROM Location WHERE RoomId = quarto_alvo) WHERE CharacterId = 1;
+                ELSE
+                    RAISE EXCEPTION '%', (SELECT ObjectDescription FROM Object WHERE ObjectId = id_objeto);
+                END IF;
+            END IF;
+        END IF;
+    END IF;
+END;
+$passar$;

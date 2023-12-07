@@ -32,7 +32,7 @@ with closing(psycopg2.connect(database="study", user="postgres", password="2605"
             print(pos(1, 25))
             comando = input('> ').lower()
 
-            if comando in ['end', 'exit', 'quit']:
+            if comando in ['exit', 'quit']:
                 break
 
 

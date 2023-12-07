@@ -195,6 +195,27 @@ FOR EACH ROW EXECUTE PROCEDURE roomEventTrigger();
 
 ---------------------------------------------------------------------------------------
 
+CREATE OR REPLACE FUNCTION location_checker() RETURNS TRIGGER AS $location_checker$
+BEGIN
+    IF NEW.PcLocationId IS NOT NULL THEN
+        IF EXISTS (SELECT 1 FROM Location WHERE LocationId = NEW.PcLocationId) THEN
+            RETURN NEW;
+        ELSE
+            RAISE EXCEPTION 'Localização não existe';
+        END IF;
+    ELSE
+        RAISE EXCEPTION 'Localização não existe';
+    END IF;
+END;
+$location_checker$ LANGUAGE plpgsql;
+
+CREATE TRIGGER location_checker
+BEFORE UPDATE OR INSERT ON PC
+FOR EACH ROW EXECUTE PROCEDURE location_checker();
+
+
+---------------------------------------------------------------------------------------
+
 CREATE OR REPLACE FUNCTION visitedregion() RETURNS TRIGGER AS $visitedregion$
 DECLARE
     idRegiao INT;
@@ -237,6 +258,8 @@ BEGIN
         CALL interagir(NEW.CommandFunction);
     ELSIF NEW.CommandFunction LIKE 'viajar%' THEN
         CALL viajar(NEW.CommandFunction);
+    ELSIF NEW.CommandFunction LIKE 'passar pela%' THEN
+        CALL passar(NEW.CommandFunction);
     ELSIF NEW.CommandFunction LIKE 'abrir inventario' THEN
         RETURN NEW;
     ELSIF NEW.CommandFunction LIKE 'fechar inventario' THEN

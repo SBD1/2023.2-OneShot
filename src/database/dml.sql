@@ -55,19 +55,19 @@ VALUES ('Estrutura teste', 'Estrutura teste', 1);
 INSERT INTO Structure (StructureName,StructureDescription, RegionId)
 VALUES ('Estrutura teste2', 'Estrutura teste2', 2);
 
-INSERT INTO RoomEvent (EventId, Command)
-VALUES (0, 'UPDATE Structure SET StructureName = ''Maluco'' WHERE StructureId = 1;');
+INSERT INTO InteractEvent (EventId, Command)
+VALUES (0, 'UPDATE object set Locks = FALSE where objectId = 1;UPDATE object set objectlocationId = NULL where objectId = 1;');
 
-INSERT INTO Room(RoomName, RoomDescription, StructureId, EventId)
-VALUES ('sala teste', 'sala teste', 1, 1);
+
 
 INSERT INTO Room(RoomName, RoomDescription, StructureId)
-VALUES ('sala teste2', 'sala teste2', 2);
+VALUES ('sala teste', 'sala teste', 1 );
 
+INSERT INTO Room(RoomName, RoomDescription, StructureId)
+VALUES ('sala teste2', 'sala teste2', 1);
 
-
-
-
+INSERT INTO Connection (ConnectionName, Room1Id, Room2Id)
+VALUES ('Porta', 1, 2);
 
 INSERT INTO Location (RegionId)
 VALUES (1);
@@ -88,7 +88,18 @@ INSERT INTO Location (RegionId, RoomId)
 VALUES (1, 1);
 
 INSERT INTO Location (RegionId, RoomId)
-VALUES (2, 2);
+VALUES (1, 2);
+
+INSERT INTO Object (ObjectName, ObjectDescription,DescriptionOnInteract, ObjectLocationId, Locks, eventId)
+VALUES ('alavanca','A porta esta trancada','Niko destrancou a porta',6, TRUE, 1);
+
+UPDATE Room SET BlockedBy = 1 WHERE RoomId = 2;
+
+
+
+
+
+
 
 
 
@@ -96,10 +107,10 @@ VALUES (2, 2);
 
 
 INSERT INTO ItemMaterial (ItemId, ItemName, ItemDescription, ItemLocationId)
-VALUES (0, 'A', 'Descrição do item A', 1);
+VALUES (0, 'A', 'Descrição do item A', 6);
 
 INSERT INTO ItemMaterial (ItemId, ItemName, ItemDescription, ItemLocationId)
-VALUES (0, 'Item B', 'Descrição do item B', 1);
+VALUES (0, 'Item B', 'Descrição do item B', 6);
 
 INSERT INTO ItemMaterial (ItemId, ItemName, ItemDescription, ItemLocationId)
 VALUES (0, 'C', 'Descrição do item C', NULL);
@@ -111,10 +122,10 @@ INSERT INTO combination (Material1Id, Material2Id, Result1Id, Result2Id)
 VALUES (1, 2, 3, NULL);
 
 INSERT INTO Object (ObjectName, ObjectDescription, DescriptionOnInteract, ObjectLocationId, EventId, ActivationItem)
-VALUES ('Objeto', 'objeto teste', 'Niko interage com Objeto e sente um frio na espinha', 1, 1, 1);
+VALUES ('Objeto', 'Niko precisa de um item', 'Niko interage com Objeto e sente um frio na espinha', 6, 1, 1);
 
 INSERT INTO PC(CharacterId, PcLocationId)
-VALUES (0, 1);
+VALUES (0, 6);
 
 INSERT INTO NPC (CharacterId, NpcName, NpcDescription, NpcLocationId, EventId)
 VALUES (0, 'npc teste', 'npc teste',1, 1);

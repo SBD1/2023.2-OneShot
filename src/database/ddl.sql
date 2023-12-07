@@ -89,11 +89,11 @@ CREATE TABLE IF NOT EXISTS Location(
 CREATE TABLE IF NOT EXISTS Object(
     ObjectId SERIAL PRIMARY KEY,
     ObjectName VARCHAR(20) NOT NULL,
-    ObjectDescription VARCHAR(20) NOT NULL,
+    ObjectDescription VARCHAR(250) NOT NULL,
     Locks BOOLEAN DEFAULT FALSE,
-    DescriptionOnInteract VARCHAR(250) NOT NULL,
+    DescriptionOnInteract VARCHAR(250),
     ObjectLocationId INT REFERENCES Location(LocationId),
-    EventId INT REFERENCES Event(EventId) NOT NULL 
+    EventId INT REFERENCES Event(EventId)
 );
 
 -- Tabela de Personagens
@@ -200,7 +200,7 @@ ALTER TABLE Region ADD Requirement INT REFERENCES ItemEquipment(ItemId);
 ALTER TABLE Structure ADD InitialRoom INT REFERENCES Room(RoomId);
 
 -- Tabela de Salas
-ALTER TABLE Room ADD BlockedBy INT REFERENCES ItemEquipment(ItemId);
+ALTER TABLE Room ADD BlockedBy INT REFERENCES Object(ObjectId);
 
 -- Tabela de Objetos
 ALTER TABLE Object ADD ActivationItem INT REFERENCES Item(ItemId);
