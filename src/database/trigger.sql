@@ -260,6 +260,8 @@ BEGIN
         CALL viajar(NEW.CommandFunction);
     ELSIF NEW.CommandFunction LIKE 'passar pela%' THEN
         CALL passar(NEW.CommandFunction);
+    ELSIF NEW.CommandFunction LIKE 'olhar em volta' THEN
+        CALL olhar();
     ELSIF NEW.CommandFunction LIKE 'abrir inventario' THEN
         RETURN NEW;
     ELSIF NEW.CommandFunction LIKE 'fechar inventario' THEN

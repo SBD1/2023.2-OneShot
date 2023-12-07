@@ -373,3 +373,27 @@ BEGIN
     END IF;
 END;
 $passar$;
+
+---------------------------------------------------------------------------------------
+
+CREATE OR REPLACE PROCEDURE olhar()
+LANGUAGE plpgsql
+AS $olhar$
+DECLARE
+    pc_location INT;
+    room_id INT;
+    region_id INT;
+    descricao VARCHAR (250);
+
+BEGIN
+    SELECT PcLocationId INTO pc_location FROM PC WHERE CharacterId = 1;
+    SELECT RegionID, RoomId INTO region_id, room_id FROM Location WHERE LocationId = pc_location;
+    IF room_id IS NULL THEN
+        SELECT RegionDescription INTO descricao FROM Region WHERE RegionId = region_id;
+    ELSE
+        SELECT RoomDescription INTO descricao FROM Room WHERE RoomId = room_id;
+    END IF;
+
+    RAISE NOTICE 'Niko %', descricao;
+END; 
+$olhar$;

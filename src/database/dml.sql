@@ -18,7 +18,7 @@ INSERT INTO Phase (PhaseName, PhaseDescription)
 VALUES ('Fase teste', 'Fase teste');
 
 INSERT INTO Region (RegionName, RegionDescription, PhaseId)
-VALUES ('Regiao teste CENTRAu','Niko está na região CENTRAL',1);
+VALUES ('Regiao teste CENTRAu','Niko olha em volta e ve uma estrutra antiga que parece uma fabrica',1);
 
 INSERT INTO RegionGeo (North, South, East, West)
 VALUES (NULL, NULL, NULL, NULL);
@@ -50,7 +50,7 @@ VALUES (NULL, NULL, 1, NULL);
 
 
 INSERT INTO Structure (StructureName,StructureDescription, RegionId)
-VALUES ('Estrutura teste', 'Estrutura teste', 1);
+VALUES ('Estrutura teste5', 'Estrutura teste', 1);
 
 INSERT INTO Structure (StructureName,StructureDescription, RegionId)
 VALUES ('Estrutura teste2', 'Estrutura teste2', 2);
@@ -61,7 +61,7 @@ VALUES (0, 'UPDATE object set Locks = FALSE where objectId = 1;UPDATE object set
 
 
 INSERT INTO Room(RoomName, RoomDescription, StructureId)
-VALUES ('sala teste', 'sala teste', 1 );
+VALUES ('sala teste', 'Niko olha em volta e enxerga uma sala antiga e uma porta', 1 );
 
 INSERT INTO Room(RoomName, RoomDescription, StructureId)
 VALUES ('sala teste2', 'sala teste2', 1);

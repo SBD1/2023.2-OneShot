@@ -184,3 +184,16 @@ def selectnamefromid(cur, id):
         return cur.fetchone()[0]
     else:
         return ('Niko')
+    
+
+def game_intro(pname):
+    headline('Bem-vindo ao jogo OneShot')
+    
+
+    typewriter('\n\nPressione enter para inicar o jogo...')
+    input()
+    clear()
+
+    typewriter('E lembre-se você só tem uma chance {0}.\n\n'.format(pname))
+    sleep(3)
+    clear()

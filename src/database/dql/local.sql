@@ -1,6 +1,6 @@
 SELECT 
     CASE 
-        WHEN l.RoomId IS NOT NULL THEN s.StructureName
+        WHEN l.RoomId IS NOT NULL THEN s.StructureDescription
         ELSE r.RegionName
     END,
     CASE
@@ -25,4 +25,4 @@ LEFT JOIN ItemMaterial im ON l.LocationId = im.ItemLocationId
 LEFT JOIN ItemEquipment ie ON l.LocationId = ie.ItemLocationId
 LEFT JOIN NPC npc ON l.LocationId = npc.NpcLocationId
 WHERE l.LocationId = (SELECT PcLocationId FROM PC WHERE CharacterId = 1)
-GROUP BY l.RoomId, s.StructureName, r.RegionName, ro.RoomName
+GROUP BY l.RoomId, s.StructureDescription, r.RegionName, ro.RoomName

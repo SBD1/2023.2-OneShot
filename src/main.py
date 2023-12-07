@@ -1,6 +1,6 @@
 import psycopg2
 from contextlib import closing
-import getpass
+import os
 from game.utils import *
 
 with closing(psycopg2.connect(database="study", user="postgres", password="2605", host="localhost", port="5432")) as conn:
@@ -21,6 +21,9 @@ with closing(psycopg2.connect(database="study", user="postgres", password="2605"
 
         prevcomando = ''
         comando = ''
+
+        game_intro(os.getlogin())
+
 
         while True:
             sql_file, function = command_functions.get(
