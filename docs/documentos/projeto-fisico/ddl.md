@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS RegionGeo(
 CREATE TABLE IF NOT EXISTS Structure(
     StructureId SERIAL PRIMARY KEY,
     StructureName VARCHAR(20) UNIQUE NOT NULL,
-    StructureDescription VARCHAR(50) NOT NULL,
+    StructureDescription VARCHAR(150) NOT NULL,
     RegionId INT NOT NULL REFERENCES Region(RegionId)
 );
 ```
@@ -133,7 +133,7 @@ CREATE TABLE IF NOT EXISTS Character(
 CREATE TABLE IF NOT EXISTS NPC(
     CharacterId INT PRIMARY KEY REFERENCES Character(CharacterId),
     NpcName VARCHAR(20) UNIQUE NOT NULL,
-    NpcDescription VARCHAR(50) NOT NULL,
+    NpcDescription VARCHAR(150) NOT NULL,
     IsWordMachine BOOLEAN DEFAULT FALSE,
     IsGod BOOLEAN DEFAULT FALSE,
     NpcLocationId INT REFERENCES Location(LocationId),
@@ -169,7 +169,7 @@ CREATE TABLE IF NOT EXISTS Item(
 CREATE TABLE IF NOT EXISTS ItemMaterial(
     ItemId INT PRIMARY KEY REFERENCES Item(ItemId),
     ItemName VARCHAR(20) UNIQUE NOT NULL,
-    ItemDescription VARCHAR(50) UNIQUE NOT NULL,
+    ItemDescription VARCHAR(150) UNIQUE NOT NULL,
     ItemLocationId INT REFERENCES Location(LocationId)
 );
 ```
@@ -178,7 +178,7 @@ CREATE TABLE IF NOT EXISTS ItemMaterial(
 CREATE TABLE IF NOT EXISTS ItemEquipment(
     ItemId INT PRIMARY KEY REFERENCES Item(ItemId),
     ItemName VARCHAR(20) UNIQUE NOT NULL,
-    ItemDescription VARCHAR(50) UNIQUE NOT NULL,
+    ItemDescription VARCHAR(150) UNIQUE NOT NULL,
     ItemLocationId INT REFERENCES Location(LocationId)
 );
 ```
@@ -224,7 +224,7 @@ CREATE TABLE IF NOT EXISTS DialogueChoice(
 ```sql
 CREATE TABLE IF NOT EXISTS Command(
     FunctionId SERIAL PRIMARY KEY,
-    CommandFunction VARCHAR(50) NOT NULL,
+    CommandFunction VARCHAR(150) NOT NULL,
     PcId INT REFERENCES PC(CharacterId)
 );
 ```

@@ -16,3 +16,8 @@ VALUES ('Quarto', 'Quarto sombrio em que a unica iluminação vem da janela', 1)
 INSERT INTO Location(RegionId, RoomId)
 VALUES (1,1);
 
+INSERT INTO PC(CharacterId, PcLocationId)
+VALUES (0, 1);
+
+INSERT INTO ItemMaterial(ItemName, ItemDescription,ItemLocationId)
+VALUES ('controle da televisão', 'É muito difícil ler no escuro.', 1);

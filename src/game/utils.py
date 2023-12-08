@@ -32,6 +32,8 @@ def headline(text, char='='):
 def typewriter(text, speed=1):
     delay = 0.005 * speed
     text = re.sub(r'\bNiko\b', COLOR_NIKO + 'Niko' + Style.RESET_ALL, text)
+    text = re.sub(r'@user@',Fore.GREEN + os.getlogin() + Style.RESET_ALL, text)
+    text = text.replace('???', Fore.MAGENTA + '???' + Style.RESET_ALL)  
     for char in text:
         print(char, end='', flush=True)
         sleep(delay)
@@ -167,9 +169,9 @@ def dialogue_handler(conn, dialogue):
     character_name = selectnamefromid(cur, character_id)
     # rest of your code
     clear()
-    typewriter(f'{character_name}:\n\n')
+    typewriter(f'[{character_name}]\n\n')
     typewriter(dialogue_text)
-    typewriter('\n\nPressione enter para continuar...')
+    typewriter('\n\n\n\nPressione enter para continuar...')
     input()
     cur.execute("SELECT NextDialogue FROM Dialogue WHERE DialogueId = %s", (dialogue_number,))
     next_dialogue= cur.fetchone()[0]

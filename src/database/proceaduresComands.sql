@@ -7,7 +7,7 @@ DECLARE
     direcaoT TEXT;
     nova_regiao_id INT;
     equipamento_id INT;
-    nome_equipamento VARCHAR(20);
+    nome_equipamento VARCHAR(150);
 BEGIN
     SELECT PcLocationId INTO localizacao_atual_id FROM PC WHERE CharacterId = 1;
     direcaoT := SUBSTRING(funcao FROM 9);
@@ -47,7 +47,7 @@ CREATE OR REPLACE PROCEDURE Entrar(funcao VARCHAR)
 LANGUAGE plpgsql
 AS $Entrar$
 DECLARE
-    nome_estrutura VARCHAR(20);
+    nome_estrutura VARCHAR(150);
     localizacao_pc INT;
     regiao_estrutura INT;
     salainicial_id INT;
@@ -100,7 +100,7 @@ CREATE OR REPLACE PROCEDURE Pegar(funcao VARCHAR)
 LANGUAGE plpgsql
 AS $Pegar$
 DECLARE
-    nome_item VARCHAR(20);
+    nome_item VARCHAR(150);
     localizacao_pc INT;
     localizacao_itemM INT;
     itemM_id INT;
@@ -114,14 +114,14 @@ BEGIN
     IF localizacao_pc = localizacao_itemM THEN
         UPDATE ItemMaterial SET ItemLocationId = NULL WHERE LOWER(ItemName) = nome_item;
         INSERT INTO Inventory (ItemId, CharacterId) VALUES (itemM_id, 1);
-        RAISE NOTICE 'Niko pegou %', INITCAP(nome_item);
+        RAISE NOTICE 'NOTICE Niko pegou %', INITCAP(nome_item);
     END IF;
 
     SELECT ItemLocationId, ItemId INTO localizacao_itemE, itemE_id FROM ItemEquipment WHERE LOWER(ItemName) = nome_item;
     IF localizacao_pc = localizacao_itemE THEN
         UPDATE ItemEquipment SET ItemLocationId = NULL WHERE LOWER(ItemName) = nome_item;
         INSERT INTO Inventory (ItemId, CharacterId) VALUES (itemE_id, 1);
-        RAISE NOTICE 'Niko pegou %', INITCAP(nome_item);
+        RAISE NOTICE 'NOTICE Niko pegou %', INITCAP(nome_item);
     END IF;
 
     IF localizacao_itemM IS NULL AND localizacao_itemE IS NULL THEN
@@ -136,11 +136,11 @@ CREATE OR REPLACE PROCEDURE combinar(funcao VARCHAR)
 LANGUAGE plpgsql
 AS $combinar$
 DECLARE
-    nome_item1 VARCHAR(20);
-    nome_item2 VARCHAR(20);
-    nome_item_resultado1 VARCHAR(20);
-    nome_item_resultado2 VARCHAR(20);
-    nome_equipamento VARCHAR(20);
+    nome_item1 VARCHAR(150);
+    nome_item2 VARCHAR(150);
+    nome_item_resultado1 VARCHAR(150);
+    nome_item_resultado2 VARCHAR(150);
+    nome_equipamento VARCHAR(150);
     item1_id INT;
     item2_id INT;
     resultado_id1 INT;
@@ -179,9 +179,9 @@ BEGIN
     IF resultado_id2 IS NOT NULL THEN
         SELECT ItemName INTO nome_item_resultado2 FROM ItemMaterial WHERE ItemId = resultado_id2;
         INSERT INTO Inventory (ItemId, CharacterId) VALUES (resultado_id2, 1);
-        RAISE NOTICE 'Niko combinou % e % para criar %, % não foi consumido no processo', INITCAP(nome_item1), INITCAP(nome_item2), INITCAP(nome_item_resultado1), INITCAP(nome_item_resultado2);
+        RAISE NOTICE 'NOTICE Niko combinou % e % para criar %, % não foi consumido no processo', INITCAP(nome_item1), INITCAP(nome_item2), INITCAP(nome_item_resultado1), INITCAP(nome_item_resultado2);
     ELSE 
-        RAISE NOTICE 'Niko combinou % e % para criar %', INITCAP(nome_item1), INITCAP(nome_item2), INITCAP(nome_item_resultado1);
+        RAISE NOTICE 'NOTICE Niko combinou % e % para criar %', INITCAP(nome_item1), INITCAP(nome_item2), INITCAP(nome_item_resultado1);
     END IF;
 END;
 $combinar$;
@@ -192,8 +192,8 @@ CREATE OR REPLACE PROCEDURE eventScheduler(event_id INT)
 LANGUAGE plpgsql
 AS $eventScheduler$
 DECLARE
-    evento_tipo VARCHAR(20);
-    efeito VARCHAR(255);
+    evento_tipo VARCHAR(150);
+    efeito VARCHAR(450);
 BEGIN
     SELECT EventType INTO evento_tipo FROM Event E WHERE E.EventId = event_id;
     IF evento_tipo = 'Chat' THEN
@@ -213,7 +213,7 @@ CREATE OR REPLACE PROCEDURE Conversar(funcao VARCHAR)
 LANGUAGE plpgsql
 AS $Conversar$
 DECLARE
-    nome_npc VARCHAR(20);
+    nome_npc VARCHAR(150);
     localizacao_npc INT;
     localizacao_pc INT;
     npc_id INT;
@@ -250,8 +250,8 @@ CREATE OR REPLACE PROCEDURE Interagir(funcao VARCHAR)
 LANGUAGE plpgsql
 AS $Interagir$
 DECLARE
-    objeto_nome VARCHAR(20);
-    item_nome VARCHAR(20);
+    objeto_nome VARCHAR(150);
+    item_nome VARCHAR(150);
     objeto_id INT;
     objeto_evento INT;
     item_objeto INT;
@@ -273,11 +273,11 @@ BEGIN
         IF objeto_id IS NULL OR localizacao_objeto != localizacao_pc THEN
             RAISE EXCEPTION 'Niko não vê %', INITCAP(objeto_nome);
         END IF;
-        IF item_objeto IS NULL THEN
-            RAISE NOTICE '%', Descricao_on_interact;
+        IF item_objeto IS NULL AND objeto_evento IS NOT NULL THEN
+            RAISE NOTICE 'NOTICE %', Descricao_on_interact;
             CALL eventScheduler (objeto_evento);
         ELSE
-            RAISE NOTICE '%', Descricao;
+            RAISE NOTICE 'NOTICE %', Descricao;
         END IF; 
 
     ELSE
@@ -299,7 +299,7 @@ BEGIN
             RAISE EXCEPTION 'Niko não consegue utilizar % em %',INITCAP(item_nome), INITCAP(objeto_nome);
         END IF;
 
-        RAISE NOTICE '%', Descricao_on_interact;
+        RAISE NOTICE 'NOTICE %', Descricao_on_interact;
         CALL eventScheduler (objeto_evento);
 
     END IF;
@@ -312,7 +312,7 @@ CREATE OR REPLACE PROCEDURE viajar(funcao VARCHAR)
 LANGUAGE plpgsql
 AS $viajar$
 DECLARE
-    nome_regiao VARCHAR(20);
+    nome_regiao VARCHAR(150);
     localizacao_pc INT;
     regiao_id INT;
     regiao_local INT;
@@ -337,7 +337,7 @@ CREATE OR REPLACE PROCEDURE passar(funcao VARCHAR)
 LANGUAGE plpgsql
 AS $passar$
 DECLARE
-    nome_conexao VARCHAR(20);
+    nome_conexao VARCHAR(150);
     localizacao_pc INT;
     quarto_pc INT;
     quarto_alvo INT;
@@ -394,6 +394,16 @@ BEGIN
         SELECT RoomDescription INTO descricao FROM Room WHERE RoomId = room_id;
     END IF;
 
-    RAISE NOTICE 'Niko %', descricao;
+    RAISE NOTICE 'NOTICE %', descricao;
 END; 
 $olhar$;
+
+---------------------------------------------------------------------------------------
+
+CREATE OR REPLACE PROCEDURE raiseTexto(texto VARCHAR)
+LANGUAGE plpgsql
+AS $raiseTexto$
+BEGIN
+    RAISE NOTICE 'NOTICE %', texto;
+END;
+$raiseTexto$;

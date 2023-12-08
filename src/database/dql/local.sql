@@ -17,8 +17,8 @@ SELECT
     ARRAY_AGG(DISTINCT npc.NpcName) AS NPC_Name
 FROM Location l
 LEFT JOIN Region r ON l.RegionId = r.RegionId
-LEFT JOIN Structure s ON l.RoomId = s.StructureId
 LEFT JOIN Room ro ON l.RoomId = ro.RoomId
+LEFT JOIN Structure s ON ro.StructureId = s.StructureId
 LEFT JOIN Structure e ON r.RegionId = e.RegionId
 LEFT JOIN Object o ON l.LocationId = o.ObjectLocationId
 LEFT JOIN ItemMaterial im ON l.LocationId = im.ItemLocationId

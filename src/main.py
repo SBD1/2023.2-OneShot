@@ -6,7 +6,7 @@ from game.utils import *
 with closing(psycopg2.connect(database="study", user="postgres", password="2605", host="localhost", port="5432")) as conn:
     with conn.cursor() as cur:
         sql_files = ['database/drop.sql', 'database/ddl.sql',
-                     'database/proceaduresComands.sql', 'database/trigger.sql', 'database/dml.sql']
+                     'database/proceaduresComands.sql', 'database/trigger.sql', 'database/dml.sql', 'database/dml_dialogues.sql']
         for sql_file in sql_files:
             execute_sql_file(cur, sql_file)
             conn.commit()
@@ -22,7 +22,7 @@ with closing(psycopg2.connect(database="study", user="postgres", password="2605"
         prevcomando = ''
         comando = ''
 
-        game_intro(os.getlogin())
+        # game_intro(os.getlogin())
 
 
         while True:
@@ -57,8 +57,8 @@ with closing(psycopg2.connect(database="study", user="postgres", password="2605"
                 if 'DIALOGUE EVENT' in notice:
                     notice = notice.replace('NOTICE:  DIALOGUE EVENT ', '')
                     dialogue_handler(conn, notice)
-                elif 'Niko' in notice:
-                    notice = notice.replace('NOTICE:', '').replace('  ', '')
+                elif 'NOTICE:  NOTICE' in notice:
+                    notice = notice.replace('NOTICE:  NOTICE ', '')
                     notice_handler(conn, notice)
             conn.notices.clear()
 

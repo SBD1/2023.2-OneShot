@@ -60,7 +60,7 @@ CREATE OR REPLACE FUNCTION npcmanager() RETURNS TRIGGER AS $npcmanager$
 BEGIN
     IF EXISTS (SELECT 1 FROM Character C WHERE C.CharacterId = NEW.CharacterId) THEN 
         RAISE EXCEPTION 'NPC já existe';
-    ELSIF ((NEW.NpcName IS NOT NULL) AND (NEW.NpcDescription IS NOT NULL) AND (NEW.EventId IS NOT NULL)) THEN
+    ELSIF ((NEW.NpcName IS NOT NULL) AND (NEW.NpcDescription IS NOT NULL)) THEN
         INSERT INTO Character (CharacterType) VALUES ('NPC') RETURNING CharacterId INTO NEW.CharacterId;
         RETURN NEW;
     ELSE
