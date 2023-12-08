@@ -19,3 +19,21 @@ interagir com computador utilizando botões do controle
 
 passar pela porta do banheiro
 
+interagir com Planta murcha
+
+passar pela porta do banheiro
+
+passar pela porta da sala
+
+
+interagir com refrigerador
+
+
+combinar Galho seco com frasco de álcool
+
+
+interagir com TV utilizando galho molhado
+
+
+interagir com lareira utilizando tocha
+

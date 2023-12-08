@@ -6,7 +6,7 @@ from game.utils import *
 with closing(psycopg2.connect(database="study", user="postgres", password="2605", host="localhost", port="5432")) as conn:
     with conn.cursor() as cur:
         sql_files = ['database/drop.sql', 'database/ddl.sql',
-                     'database/proceaduresComands.sql', 'database/trigger.sql', 'database/dml.sql', 'database/dml_dialogues.sql']
+                     'database/proceaduresComands.sql', 'database/trigger.sql','database/dml_events.sql', 'database/dml.sql', 'database/dml_dialogues.sql']
         for sql_file in sql_files:
             execute_sql_file(cur, sql_file)
             conn.commit()

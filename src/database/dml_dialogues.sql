@@ -34,4 +34,6 @@ VALUES ('Você me encontrou.', 3 , 10, FALSE);
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue, HaveChoice)
 VALUES ('...', 3 , 11, FALSE);
 
-
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue, HaveChoice)
+VALUES ('Olááá?
+. . . alguém', 1 , NULL, FALSE);
