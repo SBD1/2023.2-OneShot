@@ -1,0 +1,10 @@
+\i drop.sql
+\i ddl.sql
+\i proceaduresComands.sql
+\i trigger.sql
+\i dml/dml_events.sql
+\i dml/dml_mapa.sql
+\i dml/dml_characters.sql
+\i dml/dml_itens.sql
+\i dml/dml_objects.sql
+\i dml/dml_dialogues.sql

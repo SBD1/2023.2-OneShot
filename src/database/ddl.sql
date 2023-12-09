@@ -41,7 +41,8 @@ CREATE TABLE IF NOT EXISTS Region(
     RegionName VARCHAR(150) UNIQUE NOT NULL,
     RegionDescription VARCHAR(250) NOT NULL,
     PhaseId INT NOT NULL REFERENCES Phase(PhaseId),
-    isVisited BOOLEAN DEFAULT FALSE
+    isVisited BOOLEAN DEFAULT FALSE,
+    WhyisBlocked VARCHAR(150)
 );
 
 -- Tabela de Geografias
@@ -56,7 +57,7 @@ CREATE TABLE IF NOT EXISTS RegionGeo(
 -- Tabela de Estruturas
 CREATE TABLE IF NOT EXISTS Structure(
     StructureId SERIAL PRIMARY KEY,
-    StructureName VARCHAR(150) NOT NULL,
+    StructureName VARCHAR(150) NOT NULL UNIQUE,
     StructureDescription VARCHAR(150) NOT NULL,
     RegionId INT NOT NULL REFERENCES Region(RegionId)
 );
@@ -174,13 +175,15 @@ CREATE TABLE IF NOT EXISTS Dialogue(
     DialogueText VARCHAR(250) NOT NULL,
     CharacterId INT NOT NULL REFERENCES Character(CharacterId),
     NextDialogue INT REFERENCES Dialogue(DialogueId),
-    HaveChoice BOOLEAN NOT NULL
+    HaveChoice BOOLEAN NOT NULL DEFAULT FALSE,
+    AllChoices BOOLEAN NOT NULL DEFAULT FALSE
 );
 
 -- Tabela de Escolhas de Diálogos
 CREATE TABLE IF NOT EXISTS DialogueChoice(
     DialogueId INT REFERENCES Dialogue(DialogueId),
     ChoiceId SERIAL,
+    Choice VARCHAR(50) NOT NULL,
     NextDialogue INT REFERENCES Dialogue(DialogueId),
     PRIMARY KEY (DialogueId, ChoiceId)
 );

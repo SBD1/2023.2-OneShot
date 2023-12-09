@@ -79,8 +79,8 @@ VALUES ('Entrada da Mina','Não consigo ver nada de interessante, apenas a entra
 INSERT INTO RegionGeo (North, South, East, West)
 VALUES (NULL, NULL, NULL, 5);
 
-INSERT INTO Region (RegionName, RegionDescription, PhaseId)
-VALUES ('Fábrica Velha','Vejo varias saidas de gás bem altas e muitas caldeiras da fábrica antiga.', 2);
+INSERT INTO Region (RegionName, RegionDescription, PhaseId, WhyisBlocked)
+VALUES ('Fábrica Velha','Vejo varias saidas de gás bem altas e muitas caldeiras da fábrica antiga.', 2, 'O ar aqui é irrespirável' );
 
 INSERT INTO RegionGeo (North, South, East, West)
 VALUES (NULL, 4, NULL, NULL);
@@ -91,8 +91,8 @@ VALUES ('Dormitórios','Vejo varios robos e um robô bem grande, parece uma esp�
 INSERT INTO RegionGeo (North, South, East, West)
 VALUES (NULL, NULL, 7, NULL);
 
-INSERT INTO Region (RegionName, RegionDescription, PhaseId)
-VALUES ('Pântano dos Camarões','Vejo varias poças de água e elas estão cheias de camarões-luminescentes.', 2);
+INSERT INTO Region (RegionName, RegionDescription, PhaseId, WhyisBlocked)
+VALUES ('Pântano dos Camarões','Vejo varias poças de água e elas estão cheias de camarões-luminescentes.', 2, 'tem algo no ar aqui... Dói respirar...');
 
 INSERT INTO RegionGeo (North, South, East, West)
 VALUES (NULL, NULL, 8, NULL);
@@ -108,8 +108,8 @@ VALUES (9, 2, NULL, NULL);
 INSERT INTO Structure (StructureName,StructureDescription, RegionId)
 VALUES ('Servidor abandonado','do servidor abandonado', 2);
 
-INSERT INTO Room(RoomName, RoomDescription, StructureId)
-VALUES ('Sala de terminais', 'Vejo o que sobrou de alguns computadores.', 2);
+INSERT INTO Room(RoomName, RoomDescription, StructureId, eventId)
+VALUES ('Sala de terminais', 'Vejo o que sobrou de alguns computadores.', 2, 11);
 
 --Região 3
 INSERT INTO Structure (StructureName,StructureDescription, RegionId)
@@ -155,7 +155,7 @@ VALUES ('Interior', 'Vejo alguns trilhos, mas não sei para onde levam, a mina p
 
 --Região 7
 INSERT INTO Structure (StructureName,StructureDescription, RegionId)
-VALUES ('Antiga Fábrica','da antifa fábrica', 7);
+VALUES ('Antiga Fábrica','da antiga fábrica', 7);
 
 INSERT INTO Room(RoomName, RoomDescription, StructureId)
 VALUES ('1º andar', 'Vejo algumas esteiras bem antigas e umas caixas de metal.', 7);
@@ -214,7 +214,7 @@ VALUES ('Sala de terminais', 'Vejo o que sobrou de alguns computadores.', 14);
 
 -- Região 10
 INSERT INTO Structure (StructureName,StructureDescription, RegionId)
-VALUES ('Servidor abandonado','do servidor abandonado', 10);
+VALUES ('Servidor das docas','do servidor das docas', 10);
 
 INSERT INTO Room(RoomName, RoomDescription, StructureId)
 VALUES ('Sala de terminais', 'Vejo o que sobrou de alguns computadores.', 15);

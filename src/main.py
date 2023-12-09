@@ -2,13 +2,17 @@ import psycopg2
 from contextlib import closing
 import os
 from game.utils import *
+from game.dialogue import *
 
 with closing(psycopg2.connect(database="study", user="postgres", password="2605", host="localhost", port="5432")) as conn:
     with conn.cursor() as cur:
-        sql_files = ['database/drop.sql', 'database/ddl.sql',
-                     'database/proceaduresComands.sql', 'database/trigger.sql', 'database/dml/dml_events.sql',
-                     'database/dml/dml_mapa.sql','database/dml/dml_characters.sql', 'database/dml/dml_itens.sql', 
-                     'database/dml/dml_objects.sql', 'database/dml/dml_dialogues.sql']
+        sql_files = [
+            'database/drop.sql','database/ddl.sql',
+            'database/proceaduresComands.sql','database/trigger.sql',
+            'database/dml/dml_events.sql','database/dml/dml_mapa.sql',
+            'database/dml/dml_characters.sql','database/dml/dml_itens.sql',
+            'database/dml/dml_objects.sql','database/dml/dml_dialogues.sql'
+        ]
         for sql_file in sql_files:
             execute_sql_file(cur, sql_file)
             conn.commit()

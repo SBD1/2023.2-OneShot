@@ -8,6 +8,7 @@ DECLARE
     nova_regiao_id INT;
     equipamento_id INT;
     nome_equipamento VARCHAR(150);
+    motivo varchar(150);
 BEGIN
     SELECT PcLocationId INTO localizacao_atual_id FROM PC WHERE CharacterId = 1;
     direcaoT := SUBSTRING(funcao FROM 9);
@@ -21,11 +22,11 @@ BEGIN
     IF direcao IS NOT NULL THEN
         EXECUTE format('SELECT %I FROM RegionGeo WHERE RegionId = (SELECT RegionId FROM Location WHERE LocationId = %L)', direcao, localizacao_atual_id) INTO nova_regiao_id;
         IF EXISTS (SELECT 1 FROM Location WHERE RegionId = nova_regiao_id) THEN
-            SELECT Requirement INTO equipamento_id FROM Region WHERE RegionId = nova_regiao_id;
+            SELECT Requirement, WhyisBlocked INTO equipamento_id, motivo FROM Region WHERE RegionId = nova_regiao_id;
             SELECT ItemName into nome_equipamento FROM ItemEquipment WHERE ItemId = equipamento_id;
             IF equipamento_id IS NOT NULL THEN
                 IF NOT EXISTS (SELECT 1 FROM Inventory WHERE CharacterId = 1 AND ItemId = equipamento_id) THEN
-                    RAISE EXCEPTION 'Niko não pode ir para %, pois não possui %', INITCAP(direcaoT), INITCAP(nome_equipamento);
+                    RAISE EXCEPTION 'Niko não consegue ir para %, %', INITCAP(direcaoT), motivo;
                 ELSE
                     UPDATE PC SET PcLocationId = (SELECT LocationId FROM Location WHERE RegionId = nova_regiao_id LIMIT 1) WHERE CharacterId = 1;  
                 END IF;

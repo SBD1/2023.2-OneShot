@@ -224,9 +224,9 @@ BEGIN
     IF NEW.PcLocationId IS NOT NULL THEN
         SELECT RegionId, RoomId INTO idRegiao, idroom FROM Location WHERE LocationId = NEW.PcLocationId;
         IF idRegiao IS NOT NULL AND idroom IS NULL THEN
-            IF (SELECT isVisited FROM Region WHERE RegionId = idRegiao) = FALSE THEN
+            IF (SELECT IsVisited FROM Region WHERE RegionId = idRegiao) = FALSE THEN
                 INSERT INTO VisitedRegion (CharacterId, RegionId) VALUES (NEW.CharacterId, idRegiao);
-                UPDATE Region SET isVisited = TRUE WHERE RegionId = idRegiao;
+                UPDATE Region SET IsVisited = TRUE WHERE RegionId = idRegiao;
             END IF;
         END IF;
     END IF;

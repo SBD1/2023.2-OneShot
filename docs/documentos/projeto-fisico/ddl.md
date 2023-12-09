@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS Region(
     RegionName VARCHAR(20) UNIQUE NOT NULL,
     RegionDescription VARCHAR(250) NOT NULL,
     PhaseId INT NOT NULL REFERENCES Phase(PhaseId),
-    isVisited BOOLEAN DEFAULT FALSE
+    IsVisited BOOLEAN DEFAULT FALSE
 );
 ```
 **<a>Tabela de Geografias</a>**
