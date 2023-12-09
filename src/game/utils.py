@@ -28,9 +28,9 @@ def headline(text, char='='):
     typewriter(text+'\n')
     typewriter(len(text) * char+'\n')
 
-
+#0.045
 def typewriter(text, speed=1):
-    delay = 0.005 * speed
+    delay = 0.0001 * speed
     text = re.sub(r'\bNiko\b', COLOR_NIKO + 'Niko' + Style.RESET_ALL, text)
     text = re.sub(r'@user@',Fore.GREEN + os.getlogin() + Style.RESET_ALL, text)
     text = text.replace('???', Fore.MAGENTA + '???' + Style.RESET_ALL)  
@@ -67,7 +67,7 @@ def descricao_local(cur):
             conexoes = [result[0] for result in cur.fetchall()]
 
         if nomequarto is not None:
-            typewriter(f"Niko está em {nomequarto} dentro de {nome}\n\n")
+            typewriter(f"Niko está em {nomequarto} {nome}\n\n")
         else:
             typewriter(f"Niko está em {nome}\n\n")
 
@@ -190,12 +190,6 @@ def selectnamefromid(cur, id):
 
 def game_intro(pname):
     headline('Bem-vindo ao jogo OneShot')
-    
-
     typewriter('\n\nPressione enter para inicar o jogo...')
     input()
-    clear()
-
-    typewriter('E lembre-se você só tem uma chance {0}.\n\n'.format(pname))
-    sleep(3)
     clear()

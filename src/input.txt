@@ -25,15 +25,26 @@ passar pela porta do banheiro
 
 passar pela porta da sala
 
-
 interagir com refrigerador
-
 
 combinar Galho seco com frasco de álcool
 
-
 interagir com TV utilizando galho molhado
 
-
 interagir com lareira utilizando tocha
+
+
+
+
+interagir com fechadura do porão utilizando chave do porão
+
+passar pela porta do porão
+
+
+
+
+
+passar pela porta do porão
+
+Interagir com moldura utilizando lâmpada
 

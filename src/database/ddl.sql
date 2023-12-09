@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS RoomEvent(
 CREATE TABLE IF NOT EXISTS Phase(
     PhaseId SERIAL PRIMARY KEY,
     PhaseName VARCHAR(150) NOT NULL,
-    PhaseDescription VARCHAR(100) NOT NULL
+    PhaseDescription VARCHAR(250) NOT NULL
 );
 
 -- Tabela de Regiões
@@ -56,21 +56,19 @@ CREATE TABLE IF NOT EXISTS RegionGeo(
 -- Tabela de Estruturas
 CREATE TABLE IF NOT EXISTS Structure(
     StructureId SERIAL PRIMARY KEY,
-    StructureName VARCHAR(150) UNIQUE NOT NULL,
+    StructureName VARCHAR(150) NOT NULL,
     StructureDescription VARCHAR(150) NOT NULL,
     RegionId INT NOT NULL REFERENCES Region(RegionId)
-    -- ALTER TABLE Structure ADD InitialRoom INT REFERENCES Room(RoomId);
 );
 
 -- Tabela de Salas
 CREATE TABLE IF NOT EXISTS Room(
     RoomId SERIAL PRIMARY KEY,
-    RoomName VARCHAR(150) UNIQUE NOT NULL,
+    RoomName VARCHAR(150) NOT NULL,
     RoomDescription VARCHAR(250) NOT NULL,
     IsVisited BOOLEAN DEFAULT FALSE,
     StructureId INT NOT NULL REFERENCES Structure(StructureId),
     EventId INT REFERENCES Event(EventId)
--- ALTER TABLE Room ADD BlockedBy INT REFERENCES Object(ObjectId);
 );
 
 -- Tabela de Conexões
@@ -97,7 +95,6 @@ CREATE TABLE IF NOT EXISTS Object(
     DescriptionOnInteract VARCHAR(250) NOT NULL,
     ObjectLocationId INT REFERENCES Location(LocationId),
     EventId INT REFERENCES Event(EventId)
---    ALTER TABLE Object ADD ActivationItem INT REFERENCES Item(ItemId);
 );
 
 -- Tabela de Personagens

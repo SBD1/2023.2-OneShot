@@ -52,12 +52,14 @@ DECLARE
     regiao_estrutura INT;
     salainicial_id INT;
     id_objeto INT;  -- id_objeto deve ser INT, não BOOLEAN
-
+    localizacao_estrutura INT;
 BEGIN
     nome_estrutura := substring(funcao from 11);
     SELECT PcLocationId INTO localizacao_pc FROM PC WHERE CharacterId = 1;
     SELECT RegionId INTO regiao_estrutura FROM Structure WHERE LOWER(StructureName) = nome_estrutura;
-    IF localizacao_pc = regiao_estrutura THEN
+    SELECT LocationId INTO localizacao_estrutura FROM Location WHERE RegionId = regiao_estrutura;
+
+    IF localizacao_pc = localizacao_estrutura THEN
         SELECT InitialRoom INTO salainicial_id FROM Structure WHERE LOWER(StructureName) = nome_estrutura;
         SELECT BlockedBy INTO id_objeto FROM Room WHERE RoomId = salainicial_id;
         IF id_objeto IS NULL THEN
