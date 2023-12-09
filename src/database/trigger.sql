@@ -177,7 +177,6 @@ DECLARE
 BEGIN
     SELECT RoomId INTO Idquarto FROM location WHERE locationId = NEW.PcLocationId;
     IF Idquarto IS NOT NULL THEN
-        -- RAISE NOTICE 'Niko entrou em %', (SELECT RoomName FROM Room WHERE RoomId = Idquarto);
         SELECT EventId INTO Idevento FROM Room WHERE RoomId = Idquarto;
         IF Idevento IS NOT NULL THEN
             CALL eventScheduler(Idevento);
@@ -262,7 +261,9 @@ BEGIN
         CALL passar(NEW.CommandFunction);
     ELSIF NEW.CommandFunction LIKE 'olhar em volta' THEN
         CALL olhar();
-    ELSIF NEW.CommandFunction LIKE 'abrir inventario' THEN
+    ELSIF NEW.CommandFunction LIKE 'ajuda' THEN
+        CALL ajuda();
+    ELSIF NEW.CommandFunction LIKE 'abrir inventário' THEN
         RETURN NEW;
     ELSIF NEW.CommandFunction LIKE 'fechar inventario' THEN
         RETURN NEW;

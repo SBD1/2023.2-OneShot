@@ -1,0 +1,9 @@
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)VALUES ('[@user@ Saberá o que Fazer Quando Chegar a Hora.]', 4, 138);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)VALUES ('Mas... Como faço para chegar lá em cima?', 1, 139);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)VALUES ('[Não Tenho Permissão para Responder Isso.]', 4, 140);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)VALUES ('Nem consigo ver o topo dela...', 1, 141);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)VALUES ('Essa torre é muito alta?', 1, 142);

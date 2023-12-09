@@ -31,3 +31,6 @@ VALUES (0, 'CALL raiseTexto(''Niko perda a conciência após isso e acorda em um
 INSERT INTO RoomEvent (EventId, Command)
 VALUES (0, 'CALL dialoguecall(108);UPDATE Room set EventId = NULL WHERE RoomId = 5;');
 
+INSERT INTO ChatEvent (EventId, Command)
+VALUES (0, 'CALL dialoguecall(150);');
+

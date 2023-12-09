@@ -227,6 +227,9 @@ BEGIN
     IF nome_npc IS NULL THEN
         RAISE EXCEPTION 'Niko não vê %', INITCAP(substring(funcao from 15));
     END IF;
+    IF evento_id IS NULL THEN
+        RAISE EXCEPTION 'Evento não registrado';
+    END IF;
     IF localizacao_npc = localizacao_pc THEN
         CALL eventScheduler(evento_id);
     ELSE
@@ -410,3 +413,13 @@ BEGIN
     RAISE NOTICE 'NOTICE %', texto;
 END;
 $raiseTexto$;
+
+----------------------------------------------------------------------------------------
+
+CREATE OR REPLACE PROCEDURE ajuda()
+LANGUAGE plpgsql
+AS $ajuda$
+BEGIN
+    RAISE NOTICE 'MENU AJUDA';
+END;
+$ajuda$;

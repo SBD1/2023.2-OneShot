@@ -162,8 +162,33 @@ def execute_sql_file(cur, file_path):
         sql = f.read()
     cur.execute(sql)
 
+def help():
+    typewriter(Fore.WHITE+"Principais Comandos:\n\n")
+    typewriter(Fore.CYAN+"ir para 'Direção'"+Style.RESET_ALL+" - Move Niko para região que está ao Norte, Sul, Leste ou Oeste\n")
+    typewriter(Fore.MAGENTA+"viagem rapida"+Style.RESET_ALL+" - Exibe as regiões que Niko pode viajar\n")
+    typewriter(Fore.BLUE+"viajar para 'região'"+Style.RESET_ALL+" - Viaja para uma região\n")
+    typewriter(Fore.YELLOW+"entrar em 'Estrutura'"+Style.RESET_ALL+" - Move Niko para dentro de uma estrutura\n")
+    typewriter(Fore.GREEN+"sair"+Style.RESET_ALL+" - Move Niko para fora de uma estrutura\n")
+    typewriter(Fore.RED+"pegar 'Item'"+Style.RESET_ALL+" - Pega um item do chão\n")
+    typewriter(Fore.WHITE+"abrir inventário"+Style.RESET_ALL+" - Abre o inventário\n")
+    typewriter(Fore.CYAN+"fechar inventário"+Style.RESET_ALL+" - Fecha o inventário\n")
+    typewriter(Fore.MAGENTA+"combinar 'Item' com 'Item'"+Style.RESET_ALL+" - Combina dois itens do inventário\n")
+    typewriter(Fore.BLUE+"conversar com 'npc'"+Style.RESET_ALL+" - Conversa com um npc\n")
+    typewriter(Fore.YELLOW+"interagir com 'Objeto'"+Style.RESET_ALL+" - Interage com um objeto\n")
+    typewriter(Fore.GREEN+"interagir com 'Objeto' utilizando 'item'"+Style.RESET_ALL+" - Interage com um objeto Utilizando um item\n")
+    typewriter(Fore.RED+"passar pela 'Conexão'"+Style.RESET_ALL+" - Passa pela conexão\n")
+    typewriter(Fore.WHITE+"olhar em volta"+Style.RESET_ALL+" - Olha em volta\n")
+    typewriter(Fore.CYAN+"ajuda"+Style.RESET_ALL+" - Exibe os comandos\n")
+    typewriter(Fore.BLUE+" "+Style.RESET_ALL+" - Ao não digitar nada e apenas dar enter, Se algum dos menus de inventario ou viagem rapida estiverem abertos, eles serão fechados\n")
+    typewriter(Fore.YELLOW+"exit"+Style.RESET_ALL+" - Sai do jogo\n\n")
+
+    typewriter("\n\nPressione enter para continuar...")
+    input()
+    clear()
+
 def game_intro(pname):
     headline("Bem-vindo ao jogo OneShot")
     typewriter("\n\nPressione enter para inicar o jogo...")
     input()
     clear()
+    help()

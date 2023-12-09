@@ -86,7 +86,8 @@ def dialogue_choice_handler(conn, result):
                 clear()
                 typewriter("Opção inválida. Por favor, escolha uma opção válida.")
                 input("\n\nPressione ENTER para continuar...")
-        dialogue_handler(conn, next_dialogue)
+        if next_dialogue is not None:
+            dialogue_handler(conn, next_dialogue)
     else:
         while True:
             clear()
@@ -114,4 +115,5 @@ def dialogue_choice_handler(conn, result):
                 input("\n\nPressione ENTER para continuar...")
                 continue
             break
-        dialogue_handler(conn, next_dialogue)
+        if next_dialogue is not None:
+            dialogue_handler(conn, next_dialogue)

@@ -66,6 +66,8 @@ with closing(psycopg2.connect(database="study", user="postgres", password="2605"
                 elif 'NOTICE:  NOTICE' in notice:
                     notice = notice.replace('NOTICE:  NOTICE ', '')
                     notice_handler(conn, notice)
+                elif 'MENU AJUDA' in notice:
+                    help()
             conn.notices.clear()
 
             if prevcomando == 'abrir inventario' and comando.startswith('combinar'):
