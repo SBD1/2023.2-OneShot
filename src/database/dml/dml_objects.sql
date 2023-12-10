@@ -43,8 +43,6 @@ UPDATE Room SET BlockedBy = 12 WHERE RoomId = 4;
 INSERT INTO Object (ObjectName, ObjectDescription , DescriptionOnInteract, ObjectLocationId, EventId,ActivationItem)
 VALUES ('Moldura','Uma moldura antiga no formato de lampada ?','A lâmpada encaixa perfeitamente na moldura', 3, 10, 9);
 
-------------------------------------------------------------------------------------------------
-
 INSERT INTO Object (ObjectName, ObjectDescription , DescriptionOnInteract, ObjectLocationId, EventId,ActivationItem)
 VALUES ('Caixa','Essa caixa parece interessante! Gostaria de ter alguma coisa para abri-la...','Há um cubo pequeno de metal e um vidro quebrado aqui... Parece ser alguma peça de máquina. Está escrito “Bateria solar” na lateral."', 8, 13, 19);
 
@@ -101,4 +99,3 @@ VALUES ('Robo', 'Aguente firme...','Ola ?' ,26);
 
 INSERT INTO Object (ObjectName, ObjectDescription , DescriptionOnInteract, EventId, ActivationItem)
 VALUES ('Remobô', 'Aguente firme...','...' ,27, 18);
-

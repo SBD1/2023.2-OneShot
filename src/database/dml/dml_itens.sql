@@ -1,4 +1,3 @@
-
 INSERT INTO ItemMaterial(ItemName, ItemDescription,ItemLocationId)
 VALUES ('Controle da televisão', 'É muito difícil ler no escuro.', 1);
 

@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS ChatEvent(
     EventId INT PRIMARY KEY REFERENCES Event(EventId),
     IsUnique BOOLEAN DEFAULT FALSE,
     AlreadyFired BOOLEAN DEFAULT FALSE,
-    Command VARCHAR(250) NOT NULL
+    Command VARCHAR(700) NOT NULL
 );
 ```
 **<a>Tabela de Eventos de Interação</a>**
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS InteractEvent(
     EventId INT PRIMARY KEY REFERENCES Event(EventId),
     AlreadyFired BOOLEAN DEFAULT FALSE,
     ConsumesItem BOOLEAN DEFAULT TRUE,
-    Command VARCHAR(250) NOT NULL
+    Command VARCHAR(700) NOT NULL
 );
 ```
 **<a>Tabela de Eventos de Sala</a>**
@@ -41,25 +41,26 @@ CREATE TABLE IF NOT EXISTS InteractEvent(
 CREATE TABLE IF NOT EXISTS RoomEvent(
     EventId INT PRIMARY KEY REFERENCES Event(EventId),
     AlreadyFired BOOLEAN DEFAULT FALSE,
-    Command VARCHAR(250) NOT NULL
+    Command VARCHAR(700) NOT NULL
 );
 ```
 **<a>Tabela de Fases</a>**
 ```sql
 CREATE TABLE IF NOT EXISTS Phase(
     PhaseId SERIAL PRIMARY KEY,
-    PhaseName VARCHAR(20) NOT NULL,
-    PhaseDescription VARCHAR(100) NOT NULL
+    PhaseName VARCHAR(150) NOT NULL,
+    PhaseDescription VARCHAR(250) NOT NULL
 );
 ```
 **<a>Tabela de Regiões</a>**
 ```sql
 CREATE TABLE IF NOT EXISTS Region(
     RegionId SERIAL PRIMARY KEY,
-    RegionName VARCHAR(20) UNIQUE NOT NULL,
+    RegionName VARCHAR(150) UNIQUE NOT NULL,
     RegionDescription VARCHAR(250) NOT NULL,
     PhaseId INT NOT NULL REFERENCES Phase(PhaseId),
-    IsVisited BOOLEAN DEFAULT FALSE
+    isVisited BOOLEAN DEFAULT FALSE,
+    WhyisBlocked VARCHAR(150)
 );
 ```
 **<a>Tabela de Geografias</a>**
@@ -76,7 +77,7 @@ CREATE TABLE IF NOT EXISTS RegionGeo(
 ```sql
 CREATE TABLE IF NOT EXISTS Structure(
     StructureId SERIAL PRIMARY KEY,
-    StructureName VARCHAR(20) UNIQUE NOT NULL,
+    StructureName VARCHAR(150) NOT NULL UNIQUE,
     StructureDescription VARCHAR(150) NOT NULL,
     RegionId INT NOT NULL REFERENCES Region(RegionId)
 );
@@ -85,7 +86,7 @@ CREATE TABLE IF NOT EXISTS Structure(
 ```sql
 CREATE TABLE IF NOT EXISTS Room(
     RoomId SERIAL PRIMARY KEY,
-    RoomName VARCHAR(20) UNIQUE NOT NULL,
+    RoomName VARCHAR(150) NOT NULL,
     RoomDescription VARCHAR(250) NOT NULL,
     IsVisited BOOLEAN DEFAULT FALSE,
     StructureId INT NOT NULL REFERENCES Structure(StructureId),
@@ -94,11 +95,13 @@ CREATE TABLE IF NOT EXISTS Room(
 ```
 **<a>Tabela de Conexões</a>**
 ```sql
-CREATE TABLE IF NOT EXISTS Connection(
-    ConnectionId SERIAL PRIMARY KEY,
-    ConnectionName VARCHAR(20) NOT NULL,
-    Room1Id INT NOT NULL REFERENCES Room(RoomId),
-    Room2Id INT NOT NULL REFERENCES Room(RoomId)
+CREATE TABLE IF NOT EXISTS Room(
+    RoomId SERIAL PRIMARY KEY,
+    RoomName VARCHAR(150) NOT NULL,
+    RoomDescription VARCHAR(250) NOT NULL,
+    IsVisited BOOLEAN DEFAULT FALSE,
+    StructureId INT NOT NULL REFERENCES Structure(StructureId),
+    EventId INT REFERENCES Event(EventId)
 );
 ```
 **<a>Tabela de Localizações</a>**
@@ -113,38 +116,38 @@ CREATE TABLE IF NOT EXISTS Location(
 ```sql
 CREATE TABLE IF NOT EXISTS Object(
     ObjectId SERIAL PRIMARY KEY,
-    ObjectName VARCHAR(20) NOT NULL,
-    ObjectDescription VARCHAR(20) NOT NULL,
+    ObjectName VARCHAR(150) NOT NULL,
+    ObjectDescription VARCHAR(250) NOT NULL,
     Locks BOOLEAN DEFAULT FALSE,
-    DescriptionOnInteract VARCHAR(20) NOT NULL,
+    DescriptionOnInteract VARCHAR(250) NOT NULL,
     ObjectLocationId INT REFERENCES Location(LocationId),
-    EventId INT REFERENCES Event(EventId) 
+    EventId INT REFERENCES Event(EventId)
 );
 ```
 **<a>Tabela de Personagens</a>**
 ```sql
 CREATE TABLE IF NOT EXISTS Character(
     CharacterId SERIAL PRIMARY KEY,
-    CharacterType VARCHAR(10) NOT NULL
+    CharacterType VARCHAR(150) NOT NULL
 );
 ```
 **<a>Tabela de NPC</a>**
 ```sql
 CREATE TABLE IF NOT EXISTS NPC(
     CharacterId INT PRIMARY KEY REFERENCES Character(CharacterId),
-    NpcName VARCHAR(20) UNIQUE NOT NULL,
+    NpcName VARCHAR(150) UNIQUE NOT NULL,
     NpcDescription VARCHAR(150) NOT NULL,
     IsWordMachine BOOLEAN DEFAULT FALSE,
     IsGod BOOLEAN DEFAULT FALSE,
     NpcLocationId INT REFERENCES Location(LocationId),
-    EventId INT NOT NULL REFERENCES Event(EventId)
+    EventId INT REFERENCES Event(EventId)
 );
 ```
 **<a>Tabela de PC</a>**
 ```sql
 CREATE TABLE IF NOT EXISTS PC(
     CharacterId INT PRIMARY KEY REFERENCES Character(CharacterId),
-    PcName VARCHAR(4) DEFAULT 'NIKO' UNIQUE NOT NULL,
+    PcName VARCHAR(4) DEFAULT 'NIKO',
     KnowsGod BOOLEAN DEFAULT FALSE,
     PcLocationId INT REFERENCES Location(LocationId)
 );
@@ -168,7 +171,7 @@ CREATE TABLE IF NOT EXISTS Item(
 ```sql
 CREATE TABLE IF NOT EXISTS ItemMaterial(
     ItemId INT PRIMARY KEY REFERENCES Item(ItemId),
-    ItemName VARCHAR(20) UNIQUE NOT NULL,
+    ItemName VARCHAR(150) UNIQUE NOT NULL,
     ItemDescription VARCHAR(150) UNIQUE NOT NULL,
     ItemLocationId INT REFERENCES Location(LocationId)
 );
@@ -177,7 +180,7 @@ CREATE TABLE IF NOT EXISTS ItemMaterial(
 ```sql
 CREATE TABLE IF NOT EXISTS ItemEquipment(
     ItemId INT PRIMARY KEY REFERENCES Item(ItemId),
-    ItemName VARCHAR(20) UNIQUE NOT NULL,
+    ItemName VARCHAR(150) UNIQUE NOT NULL,
     ItemDescription VARCHAR(150) UNIQUE NOT NULL,
     ItemLocationId INT REFERENCES Location(LocationId)
 );
@@ -208,7 +211,8 @@ CREATE TABLE IF NOT EXISTS Dialogue(
     DialogueText VARCHAR(250) NOT NULL,
     CharacterId INT NOT NULL REFERENCES Character(CharacterId),
     NextDialogue INT REFERENCES Dialogue(DialogueId),
-    HaveChoice BOOLEAN NOT NULL
+    HaveChoice BOOLEAN NOT NULL DEFAULT FALSE,
+    AllChoices BOOLEAN NOT NULL DEFAULT FALSE
 );
 ```
 **<a>Tabela de Escolhas de Diálogos</a>**
@@ -216,6 +220,7 @@ CREATE TABLE IF NOT EXISTS Dialogue(
 CREATE TABLE IF NOT EXISTS DialogueChoice(
     DialogueId INT REFERENCES Dialogue(DialogueId),
     ChoiceId SERIAL,
+    Choice VARCHAR(50) NOT NULL,
     NextDialogue INT REFERENCES Dialogue(DialogueId),
     PRIMARY KEY (DialogueId, ChoiceId)
 );
@@ -254,9 +259,10 @@ ALTER TABLE Object ADD ActivationItem INT REFERENCES Item(ItemId);
 ## <a>Histórico de Versão</a>
 <center>
 
-|   Data   | Versão |      Descrição       |                   Autor                    |
-| :------: | :----: | :------------------: | :----------------------------------------: |
-| 25/11/23 |  1.0   | Criação do documento | [João Lucas](https://github.com/HacKairos) |
+|   Data   | Versão |        Descrição         |                   Autor                    |
+| :------: | :----: | :----------------------: | :----------------------------------------: |
+| 25/11/23 |  1.0   |   Criação do documento   | [João Lucas](https://github.com/HacKairos) |
+| 10/12/23 |  2.0   | Atualização do documento | [João Lucas](https://github.com/HacKairos) |
 
 </center>
 

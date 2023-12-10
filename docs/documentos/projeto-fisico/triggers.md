@@ -190,6 +190,80 @@ BEFORE INSERT ON RoomEvent
 FOR EACH ROW EXECUTE PROCEDURE e_roommanager();
 ```
 
+
+**<a>Ao entrar em um quarto verifica se tem e gera o evento</a>**
+```sql
+CREATE OR REPLACE FUNCTION roomEventTrigger() RETURNS TRIGGER AS $roomEventTrigger$
+DECLARE
+    Idquarto INT;
+    Idevento INT;
+BEGIN
+    SELECT RoomId INTO Idquarto FROM location WHERE locationId = NEW.PcLocationId;
+    IF Idquarto IS NOT NULL THEN
+        SELECT EventId INTO Idevento FROM Room WHERE RoomId = Idquarto;
+        IF Idevento IS NOT NULL THEN
+            CALL eventScheduler(Idevento);
+        END IF;
+    END IF;
+
+
+    RETURN NEW;
+END;
+$roomEventTrigger$ LANGUAGE plpgsql;
+
+CREATE TRIGGER roomEventTrigger
+AFTER UPDATE ON PC
+FOR EACH ROW EXECUTE PROCEDURE roomEventTrigger();
+```
+
+
+**<a>Garante uma localização correta</a>**
+```sql
+CREATE OR REPLACE FUNCTION location_checker() RETURNS TRIGGER AS $location_checker$
+BEGIN
+    IF NEW.PcLocationId IS NOT NULL THEN
+        IF EXISTS (SELECT 1 FROM Location WHERE LocationId = NEW.PcLocationId) THEN
+            RETURN NEW;
+        ELSE
+            RAISE EXCEPTION 'Localização não existe';
+        END IF;
+    ELSE
+        RAISE EXCEPTION 'Localização não existe';
+    END IF;
+END;
+$location_checker$ LANGUAGE plpgsql;
+
+CREATE TRIGGER location_checker
+BEFORE UPDATE OR INSERT ON PC
+FOR EACH ROW EXECUTE PROCEDURE location_checker();
+```
+
+**<a>Garante a inserção correta na de regiões Visitadas</a>**
+```sql
+CREATE OR REPLACE FUNCTION visitedregion() RETURNS TRIGGER AS $visitedregion$
+DECLARE
+    idRegiao INT;
+    idroom INT;
+BEGIN
+    IF NEW.PcLocationId IS NOT NULL THEN
+        SELECT RegionId, RoomId INTO idRegiao, idroom FROM Location WHERE LocationId = NEW.PcLocationId;
+        IF idRegiao IS NOT NULL AND idroom IS NULL THEN
+            IF (SELECT IsVisited FROM Region WHERE RegionId = idRegiao) = FALSE THEN
+                INSERT INTO VisitedRegion (CharacterId, RegionId) VALUES (NEW.CharacterId, idRegiao);
+                UPDATE Region SET IsVisited = TRUE WHERE RegionId = idRegiao;
+            END IF;
+        END IF;
+    END IF;
+    RETURN NEW;
+END;
+$visitedregion$ LANGUAGE plpgsql;
+
+CREATE TRIGGER visitedregion
+AFTER UPDATE ON PC
+FOR EACH ROW EXECUTE PROCEDURE visitedregion();
+```
+
+
 **<a>Realiza o controle do jogo</a>**
 ```SQL
 CREATE OR REPLACE FUNCTION comandsManager() RETURNS TRIGGER AS $comandsManager$
@@ -227,9 +301,10 @@ FOR EACH ROW EXECUTE PROCEDURE comandsManager();
 ## <a>Histórico de Versão</a>
 <center>
 
-|   Data   | Versão |      Descrição       |                   Autor                    |
-| :------: | :----: | :------------------: | :----------------------------------------: |
-| 25/11/23 |  1.0   | Criação do documento | [João Lucas](https://github.com/HacKairos) |
+|   Data   | Versão |        Descrição         |                   Autor                    |
+| :------: | :----: | :----------------------: | :----------------------------------------: |
+| 25/11/23 |  1.0   |   Criação do documento   | [João Lucas](https://github.com/HacKairos) |
+| 10/12/23 |  2.0   | Atualização do documento | [João Lucas](https://github.com/HacKairos) |
 
 </center>
 

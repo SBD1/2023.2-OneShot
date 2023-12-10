@@ -27,7 +27,6 @@ CREATE TABLE IF NOT EXISTS RoomEvent(
     Command VARCHAR(700) NOT NULL
 );
 
-
 -- Tabela de Fases
 CREATE TABLE IF NOT EXISTS Phase(
     PhaseId SERIAL PRIMARY KEY,

@@ -1,4 +1,3 @@
-------------------A CASA ESTRANHA------------------
 INSERT INTO Phase (PhaseName, PhaseDescription)
 VALUES ('Casa Estranha','Tuturial');
 
@@ -44,8 +43,6 @@ VALUES (1,4);
 INSERT INTO Connection (ConnectionName, Room1Id, Room2Id)
 VALUES ('Porta do porão', 3, 4);
 
-------------------Terras Áridas ------------------
---Regiões
 INSERT INTO Phase (PhaseName, PhaseDescription)
 VALUES ('Terras Áridas','As Terras Áridas é o primeiro grande local em que Niko e o jogador chegam. É uma terra desolada cheia de múltiplos abismos, máquinas arruinadas e fábricas abandonadas. Muitos camarões de fósforo existem nesta área.');
 
@@ -103,15 +100,12 @@ VALUES ('Docas','Vejo algumas docas mas apenas uma esta ocupada.', 2);
 INSERT INTO RegionGeo (North, South, East, West)
 VALUES (9, 2, NULL, NULL);
 
---Estruturas e seus comodos
---Região 2
 INSERT INTO Structure (StructureName,StructureDescription, RegionId)
 VALUES ('Servidor abandonado','do servidor abandonado', 2);
 
 INSERT INTO Room(RoomName, RoomDescription, StructureId, eventId)
 VALUES ('Sala de terminais', 'Vejo o que sobrou de alguns computadores.', 2, 11);
 
---Região 3
 INSERT INTO Structure (StructureName,StructureDescription, RegionId)
 VALUES ('Posto Avançado','do posto avançado', 3);
 
@@ -136,24 +130,18 @@ VALUES ('2º andar', 'Vejo algumas esteiras, algumas prensas hidráulicas deslig
 INSERT INTO Connection (ConnectionName, Room1Id, Room2Id)
 VALUES ('Escada', 8, 9);
 
---Região 4
---Sem estruturas
-
---Região 5
 INSERT INTO Structure (StructureName,StructureDescription, RegionId)
 VALUES ('Cabine de Observação','da cabine de observação', 5);
 
 INSERT INTO Room(RoomName, RoomDescription, StructureId, eventId)
 VALUES ('Interior', 'Vejo algumas estantes,uma cama e um tabuleiro de xadres, acho que a Silver mora aqui.', 5, 22);
 
---Região 6
 INSERT INTO Structure (StructureName,StructureDescription, RegionId)
 VALUES ('Mina','da Mina', 6);
 
 INSERT INTO Room(RoomName, RoomDescription, StructureId)
 VALUES ('Interior', 'Vejo alguns trilhos, mas não sei para onde levam, a mina parece perigosa.', 6);
 
---Região 7
 INSERT INTO Structure (StructureName,StructureDescription, RegionId)
 VALUES ('Antiga Fábrica','da antiga fábrica', 7);
 
@@ -166,7 +154,6 @@ VALUES ('2º andar', 'Vejo varios robôs desligados e mais esteiras.', 7);
 INSERT INTO Connection (ConnectionName, Room1Id, Room2Id)
 VALUES ('Escada', 12, 13);
 
---Região 8
 INSERT INTO Structure (StructureName,StructureDescription, RegionId)
 VALUES ('Dormitório Principal','do dormitório principal', 8);
 
@@ -209,18 +196,12 @@ VALUES ('Servidor dos dormitórios','do servidor dos dormitórios', 8);
 INSERT INTO Room(RoomName, RoomDescription, StructureId)
 VALUES ('Sala de terminais', 'Vejo o que sobrou de alguns computadores.', 14);
 
---Região 9
---Sem estruturas
-
--- Região 10
 INSERT INTO Structure (StructureName,StructureDescription, RegionId)
 VALUES ('Servidor das docas','do servidor das docas', 10);
 
 INSERT INTO Room(RoomName, RoomDescription, StructureId)
 VALUES ('Sala de terminais', 'Vejo o que sobrou de alguns computadores.', 15);
 
-
---Localizações
 INSERT INTO Location(RegionId)
 VALUES (2);
 
@@ -298,4 +279,3 @@ VALUES (10);
 
 INSERT INTO Location(RegionId, RoomId)
 VALUES (10,21);
-

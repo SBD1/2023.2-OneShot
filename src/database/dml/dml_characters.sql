@@ -15,4 +15,3 @@ VALUES (0, 'Silver', 'A engenheira-chefe das Terras Áridas, uma robô um tanto 
 
 INSERT INTO NPC(CharacterId, NpcName, NpcDescription, NpcLocationId)
 VALUES (0, 'Remobô', 'Um pequeno robô preso a um barco a remo, enferrujado pela névoa do oceano.',NULL);
-

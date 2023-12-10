@@ -34,12 +34,8 @@ VALUES ('Você me encontrou.', 3 , 10);
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('...', 3 , 11);
 
-----------------------------------------------------------------------------SALA
-
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('Olááá? . . .  alguém', 1 , NULL);
-
-----------------------------------------------------------------------------------------MUNDO
 
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('Ooo...', 1, NULL);
@@ -76,9 +72,6 @@ VALUES ('Não consigo ver muito além, está tão escuro...', 1, 23);
 
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('Não sei exatamente onde estou...', 1, 24);
-
-
-----------------------------------------------------------------------------------------LAMPADA
 
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('Ah...', 1, NULL);
@@ -137,8 +130,6 @@ VALUES ('[Em Suas Mãos Está Nosso Novo Sol.]', 4 ,42);
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('Eu a encontrei na casa onde eu acordei...', 1, 43);
 
-----------------------------------------------------------------------------------------CASA
-
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('Ah...', 1, NULL);
 
@@ -177,8 +168,6 @@ VALUES ('Desculpe a grosseria, mas eu...', 1, 55);
 
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('Ah...', 1, 56);
-
-----------------------------------------------------------------------------------------COMPUTADOR
 
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('[Não Hesite em Pedir Ajuda a @user@... Afinal, Você É o Messias.]', 4 ,NULL);
@@ -260,8 +249,6 @@ VALUES ('Ele falou coisas do tipo “Suas ações aqui afetarão Niko.”', 1, 8
 
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('Encontrei um... computador naquela casa.', 1, 83);
-
-----------------------------------------------------------------------------PROFETA
 
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('[Excelente, se tiver mais alguma duvida estarei a leste no Posto Avançado  ... Boa Sorte.]', 4 ,NULL);
@@ -347,9 +334,6 @@ VALUES ('[A Lâmpada...! Você Chegou!]', 4 ,106);
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('[Ah!]', 4 , 107);
 
-
-----------------------------------------------------------------------------------------DefaultProfeta
-
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('Entendo...', 1, NULL);
 
@@ -389,7 +373,6 @@ VALUES ('[É Por Isso que Esse Lugar se Chama “Terras Áridas”.]', 4, 119);
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('Aqui é tão... vazio...', 4, 120);
 
------------------------------------------------
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('entendo ...', 1, NULL);
 
@@ -438,7 +421,6 @@ VALUES ('[O Profeta Previu que um Messias Chegará de Outras Terras.]',4, 135);
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('Então... O que exatamente é essa profecia?',1, 136);
 
---------------------------------------------
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('Ahm... Entendo.', 1, NULL);
 
@@ -456,7 +438,6 @@ VALUES ('Nem consigo ver o topo dela...', 1, 141);
 
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('Essa torre é muito alta?', 1, 142);
----------------------------------------------
 
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue, HaveChoice)
 VALUES ('Pode me falar sobre...', 1, NULL, TRUE);
@@ -475,16 +456,12 @@ VALUES ('[Prossiga, Pode Perguntar.]', 4, 144);
 
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('isso!', 1, 145);
-----------sim
-
 
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('[Sendo Assim, Desejo-lhe uma Boa Viagem.]', 4, NULL);
 
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('Tudo bem, valeu.', 1, 147);
-----------nao
-
 
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue, HaveChoice)
 VALUES ('[Gostaria de Fazer Mais Alguma Pergunta?]', 4, NULL, TRUE);
@@ -495,11 +472,8 @@ VALUES ( 149,'SIM', 146);
 INSERT INTO DialogueChoice(DialogueId, Choice, NextDialogue)
 VALUES ( 149,'Não', 148);
 
-
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('[Olá Novamente.]', 4, 149);
-
-----------------------------------------------SILVER FIRST INTERACTION
 
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('[No entanto, não conte com isso.]', 5 , NULL);
@@ -594,9 +568,6 @@ VALUES ('[Então, você é o “messias”?]', 5 , 179);
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('[A lâmpada...]', 5 , 180);
 
-
----------------------------------------------------Silver first chat
-
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('[Ele nunca me disse nada sobre isso.]', 5 , NULL );
 
@@ -627,15 +598,11 @@ VALUES ('[Não sei. Ninguém nunca entrou nela.]', 5 , 189 );
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('O que há dentro da Torre?', 1 , 190 );
 
-------------------------------------------------defaul silver
-
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('Não, tudo bem, valeu!', 1, NULL);
 
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('[Precisa de mais alguma ajuda?]', 5 , 192);
-
--------------------------------------------------ENTRADA MINA
 
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('Ah, que bom!', 1 , NULL );
@@ -651,8 +618,6 @@ VALUES ('[Eu vi você vindo para cá.]', 5 , 196 );
 
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('[Espere!]', 5 , 197 );
-
------------------------------------------------------------Entidade
 
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('Agora, encontre-o.', 3 , NULL);
@@ -683,8 +648,6 @@ VALUES ('Mas esse avanço termina aqui.', 3 , 206);
 
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('Vejo que está progredindo nesse mundo, @user@.', 3 , 207);
-
---------------------------------------------------------------------------REMOBO
 
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('Aguente firme... @user@ e eu vamos encontrar uma forma de ajudar você!', 1 , NULL );
@@ -724,8 +687,6 @@ VALUES ('[FOI VOCÊ QUE CONSERTOU O GERADOR?]', 6 , 219 );
 
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('[ESTOU FUNCIONANDO!]', 6 , 220 );
-
-------------------------------------------------------------------------------------REMOBO
 
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('[ELA SABERÁ O QUE FAZER.]', 6 , NULL );
@@ -787,10 +748,6 @@ VALUES ('[NÃO TENHO OUTRA OPÇÃO.]', 6 , 239 );
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('Certo... paradinho...', 1 , 240 );
 
-
-
-----------------------------------REMOBO DEFAULT1
-
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('[PODERIA ATÉ LHE INFORMAR AS COORDENADAS, MAS...]', 6 , NULL );
 
@@ -799,8 +756,6 @@ VALUES ('[ELA MORA PERTO DA ENTRADA DA MINA.]', 6 , 242 );
 
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('[JÁ CONVERSOU COM A ENGENHEIRA-CHEFE?]', 6 , 243 );
-
----Silver
 
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('Ah, valeu!', 1 , NULL );
@@ -873,8 +828,6 @@ VALUES ('Encontrei um robô que pode me levar até a Torre!', 1 , 266 );
 
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('Com licença de novo, senhorita...', 1 , 267 );
-
---XADRES
 
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('Ah, você também!', 1 , NULL );
@@ -1029,16 +982,11 @@ VALUES ('[Na verdade...]', 5 , 317 );
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('Antes de partir... Posso ajudar de alguma maneira?', 1 , 318 );
 
---Ndft
-
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('[Não há nenhum motivo para você ficar nas Terras Áridas.]', 5 , NULL);
 
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('[Pode sair...]', 5 , 320);
-
-
---lastRemobo
 
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('[CAPACIDADE DENTRO DOS CONFORMES. SEGUINDO VIAGEM.]', 6 , NULL );
@@ -1046,34 +994,26 @@ VALUES ('[CAPACIDADE DENTRO DOS CONFORMES. SEGUINDO VIAGEM.]', 6 , NULL );
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('Ah. Bom... Acho que não vou precisar mais do pé de cabra... Nem dessa máscara de gás, nem das luvas...', 1 , 322 );
 
-
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('[VOCÊ PRECISARÁ DEIXAR ALGO PARA TRÁS.]', 6 , 323 );
-
 
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('[AGUARDE. CAPACIDADE DO BARCO EXCEDIDA.]', 6 , 324 );
 
-
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('[CONFIGURANDO TRAJETO...]', 6 , 325 );
-
 
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('[ATIVANDO SISTEMA DE RASTREAMENTO...]', 6 , 326 );
 
-
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('[AGORA ME LEMBRO!]', 6 , 327 );
-
 
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('[É UM ÂMBAR DO VALE.]', 6 , 328 );
 
-
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('[AH!]', 6 , 329 );
-
 
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('[...]', 6 , 330 );
