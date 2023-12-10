@@ -954,7 +954,7 @@
     RegionName VARCHAR(20) UNIQUE NOT NULL,
     RegionDescription VARCHAR(250) NOT NULL,
     PhaseId INT NOT NULL REFERENCES Phase(PhaseId),
-    isVisited BOOLEAN DEFAULT FALSE
+    IsVisited BOOLEAN DEFAULT FALSE
 );
 </code></pre>
 <p><strong><a>Tabela de Geografias</a></strong></p>
@@ -970,7 +970,7 @@
 <pre><code class="language-sql">CREATE TABLE IF NOT EXISTS Structure(
     StructureId SERIAL PRIMARY KEY,
     StructureName VARCHAR(20) UNIQUE NOT NULL,
-    StructureDescription VARCHAR(50) NOT NULL,
+    StructureDescription VARCHAR(150) NOT NULL,
     RegionId INT NOT NULL REFERENCES Region(RegionId)
 );
 </code></pre>
@@ -1020,7 +1020,7 @@
 <pre><code class="language-sql">CREATE TABLE IF NOT EXISTS NPC(
     CharacterId INT PRIMARY KEY REFERENCES Character(CharacterId),
     NpcName VARCHAR(20) UNIQUE NOT NULL,
-    NpcDescription VARCHAR(50) NOT NULL,
+    NpcDescription VARCHAR(150) NOT NULL,
     IsWordMachine BOOLEAN DEFAULT FALSE,
     IsGod BOOLEAN DEFAULT FALSE,
     NpcLocationId INT REFERENCES Location(LocationId),
@@ -1052,7 +1052,7 @@
 <pre><code class="language-sql">CREATE TABLE IF NOT EXISTS ItemMaterial(
     ItemId INT PRIMARY KEY REFERENCES Item(ItemId),
     ItemName VARCHAR(20) UNIQUE NOT NULL,
-    ItemDescription VARCHAR(50) UNIQUE NOT NULL,
+    ItemDescription VARCHAR(150) UNIQUE NOT NULL,
     ItemLocationId INT REFERENCES Location(LocationId)
 );
 </code></pre>
@@ -1060,7 +1060,7 @@
 <pre><code class="language-sql">CREATE TABLE IF NOT EXISTS ItemEquipment(
     ItemId INT PRIMARY KEY REFERENCES Item(ItemId),
     ItemName VARCHAR(20) UNIQUE NOT NULL,
-    ItemDescription VARCHAR(50) UNIQUE NOT NULL,
+    ItemDescription VARCHAR(150) UNIQUE NOT NULL,
     ItemLocationId INT REFERENCES Location(LocationId)
 );
 </code></pre>
@@ -1101,7 +1101,7 @@
 <p><strong><a>Tabela de Comandos</a></strong></p>
 <pre><code class="language-sql">CREATE TABLE IF NOT EXISTS Command(
     FunctionId SERIAL PRIMARY KEY,
-    CommandFunction VARCHAR(50) NOT NULL,
+    CommandFunction VARCHAR(150) NOT NULL,
     PcId INT REFERENCES PC(CharacterId)
 );
 </code></pre>
