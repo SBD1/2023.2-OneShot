@@ -263,7 +263,7 @@ BEGIN
         CALL olhar();
     ELSIF NEW.CommandFunction LIKE 'ajuda' THEN
         CALL ajuda();
-    ELSIF NEW.CommandFunction LIKE 'abrir inventário' THEN
+    ELSIF NEW.CommandFunction LIKE 'abrir inventario' THEN
         RETURN NEW;
     ELSIF NEW.CommandFunction LIKE 'fechar inventario' THEN
         RETURN NEW;

@@ -196,7 +196,7 @@ LANGUAGE plpgsql
 AS $eventScheduler$
 DECLARE
     evento_tipo VARCHAR(150);
-    efeito VARCHAR(450);
+    efeito VARCHAR(700);
 BEGIN
     SELECT EventType INTO evento_tipo FROM Event E WHERE E.EventId = event_id;
     IF evento_tipo = 'Chat' THEN
@@ -327,6 +327,9 @@ BEGIN
     SELECT PcLocationId INTO localizacao_pc FROM PC WHERE CharacterId = 1;
     SELECT RegionId INTO regiao_id FROM Region WHERE LOWER(RegionName) = nome_regiao;
     SELECT LocationId INTO regiao_local FROM Location WHERE RegionId = regiao_id AND RoomId IS NULL;
+        IF EXISTS (SELECT 1 FROM Location WHERE LocationId = localizacao_pc AND RoomId IS NOT NULL) THEN
+        RAISE EXCEPTION 'Niko não consegue viajar de dentro de um estrutura';
+    END IF;
     IF regiao_id IS NULL OR NOT EXISTS (SELECT 1 FROM VisitedRegion WHERE RegionId = regiao_id AND CharacterId = 1) THEN
         RAISE EXCEPTION 'Niko não conhece %', INITCAP(nome_regiao);
     END IF;
@@ -423,3 +426,13 @@ BEGIN
     RAISE NOTICE 'MENU AJUDA';
 END;
 $ajuda$;
+
+-----------------------------------------------------------------------------------------
+
+CREATE OR REPLACE PROCEDURE fimdojogo()
+LANGUAGE plpgsql
+AS $fimdojogo$
+BEGIN
+    RAISE NOTICE 'GAME END';
+END
+$fimdojogo$;

@@ -1,9 +1,38 @@
-INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)VALUES ('[@user@ Saberá o que Fazer Quando Chegar a Hora.]', 4, NULL);
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[CAPACIDADE DENTRO DOS CONFORMES. SEGUINDO VIAGEM.]', 6 , NULL );
 
-INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)VALUES ('Mas... Como faço para chegar lá em cima?', 1, NULL);
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Ah. Bom... Acho que não vou precisar mais do pé de cabra... Nem dessa máscara de gás, nem das luvas...', 1 , NULL );
 
-INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)VALUES ('[Não Tenho Permissão para Responder Isso.]', 4, NULL);
 
-INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)VALUES ('Nem consigo ver o topo dela...', 1, NULL);
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[VOCÊ PRECISARÁ DEIXAR ALGO PARA TRÁS.]', 6 , NULL );
 
-INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)VALUES ('Essa torre é muito alta?', 1, NULL);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[AGUARDE. CAPACIDADE DO BARCO EXCEDIDA.]', 6 , NULL );
+
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[CONFIGURANDO TRAJETO...]', 6 , NULL );
+
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[ATIVANDO SISTEMA DE RASTREAMENTO...]', 6 , NULL );
+
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[AGORA ME LEMBRO!]', 6 , NULL );
+
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[É UM ÂMBAR DO VALE.]', 6 , NULL );
+
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[AH!]', 6 , NULL );
+
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[...]', 6 , NULL );
+

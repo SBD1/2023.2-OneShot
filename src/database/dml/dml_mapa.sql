@@ -143,8 +143,8 @@ VALUES ('Escada', 8, 9);
 INSERT INTO Structure (StructureName,StructureDescription, RegionId)
 VALUES ('Cabine de Observação','da cabine de observação', 5);
 
-INSERT INTO Room(RoomName, RoomDescription, StructureId)
-VALUES ('Interior', 'Vejo algumas estantes,uma cama e um tabuleiro de xadres, acho que a Silver mora aqui.', 5);
+INSERT INTO Room(RoomName, RoomDescription, StructureId, eventId)
+VALUES ('Interior', 'Vejo algumas estantes,uma cama e um tabuleiro de xadres, acho que a Silver mora aqui.', 5, 22);
 
 --Região 6
 INSERT INTO Structure (StructureName,StructureDescription, RegionId)

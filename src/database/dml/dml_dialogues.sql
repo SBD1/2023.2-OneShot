@@ -499,3 +499,581 @@ VALUES ( 149,'Não', 148);
 INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
 VALUES ('[Olá Novamente.]', 4, 149);
 
+----------------------------------------------SILVER FIRST INTERACTION
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[No entanto, não conte com isso.]', 5 , NULL);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Ah!', 1 , 151);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Talvez ela mande você de volta para casa quando concluir sua missão.]', 5 , 152);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[E quanto mais alto, mais forte ela é.]', 5 , 153);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Sabemos que a Torre tem um poder que ninguém compreende.]', 5 , 154);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Sim, no topo dela.]', 5 , 155);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('É onde preciso colocar a lâmp... ahm... o sol, não é?', 1 , 156);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Então você deve ir em direção à Torre.]', 5 , 157);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Ah, então você acabou de chegar aqui?]', 5 , 158);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('E não podemos apenas desistir...', 1 , 159);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Nós... não vimos muita coisa, na verdade...', 1 , 160);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Você viu como isso é ruim, não é?]', 5 , 161);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Essa decadência... duvido que o sol vá revertê-la.]', 5 , 162);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[O mundo está acabando há muito tempo.]', 5 , 163);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Para ser sincera, acho que você deveria apenas... deixar o mundo morrer naturalmente.]', 5 , 164);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Isso vai soar meio frio, mas...]', 5 , 165);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[... ah.]', 5 , 166);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Eu sei.]', 5 , 167);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Mas aquele robô tem certeza disso...', 1 , 168);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Uma criança como você ser o nosso Messias... não parece certo.]', 5 , 169);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Bem, enfim...]', 5 , 170);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Mas os gatos andam em quatro patas!', 1 , 171);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Você tem olhos de gato...]', 5 , 172);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Eu sou uma pessoa!', 1 , 173);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('N-não!', 1 , 174);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[É isso que você é, certo? Uma espécie de gato?]', 5 , 175);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Ou, pelo menos, alguém que não pareça um gatinho.]', 5 , 176);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Eu esperava alguém... mais alto.]', 5 , 177);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('É o que me disseram.', 1 , 178);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Então, você é o “messias”?]', 5 , 179);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[A lâmpada...]', 5 , 180);
+
+
+---------------------------------------------------Silver first chat
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Ele nunca me disse nada sobre isso.]', 5 , NULL );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('É?', 1 , 182 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[...]', 5 , 183 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Eu já conheci alguém que a quis estudar, mas...]', 5 , 184 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Pelo que sei, ela está lá desde o início dos tempos.]', 5 , 185 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Construiu?]', 5 , 186 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Então... quem a construiu?', 1 , 187 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Bem, é o que se sabe.]', 5 , 188 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Não sei. Ninguém nunca entrou nela.]', 5 , 189 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('O que há dentro da Torre?', 1 , 190 );
+
+------------------------------------------------defaul silver
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Não, tudo bem, valeu!', 1, NULL);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Precisa de mais alguma ajuda?]', 5 , 192);
+
+-------------------------------------------------ENTRADA MINA
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Ah, que bom!', 1 , NULL );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Se precisa entrar, é meu dever acompanhar você.]', 5 , 194 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Essas minas estão abandonadas há muito tempo, não posso garantir sua segurança.]', 5 , 195 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Eu vi você vindo para cá.]', 5 , 196 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Espere!]', 5 , 197 );
+
+-----------------------------------------------------------Entidade
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Agora, encontre-o.', 3 , NULL);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Eu consegui salvá-lo porque sei que Niko precisa dele para continuar sua missão.', 3 , 199);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Mas esse código, esse DOCUMENTO, é uma exceção.', 3 , 200);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('... na maioria das vezes, peças dispersas desse mundo se perdem por aí.', 3 , 201);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Você... ainda não entende o quanto esse mundo está deteriorado, não é, @user@?', 3 , 202);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Você entende o que quero dizer, @user@', 3 , 203);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Bem, o código não se encontra NESSE mundo.', 3 , 204);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Acredito que precise de um código para destrancar uma caixa.', 3 , 205);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Mas esse avanço termina aqui.', 3 , 206);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Vejo que está progredindo nesse mundo, @user@.', 3 , 207);
+
+--------------------------------------------------------------------------REMOBO
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Aguente firme... @user@ e eu vamos encontrar uma forma de ajudar você!', 1 , NULL );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[É VERDADE.]', 6 , 209 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Bom, você ainda está bem enferrujado...', 1 , 210 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[NÃO CONSIGO ME MEXER.]', 6 , 211 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Você... está bem?', 1 , 212 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[...]', 6 , 213 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[QUER QUE EU LEVE VOCÊ A ALGUM LUGAR?]', 6 , 214 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[EU SOU O REMOBÔ Nº 310.]', 6 , 215 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[OLÁ. PRAZER CONHECER VOCÊ.]', 6 , 216 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Mas sim!', 1 , 217 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Bom, @user@ me ajudou!', 1 , 218 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[FOI VOCÊ QUE CONSERTOU O GERADOR?]', 6 , 219 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[ESTOU FUNCIONANDO!]', 6 , 220 );
+
+------------------------------------------------------------------------------------REMOBO
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[ELA SABERÁ O QUE FAZER.]', 6 , NULL );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[EM CASO DE FALHA, É NECESSÁRIO FALAR COM A ENGENHEIRA-CHEFE.]', 6 , 222 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Posso ajudar de alguma maneira?', 1 , 223 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[REPITO: NÃO POSSO EXECUTAR MINHA PROGRAMAÇÃO]', 6 , 224 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[NADA BOM MESMO.]', 6 , 225 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Puxa... Não me parece nada bom.', 1 , 226 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[MEUS CIRCUITOS DE NAVEGAÇÃO SOFRERAM PANE.]', 6 , 227 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[O VALE, PORTO NÚMERO - ]', 6 , 228 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[O DESTINO MAIS PRÓXIMO À TORRE É...]', 6 , 229 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[CALCULANDO...]', 6 , 230 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Pode me levar até a Torre?', 1 , 231 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[AONDE DESEJA IR?]', 6 , 232 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[AGORA POSSO CUMPRIR MINHA MISSÃO NOVAMENTE.]', 6 , 233 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[OBRIGADO!]', 6 , 234 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[... CONSIGO ME MEXER NOVAMENTE.]', 6 , 235 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[... EU...]', 6 , 236 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('E aí?', 1 , 237 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Pronto!', 1 , 238 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[NÃO TENHO OUTRA OPÇÃO.]', 6 , 239 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Certo... paradinho...', 1 , 240 );
+
+
+
+----------------------------------REMOBO DEFAULT1
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[PODERIA ATÉ LHE INFORMAR AS COORDENADAS, MAS...]', 6 , NULL );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[ELA MORA PERTO DA ENTRADA DA MINA.]', 6 , 242 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[JÁ CONVERSOU COM A ENGENHEIRA-CHEFE?]', 6 , 243 );
+
+---Silver
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Ah, valeu!', 1 , NULL );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Pegue.]', 5 , 245 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Você precisa terminar sua missão mais do que preciso de uma recordação.]', 5 , 246 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Deixe para lá.]', 5 , 247 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Minha programação diz que sim, mas ainda há um conflito dentro de mim.]', 5 , 248 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Ah... Eu não sei se consigo falar sobre isso.]', 5 , 249 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('?', 1 , 250 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[É também...]', 5 , 251 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[O trevo preto? É uma planta comum em nosso mundo.]', 5 , 252 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('O que há dentro do âmbar?', 1 , 253 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Âmbar encontrado no Vale.]', 5 , 254 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Do que é feito?', 1 , 255 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('É um colar muito bonito!', 1 , 256 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Se você deixar o remobô usar isso, o sistema de rastreamento reserva deverá ativar-se.]', 5 , 257 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Os remobôs têm a habilidade de encontrar materiais de seus locais de origem.]', 5 , 258 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Tenho algo que possa ajudar.]', 5 , 259 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Hm...]', 5 , 260 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Parece que sim! @user@ e eu consertamos todo o resto...', 1 , 261 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Só os circuitos de navegação?]', 5 , 262 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Ele falou alguma coisa sobre os circuitos de navegação estragados.', 1 , 263 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Certo. Qual é o problema?]', 5 , 264 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('... mas ele está com alguns problemas e pediu para eu falar com você.', 1 , 265 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Encontrei um robô que pode me levar até a Torre!', 1 , 266 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Com licença de novo, senhorita...', 1 , 267 );
+
+--XADRES
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Ah, você também!', 1 , NULL );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Espero que chegue em casa com segurança.]', 5 , 269 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[... Obrigada por me ouvir.]', 5 , 270 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Certo, acho que já segurei você por muito tempo...]', 5 , 271 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Xeque-mate.]', 5 , 272 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Mas...', 1 , 273 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Não há garantias de que funcionará.]', 5 , 274 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Assim como supostamente as Terras Áridas foram apenas uma segunda chance para mim.]', 5 , 275 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[De certa forma, supostamente você é só uma segunda chance para o povo.]', 5 , 276 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[A única coisa que você pode fazer é concluir sua peregrinação.]', 5 , 277 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Quando foi que sua rainha chegou aí...?', 1 , 278 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('O-o quê?!', 1 , 279 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Xeque.]', 5 , 280 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Então... não há nada que eu possa fazer?', 1 , 281 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[A morte repentina do sol foi apenas a gota d’água para tudo piorar de vez.]', 5 , 282 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[A decadência começou antes de o sol desaparecer.]', 5 , 283 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Provavelmente, o sol não salvará o mundo.]', 5 , 284 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Eu já disse isso, não?]', 5 , 285 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Não.]', 5 , 286 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Porque o sol se foi...?', 1 , 287 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[O mundo pode estar muito diferente agora.]', 5 , 288 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[... só não sei se tudo isso continua do mesmo jeito.]', 5 , 289 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Eu ainda tenho os dados, as coordenadas, as lembranças...]', 5 , 290 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[No passado, sim.]', 5 , 291 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Ah! Você já esteve em alguma outra região? Ouvi dizer que há mais duas.', 1 , 292 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Cavalo.]', 5 , 293 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('... lá se vai meu cavalinho...', 1 , 294 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Não sei exatamente aonde.]', 5 , 295 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Todos os outros robôs evoluídos foram levados para outras regiões.]', 5 , 296 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Mas eu sou um deles.]', 5 , 297 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Eu não sei explicar direito o que são os robôs evoluídos.]', 5 , 298 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('... lá se vai meu outro bispo...', 1 , 299 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Como assim, exatamente?', 1 , 300 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Evoluir...  é complicado.]', 5 , 301 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('... lá se vai o meu bispo...', 1 , 302 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Cuidado.]', 5 , 303 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[A maioria dos robôs não são evoluídos.]', 5 , 304 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Às vezes, é difícil entender.', 1 , 305 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('E agora você!', 1 , 306 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Eu conversei com outros robôs e todos eles falaram sobre programação, código, essas coisas...', 1 , 307 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Então... Como é isso? Ser um robô e tal...', 1 , 308 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Obrigada. Está no meu código.]', 5 , 309 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Você tem talento!', 1 , 310 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Mas é o mínimo que eu possa fazer!', 1 , 311 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Digo, eu não sei muito bem as regras...', 1 , 312 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Então, joga uma partida comigo?]', 5 , 313 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Eu já joguei com crianças mais velhas!', 1 , 314 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Sim! É... mais ou menos...', 1 , 315 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Você...  sabe jogar xadrez?]', 5 , 316 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Na verdade...]', 5 , 317 );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Antes de partir... Posso ajudar de alguma maneira?', 1 , 318 );
+
+--Ndft
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Não há nenhum motivo para você ficar nas Terras Áridas.]', 5 , NULL);
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[Pode sair...]', 5 , 320);
+
+
+--lastRemobo
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[CAPACIDADE DENTRO DOS CONFORMES. SEGUINDO VIAGEM.]', 6 , NULL );
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('Ah. Bom... Acho que não vou precisar mais do pé de cabra... Nem dessa máscara de gás, nem das luvas...', 1 , 322 );
+
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[VOCÊ PRECISARÁ DEIXAR ALGO PARA TRÁS.]', 6 , 323 );
+
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[AGUARDE. CAPACIDADE DO BARCO EXCEDIDA.]', 6 , 324 );
+
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[CONFIGURANDO TRAJETO...]', 6 , 325 );
+
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[ATIVANDO SISTEMA DE RASTREAMENTO...]', 6 , 326 );
+
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[AGORA ME LEMBRO!]', 6 , 327 );
+
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[É UM ÂMBAR DO VALE.]', 6 , 328 );
+
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[AH!]', 6 , 329 );
+
+
+INSERT INTO Dialogue(DialogueText, CharacterId, NextDialogue)
+VALUES ('[...]', 6 , 330 );

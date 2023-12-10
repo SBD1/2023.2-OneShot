@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS ChatEvent(
     EventId INT PRIMARY KEY REFERENCES Event(EventId),
     IsUnique BOOLEAN DEFAULT FALSE,
     AlreadyFired BOOLEAN DEFAULT FALSE,
-    Command VARCHAR(450) NOT NULL
+    Command VARCHAR(700) NOT NULL
 );
 
 -- Tabela de Eventos de Interação
@@ -17,14 +17,14 @@ CREATE TABLE IF NOT EXISTS InteractEvent(
     EventId INT PRIMARY KEY REFERENCES Event(EventId),
     AlreadyFired BOOLEAN DEFAULT FALSE,
     ConsumesItem BOOLEAN DEFAULT TRUE,
-    Command VARCHAR(450) NOT NULL
+    Command VARCHAR(700) NOT NULL
 );
 
 -- Tabela de Eventos de Sala
 CREATE TABLE IF NOT EXISTS RoomEvent(
     EventId INT PRIMARY KEY REFERENCES Event(EventId),
     AlreadyFired BOOLEAN DEFAULT FALSE,
-    Command VARCHAR(450) NOT NULL
+    Command VARCHAR(700) NOT NULL
 );
 
 

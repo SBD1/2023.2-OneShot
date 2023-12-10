@@ -1,3 +1,4 @@
+import sys
 import psycopg2
 from contextlib import closing
 import os
@@ -60,7 +61,10 @@ with closing(psycopg2.connect(database="study", user="postgres", password="2605"
                     comando = prevcomando
 
             for notice in conn.notices:
-                if 'DIALOGUE EVENT' in notice:
+                if 'GAME END' in notice:
+                    game_end_handler()
+                    sys.exit()
+                elif 'DIALOGUE EVENT' in notice:
                     notice = notice.replace('NOTICE:  DIALOGUE EVENT ', '')
                     dialogue_handler(conn, notice)
                 elif 'NOTICE:  NOTICE' in notice:

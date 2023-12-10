@@ -45,10 +45,10 @@ INSERT INTO ItemMaterial(ItemName,ItemDescription)
 VALUES ('Bateria carregada','Bateria recarregável funcionando com força total.');
 
 INSERT INTO ItemMaterial(ItemName,ItemDescription)
-VALUES ('Frasco com fumaça','Está cheio de fumaça tóxica.');
+VALUES ('Frasco de fumaça','Está cheio de fumaça tóxica.');
 
 INSERT INTO ItemMaterial(ItemName,ItemDescription)
-VALUES ('Frasco com ácido','Está cheio de ácido líquido espesso');
+VALUES ('Frasco de ácido','Está cheio de ácido líquido espesso');
 
 INSERT INTO ItemMaterial(ItemName,ItemDescription)
 VALUES ('Esponja molhada','Esponja encharcada de solução de limpeza ácida.');
@@ -62,8 +62,8 @@ VALUES ('Haste de metal','Surpreendentemente leve.', 30);
 INSERT INTO ItemMaterial(ItemName,ItemDescription,ItemLocationId)
 VALUES ('Esponja','Esponja chata com superfície áspera.', 19);
 
-INSERT INTO ItemMaterial(ItemName,ItemDescription,ItemLocationId)
-VALUES ('Seringa vazia','A agulha é especialmente grande.',23);
+INSERT INTO ItemMaterial(ItemName,ItemDescription)
+VALUES ('Seringa vazia','A agulha é especialmente grande.');
 
 INSERT INTO ItemMaterial(ItemName,ItemDescription)
 VALUES ('Seringa cheia','Está cheia do líquido estranho da lagoa.');
@@ -80,8 +80,10 @@ VALUES ('Máscara de gás','Uma máscara para filtrar o ar.');
 INSERT INTO ItemEquipment(ItemName,ItemDescription,ItemLocationId)
 VALUES ('Luvas de borracha','Luvas projetadas para impedir dano químico.', 18);
 
-UPDATE Region set requirement = 26 WHERE RegionId = 7 OR RegionId = 9;
+INSERT INTO ItemMaterial(ItemName,ItemDescription)
+VALUES ('Senha', 'A senha do cofre encontrada por  @user@');
 
+UPDATE Region set requirement = 26 WHERE RegionId = 7 OR RegionId = 9;
 
 INSERT INTO Combination (Material1Id, Material2Id, Result1Id, Result2Id)
 VALUES (3, 4, 5, 6);

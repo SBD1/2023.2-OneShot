@@ -192,3 +192,13 @@ def game_intro(pname):
     input()
     clear()
     help()
+
+def game_end_handler():
+    clear()
+    typewriter("Aqui termina a jornada de Niko nessa versão\n")
+    typewriter("Obrigado por jogar essa versão do OneShot\n")
+    typewriter("Espero que tenha gostado\n")
+    typewriter("Até a próxima\n")
+    typewriter("Pressione enter para sair...")
+    input()
+    clear()

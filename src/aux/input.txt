@@ -153,3 +153,191 @@ Interagir com moldura utilizando lâmpada
 
 sair
 
+ir para norte
+
+entrar em servidor das docas
+
+pegar haste de metal
+
+sair
+
+ir para sul
+
+ir para leste
+
+ir para leste
+
+ir para leste
+
+entrar em cabine de observação
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+pegar chave de fenda
+
+sair
+
+ir para leste
+
+interagir com corda na entrada
+
+
+
+
+
+
+
+
+pegar câmera
+
+
+sair
+
+
+viajar para posto avançado
+
+entrar em fábrica
+
+passar pela escada
+
+interagir com prensa hidraulica utilizando haste de metal
+
+sair
+
+entrar em posto avançado
+
+interagir com caixa utilizando pé de cabra
+
+passar pela porta dos fundos
+
+combinar chave de fenda com câmera
+
+combinar lente com bateria quebrada
+
+combinar bateria descarregada com lâmpada
+
+interagir com gerador utilizando bateria carregada
+
+passar pela porta dos fundos
+
+interagir com computador ligado
+
+
+
+
+
+
+
+
+
+sair
+
+ir para leste
+
+
+
+
+
+interagir com cofre utilizando senha
+
+ir para norte
+
+entrar em antiga fábrica
+
+pegar luvas de borracha
+
+interagir com barricada utilizando pé de cabra
+
+passar pela escada
+
+pegar esponja
+
+sair
+
+ir para oeste
+
+entrar em Enfermaria dos dormitórios
+
+interagir com Kit de primeiros socorros
+
+sair
+
+ir para oeste
+
+interagir com Poça especial utilizando Seringa vazia
+
+interagir com Saida de gas pequena utilizando Frasco vazio
+
+ir para sul
+
+combinar Frasco de fumaça com Seringa cheia
+
+combinar Esponja com Frasco de ácido
+
+interagir com robo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+interagir com remobô utilizando esponja molhada
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
