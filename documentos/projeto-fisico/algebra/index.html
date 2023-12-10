@@ -611,6 +611,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#consultas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consultas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#historico-de-versao" class="md-nav__link">
     <span class="md-ellipsis">
       Histórico de Versão
@@ -834,6 +843,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#consultas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consultas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#historico-de-versao" class="md-nav__link">
     <span class="md-ellipsis">
       Histórico de Versão
@@ -875,6 +893,354 @@
 <h2 id="introducao"><a>Introdução</a></h2>
 <p>A <strong><a>Álgebra Relacional</a></strong> é uma linguagem de consulta formal, porém procedimental, ou seja, o usuário dá as instruções ao sistema para que o mesmo realize uma sequência de operações na base de dados para calcular o resultado desejado. Ela define operadores para atuar nas tabelas e é utilizada para realizar manipulações de dados no modelo relacional. A Álgebra Relacional é um conjunto de operações que utilizam como recurso de entrada uma ou mais relações, produzindo então, uma nova relação. </p>
 <p>A Álgebra Relacional é uma parte importante do projeto físico do banco de dados, pois permite definir a estrutura do banco de dados, incluindo a definição de tabelas, colunas, restrições, índices, etc. Alguns dos operadores da Álgebra Relacional incluem união, interseção, diferença, produto, seleção, projeção e junção. Cada operador tem uma função específica e uma representação na construção de consultas. </p>
+<h2 id="consultas"><a>Consultas</a></h2>
+<p>O meu projeto realiza diversas consultas o tempo todo como demonstrar a seguir, porem as principais seriam:</p>
+<p><strong><a>Descrição do local</a></strong></p>
+<pre><code class="language-txt">π CASE WHEN l.RoomId IS NOT NULL THEN s.StructureDescription ELSE r.RegionName END, CASE WHEN l.RoomId IS NOT NULL THEN ro.RoomName ELSE NULL END, CASE WHEN l.RoomId IS NULL THEN ARRAY_AGG(DISTINCT e.StructureName) ELSE NULL END, ARRAY_AGG(DISTINCT o.ObjectName), ARRAY_AGG(DISTINCT im.ItemName), ARRAY_AGG(DISTINCT ie.ItemName), ARRAY_AGG(DISTINCT npc.NpcName)
+(σ l.LocationId = (SELECT PcLocationId FROM PC WHERE CharacterId = 1)
+((Location l ⨝ l.RegionId = r.RegionId Region r) ⨝ l.RoomId = ro.RoomId Room ro ⨝ ro.StructureId = s.StructureId Structure s ⨝ r.RegionId = e.RegionId Structure e ⨝ l.LocationId = o.ObjectLocationId Object o ⨝ l.LocationId = im.ItemLocationId ItemMaterial im ⨝ l.LocationId = ie.ItemLocationId ItemEquipment ie ⨝ l.LocationId = npc.NpcLocationId NPC npc))
+</code></pre>
+<p><strong><a>Lista de conexões</a></strong></p>
+<pre><code class="language-txt">π ConnectionName
+(σ Room1Id = (SELECT RoomId FROM Location WHERE LocationId = (SELECT PcLocationId FROM PC WHERE CharacterId = 1)) OR Room2Id = (SELECT RoomId FROM Location WHERE LocationId = (SELECT PcLocationId FROM PC WHERE CharacterId = 1)) Connection)
+</code></pre>
+<p><strong><a>Abrir inventario</a></strong></p>
+<pre><code class="language-txt">π im.ItemName, im.ItemDescription, ie.ItemName, ie.ItemDescription
+(σ iy.CharacterId = 1 (Inventory iy ⨝ iy.ItemId = im.ItemId ItemMaterial im ⨝ iy.ItemId = ie.ItemId ItemEquipment ie))
+</code></pre>
+<p><strong><a>Lista de regiões visitadas</a></strong></p>
+<pre><code class="language-txt">π Region.RegionName
+(σ VisitedRegion.CharacterId = 1 (VisitedRegion ⨝ VisitedRegion.RegionId = Region.RegionId Region))
+</code></pre>
+<details>
+<summary><strong>Outras Consultas</strong></summary>
+
+<pre><code>ρ localizacao_atual_id (π PcLocationId (σ CharacterId = 1 PC))
+</code></pre>
+
+
+
+<pre><code>σ RegionId = nova_regiao_id Location
+</code></pre>
+
+
+
+<pre><code>ρ equipamento_id, motivo (π Requirement, WhyisBlocked (σ RegionId = nova_regiao_id Region))
+</code></pre>
+
+
+
+<pre><code>ρ nome_equipamento (π ItemName (σ ItemId = equipamento_id ItemEquipment))
+</code></pre>
+
+
+
+<pre><code>ρ new_location (π LocationId (σ RegionId = nova_regiao_id (σ RoomId IS NULL Location)))
+</code></pre>
+
+
+
+<pre><code>ρ localizacao_pc (π PcLocationId (σ CharacterId = 1 PC))
+</code></pre>
+
+
+
+<pre><code>ρ regiao_estrutura (π RegionId (σ LOWER(StructureName) = nome_estrutura Structure))
+</code></pre>
+
+
+
+<pre><code>ρ localizacao_estrutura (π LocationId (σ RegionId = regiao_estrutura Location))
+</code></pre>
+
+
+
+<pre><code>ρ salainicial_id (π InitialRoom (σ LOWER(StructureName) = nome_estrutura Structure))
+</code></pre>
+
+
+
+<pre><code>ρ id_objeto (π BlockedBy (σ RoomId = salainicial_id Room))
+</code></pre>
+
+
+
+<pre><code>π LocationId (σ RoomId = salainicial_id Location)
+</code></pre>
+
+
+
+<pre><code>π Locks (σ ObjectId = id_objeto Object)
+</code></pre>
+
+
+
+<pre><code>π LocationId (σ RoomId = salainicial_id Location)
+</code></pre>
+
+
+
+<pre><code>π ObjectDescription (σ ObjectId = id_objeto Object)
+</code></pre>
+
+
+
+<pre><code>ρ regiao_idn (π RegionId (σ LocationId = (π PcLocationId (σ CharacterId = 1 PC)) Location))
+</code></pre>
+
+
+
+<pre><code>ρ new_location (π LocationId (σ RegionId = regiao_idn (σ RoomId IS NULL Location)))
+</code></pre>
+
+
+
+<pre><code>ρ regiao_idn (π RegionId (σ LocationId = (π PcLocationId (σ CharacterId = 1 PC)) Location))
+</code></pre>
+
+
+
+<pre><code>ρ new_location (π LocationId (σ RegionId = regiao_idn (σ RoomId IS NULL Location)))
+</code></pre>
+
+
+
+<pre><code>ρ localizacao_pc (π PcLocationId (σ CharacterId = 1 PC))
+</code></pre>
+
+
+
+<pre><code>ρ localizacao_itemM, itemM_id (π ItemLocationId, ItemId (σ LOWER(ItemName) = nome_item ItemMaterial))
+</code></pre>
+
+
+
+<pre><code>ρ localizacao_itemE, itemE_id (π ItemLocationId, ItemId (σ LOWER(ItemName) = nome_item ItemEquipment))
+</code></pre>
+
+
+
+<pre><code>ρ item1_id (π Inventory.ItemId (σ CharacterId = 1 AND LOWER(ItemMaterial.ItemName) = LOWER(nome_item1) (Inventory ⨝ Inventory.ItemId = ItemMaterial.ItemId ItemMaterial)))
+</code></pre>
+
+
+
+<pre><code>ρ item2_id (π Inventory.ItemId (σ CharacterId = 1 AND LOWER(ItemMaterial.ItemName) = LOWER(nome_item2) (Inventory ⨝ Inventory.ItemId = ItemMaterial.ItemId ItemMaterial)))
+</code></pre>
+
+
+
+<pre><code>ρ resultado_id1, resultado_id2, equipamento_id (π Result1Id, Result2Id, equipmentId (σ (Material1Id = item1_id AND Material2Id = item2_id) OR (Material1Id = item2_id AND Material2Id = item1_id) Combination))
+</code></pre>
+
+
+
+<pre><code>ρ nome_equipamento (π ItemName (σ ItemId = equipamento_id ItemEquipment))
+</code></pre>
+
+
+
+<pre><code>σ CharacterId = 1 AND ItemId = equipamento_id Inventory
+</code></pre>
+
+
+
+<pre><code>ρ nome_item_resultado1 (π ItemName (σ ItemId = resultado_id1 ItemMaterial))
+</code></pre>
+
+
+
+<pre><code>ρ nome_item_resultado2 (π ItemName (σ ItemId = resultado_id2 ItemMaterial))
+</code></pre>
+
+
+
+<pre><code>ρ evento_tipo (π EventType (σ E.EventId = event_id Event E))
+</code></pre>
+
+
+
+<pre><code>ρ efeito (π Command (σ E.EventId = event_id ChatEvent E))
+</code></pre>
+
+
+
+<pre><code>ρ efeito (π Command (σ E.EventId = event_id InteractEvent E))
+</code></pre>
+
+
+
+<pre><code>ρ efeito (π Command (σ E.EventId = event_id RoomEvent E))
+</code></pre>
+
+
+
+<pre><code>ρ nome_npc, localizacao_npc, npc_id, evento_id (π npc.npcName, npc.npclocationid, npc.CharacterId, EventId (σ LOWER(npcname) = substring(funcao from 15) npc))
+</code></pre>
+
+
+
+<pre><code>ρ localizacao_pc (π PcLocationId (σ pc.CharacterId = 1 pc))
+</code></pre>
+
+
+
+<pre><code>ρ localizacao_pc (π PcLocationId (σ pc.CharacterId = 1 pc))
+</code></pre>
+
+
+
+<pre><code>ρ objeto_id, localizacao_objeto, item_objeto, Descricao_on_interact, Descricao, objeto_evento (π O.ObjectId, O.objectlocationid, O.ActivationItem, O.DescriptionOnInteract, O.ObjectDescription, O.EventId (σ LOWER(objectname) = objeto_nome object O))
+</code></pre>
+
+
+
+<pre><code>ρ objeto_id, localizacao_objeto, item_objeto, Descricao_on_interact, Descricao, objeto_evento (π O.ObjectId, O.objectlocationid, O.ActivationItem, O.DescriptionOnInteract, O.ObjectDescription, O.EventId (σ LOWER(objectname) = objeto_nome object O))
+</code></pre>
+
+
+
+<pre><code>ρ Item_Id (π I.itemid (σ LOWER(I.ItemName) = item_nome ItemMaterial I))
+</code></pre>
+
+
+
+<pre><code>σ CharacterId = 1 AND ItemId = Item_Id Inventory
+</code></pre>
+
+
+
+<pre><code>ρ localizacao_pc (π PcLocationId (σ CharacterId = 1 PC))
+</code></pre>
+
+
+
+<pre><code>ρ regiao_id (π RegionId (σ LOWER(RegionName) = nome_regiao Region))
+</code></pre>
+
+
+
+<pre><code>ρ regiao_local (π LocationId (σ RegionId = regiao_id AND RoomId IS NULL Location))
+</code></pre>
+
+
+
+<pre><code>σ RegionId = regiao_id AND CharacterId = 1 VisitedRegion
+</code></pre>
+
+
+
+<pre><code>π LocationId (σ RegionId = regiao_id AND RoomId IS NULL Location)
+</code></pre>
+
+
+
+<pre><code>ρ localizacao_pc (π PcLocationId (σ CharacterId = 1 PC))
+</code></pre>
+
+
+
+<pre><code>ρ quarto_pc (π RoomId (σ LocationId = localizacao_pc Location))
+</code></pre>
+
+
+
+<pre><code>ρ quarto_alvo (π Room2Id (σ LOWER(ConnectionName) = nome_conexao AND Room1Id = quarto_pc Connection))
+</code></pre>
+
+
+
+<pre><code>ρ quarto_alvo (π Room1Id (σ LOWER(ConnectionName) = nome_conexao AND Room2Id = quarto_pc Connection))
+</code></pre>
+
+
+
+<pre><code>ρ id_objeto (π BlockedBy (σ RoomId = quarto_alvo Room))
+</code></pre>
+
+
+
+<pre><code>π LocationId (σ RoomId = quarto_alvo Location)
+</code></pre>
+
+
+
+<pre><code>π ObjectDescription (σ ObjectId = id_objeto Object)
+</code></pre>
+
+
+
+<pre><code>ρ pc_location (π PcLocationId (σ CharacterId = 1 PC))
+</code></pre>
+
+
+
+<pre><code>ρ region_id, room_id (π RegionID, RoomId (σ LocationId = pc_location Location))
+</code></pre>
+
+
+
+<pre><code>ρ descricao (π RegionDescription (σ RegionId = region_id Region))
+</code></pre>
+
+
+
+<pre><code>ρ descricao (π RoomDescription (σ RoomId = room_id Room))
+</code></pre>
+
+
+
+<pre><code>π InitialRoom (σ StructureId = NEW.StructureId Structure)
+</code></pre>
+
+
+
+<pre><code>σ C.CharacterId = NEW.CharacterId Character C
+</code></pre>
+
+
+
+<pre><code>σ C.CharacterId = NEW.CharacterId Character C
+</code></pre>
+
+
+
+<pre><code>σ I.ItemId = NEW.ItemId Item I
+</code></pre>
+
+
+
+<pre><code>σ E.EventId = NEW.EventId Event E
+</code></pre>
+
+
+
+<pre><code>ρ Idquarto (π RoomId (σ locationId = NEW.PcLocationId location))
+</code></pre>
+
+
+
+<pre><code>ρ Idevento (π EventId (σ RoomId = Idquarto Room))
+</code></pre>
+
+
+
+<pre><code>σ LocationId = NEW.PcLocationId Location
+</code></pre>
+
+
+
+<pre><code>ρ idRegiao, idroom (π RegionId, RoomId (σ LocationId = NEW.PcLocationId Location))
+</code></pre>
+
+
+
+<pre><code>π IsVisited (σ RegionId = idRegiao Region)
+</code></pre>
+
+
+</details>
+
 <h2 id="historico-de-versao"><a>Histórico de Versão</a></h2>
 <p><center></p>
 <table>
@@ -891,6 +1257,12 @@
 <td style="text-align: center;">25/11/23</td>
 <td style="text-align: center;">1.0</td>
 <td style="text-align: center;">Criação do documento</td>
+<td style="text-align: center;"><a href="https://github.com/HacKairos">João Lucas</a></td>
+</tr>
+<tr>
+<td style="text-align: center;">10/12/23</td>
+<td style="text-align: center;">2.0</td>
+<td style="text-align: center;">Atualização do documento</td>
 <td style="text-align: center;"><a href="https://github.com/HacKairos">João Lucas</a></td>
 </tr>
 </tbody>
