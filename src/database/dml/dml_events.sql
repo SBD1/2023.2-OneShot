@@ -26,7 +26,7 @@ INSERT INTO RoomEvent (EventId, Command)
 VALUES (0, 'INSERT INTO Inventory (CharacterId,ItemId) VALUES (1,9);CALL raiseTexto(''Ao abrir a porta do porão Niko se depara com a escada que leva até o porão'');CALL raiseTexto(''Niko desce as escadas e se depara com uma lâmpada apagada'');CALL raiseTexto(''Niko se aproxima da lâmpada e ao toca-la ...'');CALL raiseTexto(''A lâmpada se acende e tudo fica mais iluminado'');');
 
 INSERT INTO InteractEvent (EventId,Command)
-VALUES (0, 'CALL raiseTexto(''Niko perda a conciência após isso e acorda em um novo local com um robô ? encarando.'');UPDATE pc set PcLocationId = 6 WHERE CharacterId = 1;');
+VALUES (0, 'CALL raiseTexto(''Niko perde a conciência após isso e acorda em um novo local com um robô ? encarando.'');UPDATE pc set PcLocationId = 6 WHERE CharacterId = 1;');
 
 INSERT INTO RoomEvent (EventId, Command)
 VALUES (0, 'CALL dialoguecall(108);UPDATE Room set EventId = NULL WHERE RoomId = 5;');

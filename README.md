@@ -18,10 +18,10 @@ Esse projeto é uma aplicação direta dos conceitos teóricos adquiridos na dis
 
 | Módulo |     Link da gravação      |    Data    |
 | :----: | :-----------------------: | :--------: |
-|   1    | [Apresentação Módulo 1](https://sbd1.github.io/2023.2-OneShot/documentos/apresentacoes/modulo-1/) | XX/XX/2023 |
-|   2    | [Apresentação Módulo 2](https://sbd1.github.io/2023.2-OneShot/documentos/apresentacoes/modulo-2/) | XX/XX/2023 |
+|   1    | [Apresentação Módulo 1](https://sbd1.github.io/2023.2-OneShot/documentos/apresentacoes/modulo-1/) | 10/12/2023 |
+|   2    | [Apresentação Módulo 2](https://sbd1.github.io/2023.2-OneShot/documentos/apresentacoes/modulo-2/) | 10/12/2023 |
 |   3    | [Apresentação Módulo 3](https://sbd1.github.io/2023.2-OneShot/documentos/apresentacoes/modulo-3/) | 04/12/2023 |
-| FINAL  |  [Apresentação  Final]()  | XX/XX/2023 |
+| FINAL  |  [Apresentação  Final](https://sbd1.github.io/2023.2-OneShot/documentos/apresentacoes/apresentacao-final/  | 10/12/2023 |
 
 ## Entregas
 

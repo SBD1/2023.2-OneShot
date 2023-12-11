@@ -28,7 +28,7 @@ def headline(text, char="="):
     typewriter("\n".join([text, len(text) * char]))
 
 def typewriter(text, speed=1):
-    delay = 0.0001 * speed
+    delay = 0.02 * speed
     text = re.sub(r"\bNiko\b", COLOR_NIKO + "Niko" + Style.RESET_ALL, text)
     text = re.sub(r"@user@", Fore.GREEN + os.getlogin() + Style.RESET_ALL, text)
     text = text.replace("???", Fore.MAGENTA + "???" + Style.RESET_ALL)
@@ -192,6 +192,12 @@ def game_intro(pname):
     input()
     clear()
     help()
+    clear()
+    typewriter("[Niko]\n")
+    typewriter("... O-Olá?\n\n")
+    input("Pressione enter para continuar...")
+    clear()
+
 
 def game_end_handler():
     clear()
@@ -199,6 +205,5 @@ def game_end_handler():
     typewriter("Obrigado por jogar essa versão do OneShot\n")
     typewriter("Espero que tenha gostado\n")
     typewriter("Até a próxima\n")
-    typewriter("Pressione enter para sair...")
-    input()
+    input("Pressione enter para sair...")
     clear()

@@ -9,7 +9,7 @@ A segunda entrega da disciplina envolve os artefatos **<a>Data Definition Langua
 ## <a>Gravação</a>
 
 <center>
-<iframe width="800" height="400" src="https://www.youtube-nocookie.com/embed/" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="800" height="400" src="https://www.youtube-nocookie.com/embed/YaZp1W18NRg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </center>
 
 ## <a>Histórico de Versão</a>

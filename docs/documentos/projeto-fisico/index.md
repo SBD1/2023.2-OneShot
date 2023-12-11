@@ -6,7 +6,7 @@
 ## <a>Introdução</a>
 O **<a>Projeto Físico</a>** é a última etapa do projeto de um banco de dados, que consiste em definir os detalhes técnicos da implementação do banco de dados. O objetivo é descrever como os dados serão armazenados em suas estruturas complexas para garantir eficiência, segurança e integridade. O projeto físico é contínuo, de aprimoramento constante - tuning. 
 
-Ele é gerado a partir do enriquecimento doProjeto Fisico modelo lógico com detalhes que impactem no desempenho, mas não na funcionalidade. Alterações no projeto físico não impactam o funcionamento das aplicações que utilizam esse banco de dados. O projeto físico é fortemente ligado ao SGBD que será utilizado 
+Ele é gerado a partir do enriquecimento do Projeto Fisico modelo lógico com detalhes que impactem no desempenho, mas não na funcionalidade. Alterações no projeto físico não impactam o funcionamento das aplicações que utilizam esse banco de dados. O projeto físico é fortemente ligado ao SGBD que será utilizado 
 
 
 <br>

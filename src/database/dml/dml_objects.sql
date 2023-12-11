@@ -21,13 +21,13 @@ INSERT INTO Object (ObjectName, ObjectDescription , DescriptionOnInteract, Objec
 VALUES ('Espelho', 'Um par de olhos amarelos e brilhantes olham para Niko.', '', 2);
 
 INSERT INTO Object (ObjectName, ObjectDescription , DescriptionOnInteract, ObjectLocationId, EventId)
-VALUES ('Planta murcha', 'Uma planta murcha está aqui, dura e seca. Não há necessidade de fazer mais nada por ela.', 'Uma planta murcha está aqui, dura e seca. Um galho cai', 2, 3);
+VALUES ('Planta murcha', 'Uma planta murcha está aqui, dura e seca. Não há necessidade de fazer mais nada por ela.', 'Uma planta murcha está aqui, dura e seca. Um galho cai e Niko o pega', 2, 3);
 
 INSERT INTO Object (ObjectName, ObjectDescription , DescriptionOnInteract, ObjectLocationId, EventId)
 VALUES ('Refrigerador', 'O refrigerador está vazio.', 'Dentro do refrigerador há um frasco de álcool, Niko o pega.', 3, 5);
 
 INSERT INTO Object (ObjectName, ObjectDescription , DescriptionOnInteract, ObjectLocationId, EventId,ActivationItem)
-VALUES ('TV', 'A TV solta uma faísca que parece ser perigosa.', 'Niko prepara o galho...', 3, 6, 5);
+VALUES ('TV', 'A TV solta uma faísca que parece ser perigosa.', 'Niko prepara o galho... e consegue uma tocha', 3, 6, 5);
 
 INSERT INTO Object (ObjectName, ObjectDescription , DescriptionOnInteract, ObjectLocationId, EventId,ActivationItem)
 VALUES ('Lareira', 'Parece que nunca usaram a madeira da lareira. Talvez dê para acender.', 'Niko acendeu a Lareira com a tocha', 3, 7, 7);
